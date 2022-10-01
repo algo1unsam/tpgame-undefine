@@ -1,0 +1,10 @@
+import trainer.*
+import pokemon.*
+import element.*
+
+describe "Test de Pokemon"{
+	
+	test "testX" {
+		assert.that(true)
+	}
+}

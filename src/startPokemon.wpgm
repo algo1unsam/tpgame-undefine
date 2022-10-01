@@ -1,0 +1,11 @@
+import begin.*
+import trainer.*
+import wollok.game.*
+
+//Programa, establece las configuraciones iniciales del juego y arranca el motor grafico
+program main {
+
+	pokemonRed.initialSettingsGame()
+	game.start()
+
+}
