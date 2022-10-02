@@ -69,7 +69,7 @@ class MapScreen inherits ConfigurationScreen{
 
 class BattleScreen inherits ConfigurationScreen{
 	method addConfigurations(){
-		game.boardGround(map2.image())
+		game.boardGround(battle.image())
 		teamRocket.playSound()	//Agrega la musica inicial que se reprograma apenas termina
 	}
 }

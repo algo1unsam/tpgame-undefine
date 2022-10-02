@@ -3,10 +3,10 @@ import red.*
 import screen.*
 import sound.*
 
-class Map {
-	
+//Map tiene mucha relación con screen, pueda que cualquier cambio haya que reflejarlo en screen
+
+class Map {	
 	const property image
-	
 }
 
 class Colliders{
@@ -45,7 +45,7 @@ class ColidersGrass{
 
 //Mapa de presentacion
 const map1 = new Map (image = "maps/map1.jpg")
-const map2 = new Map (image = "maps/map2.jpg")
+const battle = new Map (image = "maps/battle.jpg")
 
 //PRUEBA COLIDERS
 const collider1 = new Colliders(position = game.at(30, 20))
