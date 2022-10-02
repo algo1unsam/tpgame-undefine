@@ -1,11 +1,18 @@
 import wollok.game.*
 
 //Objeto con las canciones del juego, cada metodo retorna la cancion con su configuracion
-object songsPokemon {
+class SongsPokemon {
+	const song
 	
-	method route1Sound(){
-		const route1 = game.sound("sounds/route1.mp3")
-		route1.shouldLoop(true)	//Suena la cancion con un loop
-		game.schedule(100, { route1.play()}) //Toca la cancion y al finalizar la reprograma en 100 ms
+	method playSound(){
+		song.shouldLoop(true)	//Suena la cancion con un loop
+		game.schedule(100, { song.play()}) //Toca la cancion y al finalizar la reprograma en 100 ms
+	}
+	
+	method stopSound(){
+		song.stop()
 	}
 }
+
+const route1 = new SongsPokemon(song = game.sound("sounds/route1.mp3"))
+const teamRocket = new SongsPokemon(song = game.sound("sounds/team_rocket.mp3"))

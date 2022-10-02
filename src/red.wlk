@@ -1,13 +1,14 @@
 import wollok.game.*
-import begin.*
+import map.*
 
 //Personaje Principal
 object red {
 
 	var property position = game.at(32, 0) // Posiciono el pj en el centro
 	var property image = "red/back2.jpg" // Establezco una imagen para el personaje
-	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)
-	var countSteps = 1
+	var countSteps = 1	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)	
+	var property grassSteps = 0 //Contador para cada paso en el cesped
+	var property randomSteps = 10.randomUpTo(40).truncate(0) //Valor random del 10 al 40 para matchear con grassSteps
 
 	/*
 	 * Para que Red se mueva con las arrows (params => 0, se mueve menos que en 1, el movimiento es mas suave)
@@ -81,5 +82,9 @@ object red {
 		if(countSteps == 4){
 			countSteps = 1			
 		}
+	}
+	
+	method newRandom(){
+		self.randomSteps(10.randomUpTo(40).truncate(0))
 	}
 }
