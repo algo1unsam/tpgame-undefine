@@ -18,6 +18,11 @@ class ColidersGrass{
 	var property position	// Posiciono los objetos para que colisionen
 	//var property image = "red/ash3.jpg" // Establezco una imagen para el personaje
 	
+	/*
+	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
+	 * tener valores de 10 a 40), realiza un cambio de escena
+	 * 
+	 */
 	method stepOnGrass(){
 		const steps = red.grassSteps() + 1
 		red.grassSteps(red.grassSteps() + 1)
