@@ -5,6 +5,7 @@ import map.*
 object red {
 
 	var property position = game.at(32, 0) // Posiciono el pj en el centro
+	var property lastPosition //ultima posicion de red
 	var property image = "red/back2.jpg" // Establezco una imagen para el personaje
 	var countSteps = 1	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)	
 	var property grassSteps = 0 //Contador para cada paso en el cesped
@@ -50,34 +51,45 @@ object red {
 
 	//Configura el movimiento hacia la derecha y la imagen 1, 2 o 3 con el contador de pasos 
 	method setRight() {
+		//seteamos ultima posicion antes del movimiento
+		self.lastPosition(position)
 		position = position.right(0)
 		image = "red/right" + countSteps + ".jpg"
 	}
 
 	//Configura el movimiento hacia la izquierda y la imagen 1, 2 o 3 con el contador de pasos 
 	method setLeft() {
+		//seteamos ultima posicion antes del movimiento
+		self.lastPosition(position)
 		position = position.left(0)
 		image = "red/left" + countSteps + ".jpg"
 	}
 
 	//Configura el movimiento hacia arriba y la imagen 1, 2 o 3 con el contador de pasos 
 	method setUp() {
+		//seteamos ultima posicion antes del movimiento
+		self.lastPosition(position)
 		position = position.up(0)
 		image = "red/back" + countSteps + ".jpg"
 	}
 
 	//Configura el movimiento hacia abajo y la imagen 1, 2 o 3 con el contador de pasos 
 	method setDown() {
+		//seteamos ultima posicion antes del movimiento
+		self.lastPosition(position)
 		position = position.down(0)
 		image = "red/front" + countSteps + ".jpg"
 	}
 	
-	//Rebota cuando colisiona con un objeto
+	//Rebota cuando colisiona con una subida
 	method rebound() {
 		position = position.down(1)
 		//image = "assets/front1.jpg"
 	}
-	
+	//coliciona contra un bloque y vuelve a la posicion anterior 
+	method collidWithBlock(){
+		position = lastPosition
+	}
 	method setCount(){
 		if(countSteps == 4){
 			countSteps = 1			
