@@ -7,6 +7,7 @@ import sound.*
 
 class Map {	
 	const property image
+	
 }
 
 class Colliders{
