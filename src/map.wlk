@@ -20,7 +20,7 @@ class ColidersGrass{
 	
 	/*
 	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
-	 * tener valores de 10 a 40), realiza un cambio de escena
+	 * tener valores de 10 a 40), realiza un cambio de escena.
 	 * 
 	 */
 	method stepOnGrass(){
