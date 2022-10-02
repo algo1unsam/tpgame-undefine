@@ -51,7 +51,7 @@ object red {
 	//Configura el movimiento hacia la derecha y la imagen 1, 2 o 3 con el contador de pasos 
 	method setRight() {
 		position = position.right(0)
-		image = "red/right" + countSteps + ".jpg"
+		image = "red/right" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia la izquierda y la imagen 1, 2 o 3 con el contador de pasos 
@@ -69,7 +69,7 @@ object red {
 	//Configura el movimiento hacia abajo y la imagen 1, 2 o 3 con el contador de pasos 
 	method setDown() {
 		position = position.down(0)
-		image = "red/front" + countSteps + ".jpg"
+		image = "red/front" + countSteps + ".png"
 	}
 	
 	//Rebota cuando colisiona con un objeto
