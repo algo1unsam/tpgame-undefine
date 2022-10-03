@@ -1,11 +1,11 @@
 import screen.*
 import wollok.game.*
+import map.*
 
 //Programa, establece las configuraciones iniciales del juego y arranca el motor grafico
 program main {
-
 	mainScreen.initialSettingsGame()
-	mainScreen.addConfigurations()
+	mainScreen.addConfigurations(map)
 	game.start()
 
 }
