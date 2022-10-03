@@ -45,7 +45,7 @@ class ColidersGrass{
 
 //Mapa de presentacion
 const map1 = new Map (image = "maps/map1.jpg")
-const battle = new Map (image = "maps/battle.jpg")
+const battle = new Map (image = "maps/gardenBG.png")
 
 //PRUEBA COLIDERS
 const collider1 = new Colliders(position = game.at(30, 20))
