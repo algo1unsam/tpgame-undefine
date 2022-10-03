@@ -55,7 +55,7 @@ object red {
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.right(0)
-		image = "red/right" + countSteps + ".jpg"
+		image = "red/right" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia la izquierda y la imagen 1, 2 o 3 con el contador de pasos 
@@ -64,7 +64,7 @@ object red {
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.left(0)
-		image = "red/left" + countSteps + ".jpg"
+		image = "red/left" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia arriba y la imagen 1, 2 o 3 con el contador de pasos 
@@ -73,7 +73,7 @@ object red {
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.up(0)
-		image = "red/back" + countSteps + ".jpg"
+		image = "red/back" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia abajo y la imagen 1, 2 o 3 con el contador de pasos 
@@ -82,7 +82,7 @@ object red {
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.down(0)
-		image = "red/front" + countSteps + ".jpg"
+		image = "red/front" + countSteps + ".png"
 	}
 	
 	//Rebota cuando colisiona con una subida

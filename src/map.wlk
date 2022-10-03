@@ -102,6 +102,7 @@ class ColidersGrass inherits Colliders   {
 	}
 }
 //Mapa de presentacion
-const map = new InitialMap (image = "maps/map1.jpg")
-const battle = new InitialMap (image = "maps/battle.jpg")
+const map1 = new InitialMap (image = "maps/map1.jpg")
+const battle = new InitialMap (image = "maps/gardenBG.png")
+
 
