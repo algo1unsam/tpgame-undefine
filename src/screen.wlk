@@ -28,8 +28,8 @@ class MapScreen inherits ConfigurationScreen{
 		nameOfMap.constructInvisibleNormalObjects()
 		nameOfMap.addVisualInBoard()
 		//TODO: solucionar problemas de rendimiento con intialiteColliders
-//		nameOfMap.intialiteColliders()
-	
+		//nameOfMap.intialiteColliders()
+		
 		//El juego queda en espera de los movimientos configurados
 		keyboard.right().onPressDo({red.right()})
 		keyboard.left().onPressDo({red.left()})

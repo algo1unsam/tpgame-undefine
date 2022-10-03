@@ -36,15 +36,17 @@ class InitialMap{
 	//crea los los objetos invisibles en las posisiciones que el mapa requiera
 	method constructInvisibleNormalObjects(){
 		//Instanciando normalObjects
-		self.createBloqueOfTheNormalsObjects(30, 33, 20, 19)
+		self.createBloqueOfTheNormalsObjects(25, 39, 21, 19)
+		self.createBloqueOfTheNormalsObjects(4, 9, 21, 19)
 		self.createBloqueOfTheNormalsObjects(3,4,34, 1)	
 		self.createBloqueOfTheNormalsObjects(4, 30, 2, 1)
 		self.createBloqueOfTheNormalsObjects(35, 59, 2, 1)
 		self.createBloqueOfTheNormalsObjects(29, 30, 2, -1)
 		self.createBloqueOfTheNormalsObjects(35, 36, 2, -1)
 		self.createBloqueOfTheNormalsObjects(55, 56, 34, 2)
+		self.createBloqueOfTheNormalsObjects(4, 30, 12, 10)
 //		//instanicaindo GrassObjects
-		self.createBloqueOfTheObjectsGrass(30,35,11,9)
+		self.createBloqueOfTheObjectsGrass(30,44,12,8)
 	}
 	//agrega los visuales en el mapa
 	method addVisualInBoard(){
@@ -102,24 +104,4 @@ class ColidersGrass inherits Colliders   {
 //Mapa de presentacion
 const map = new InitialMap (image = "maps/map1.jpg")
 const battle = new InitialMap (image = "maps/battle.jpg")
-
-//PRUEBA COLIDERS
-
-//const collider1 = new Colliders(position = game.at(30, 20))
-//const collider2 = new Colliders(position = game.at(31, 20))
-//const collider3 = new Colliders(position = game.at(32, 20))
-//const grass1 = new ColidersGrass(position = game.at (30,10))
-//const grass2 = new ColidersGrass(position = game.at (31,10))
-//const grass3 = new ColidersGrass(position = game.at (32,10))
-//const grass4 = new ColidersGrass(position = game.at (33,10))
-//const grass5 = new ColidersGrass(position = game.at (34,10))
-//const grass6 = new ColidersGrass(position = game.at (35,10))
-//const grass7 = new ColidersGrass(position = game.at (30,11))
-//const grass8 = new ColidersGrass(position = game.at (31,11))
-//const grass9 = new ColidersGrass(position = game.at (32,11))
-//const grass10 = new ColidersGrass(position = game.at (33,11))
-//const grass11 = new ColidersGrass(position = game.at (34,11))
-//const grass12 = new ColidersGrass(position = game.at (35,11))
-
-
 
