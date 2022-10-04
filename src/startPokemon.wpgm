@@ -6,6 +6,5 @@ import map.*
 program main {
 	initialMap.initialSettingsGame()
 	initialMap.addConfigurations(map1)
-	characterScreen.initializateCharacter()
 	game.start()
 }

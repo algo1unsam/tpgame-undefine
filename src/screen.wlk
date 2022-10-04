@@ -16,10 +16,22 @@ class ConfigurationScreen {
 	}
 }
 
+object characterScreen{
+	method initializateCharacter(){
+		//inicializamos visual del pj
+		game.addVisualCharacter(red)
+		//El juego queda en espera de los movimientos configurados
+		keyboard.right().onPressDo({red.right()})
+		keyboard.left().onPressDo({red.left()})
+		keyboard.up().onPressDo({red.up()})
+		keyboard.down().onPressDo({red.down()})
+	}
+}
 class MapScreen inherits ConfigurationScreen{
 	
 	method addConfigurations(nameOfMap) {	
 		game.boardGround(nameOfMap.image())
+		characterScreen.initializateCharacter() //inicializamos en personaje para que conviva con el entorno
 		route1.playSound()	//Agrega la musica inicial que se reprograma apenas termina		
 		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc
 		nameOfMap.constructInvisibleNormalObjects()
@@ -39,17 +51,6 @@ class BattleScreen inherits ConfigurationScreen{
 //		teamRocket.playSound()	//Agrega la musica inicial que se reprograma apenas termina
 		const battleSong = game.sound("sounds/battle.mp3")
 		battleSong.play()
-	}
-}
-object characterScreen{
-	method initializateCharacter(){
-		//inicializamos visual del pj
-		game.addVisualCharacter(red)
-		//El juego queda en espera de los movimientos configurados
-		keyboard.right().onPressDo({red.right()})
-		keyboard.left().onPressDo({red.left()})
-		keyboard.up().onPressDo({red.up()})
-		keyboard.down().onPressDo({red.down()})
 	}
 }
 const initialMap = new MapScreen()
