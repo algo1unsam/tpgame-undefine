@@ -4,8 +4,8 @@ import map.*
 
 //Programa, establece las configuraciones iniciales del juego y arranca el motor grafico
 program main {
-	mainScreen.initialSettingsGame()
-	mainScreen.addConfigurations(map1)
+	initialMap.initialSettingsGame()
+	initialMap.addConfigurations(map1)
+	characterScreen.initializateCharacter()
 	game.start()
-
 }
