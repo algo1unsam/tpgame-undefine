@@ -45,8 +45,15 @@ class InitialMap{
 		self.createBloqueOfTheNormalsObjects(35, 36, 2, -1)
 		self.createBloqueOfTheNormalsObjects(55, 56, 34, 2)
 		self.createBloqueOfTheNormalsObjects(4, 30, 12, 10)
-//		//instanicaindo GrassObjects
+		self.createBloqueOfTheNormalsObjects(20, 24, 29, 23)
+		self.createBloqueOfTheNormalsObjects(4, 24, 32,31)
+		self.createBloqueOfTheNormalsObjects(35, 56, 32, 31)
+		//instanicaindo GrassObjects
 		self.createBloqueOfTheObjectsGrass(30,44,12,8)
+		self.createBloqueOfTheObjectsGrass(10,22,5,3)
+		self.createBloqueOfTheObjectsGrass(43,50,5,3)
+		self.createBloqueOfTheObjectsGrass(40,54,21,17)
+		self.createBloqueOfTheObjectsGrass(25,54,27,23)	
 	}
 	//agrega los visuales en el mapa
 	method addVisualInBoard(){
