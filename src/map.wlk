@@ -1,7 +1,7 @@
 import wollok.game.*
 import red.*
 import screen.*
-import sound.*
+
 
 //Map tiene mucha relación con screen, pueda que cualquier cambio haya que reflejarlo en screen
 
@@ -24,7 +24,7 @@ class InitialMap{
 	
 	//instancia colliders genericos contra los que choca
 	method instanceNormalObject(x,y){
-		listOfNormalColliders.add(new Colliders(position=game.at(x,y)))
+		listOfNormalColliders.add(new HitBox(position=game.at(x,y)))
 	}
 	//temporal
 	method createBloqueOfTheObjectsGrass(initX,endX,initY,endY){
@@ -32,7 +32,7 @@ class InitialMap{
 	}
 	//instancia colliders de pasto
 	method instanceObjectGrass(x,y){
-		listOfColliderGrass.add(new ColidersGrass(position=game.at(x,y))) 
+		listOfColliderGrass.add(new HitBoxGrass(position=game.at(x,y))) 
 	}
 	//crea los los objetos invisibles en las posisiciones que el mapa requiera
 	method constructInvisibleNormalObjects(){
@@ -62,30 +62,26 @@ class InitialMap{
 		listOfColliderGrass.forEach{objects => objects.showInBoard()}
 	}
 	//inicializa la posibilidad de colicionar contra estos objetos instanciados y añadidos al board
-	method intialiteColliders(){
-		listOfNormalColliders.forEach{objects => objects.collidWithCharacter()}
-		listOfColliderGrass.forEach{objects => objects.collidWithCharacter()}	
-	}
 }
 
 class BattleMap{
 	const property image
 }
 
-class Colliders{
+class HitBox{
 	var property position	// Posiciono los objetos para que colisionen
-	var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
+	//var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
 	
 	method showInBoard(){
 		game.addVisual(self)
 	}
 	//TODO: ver si podemos hacer que red se enecarge de saber si esta colicionando contra este objeto (posible solucion a la falla de rendimeinto)
 	method collidWithCharacter(){
-		game.onCollideDo(self, { el => el.collidWithBlock()})
+		red.collidWithHitbox()
 	}
 }
 
-class ColidersGrass inherits Colliders   {
+class HitBoxGrass inherits HitBox{
 	/*
 	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
 	 * tener valores de 10 a 40), realiza un cambio de escena.
@@ -93,24 +89,9 @@ class ColidersGrass inherits Colliders   {
 	 */
 	//TODO: ver si podemos hacer que red se enecarge de saber si esta colicionando contra este objeto (posible solucion a la falla de rendimeinto)
 	override method collidWithCharacter(){
-		game.onCollideDo(self, {el => self.stepOnGrass()})
+		red.stepOnGrass()
 	}
-	method stepOnGrass(){
-		const steps = red.grassSteps() + 1
-		red.grassSteps(red.grassSteps() + 1)
-			
-		if(steps == red.randomSteps()){
-			red.grassSteps(0)
-			red.newRandom()
-			route1.stopSound()
-			game.clear()
-			battleScreen.initialSettingsGame()
-			battleScreen.addConfigurations()
-			game.start()	
-		}
-		
-		red.grassSteps(steps)
-	}
+
 }
 
 
