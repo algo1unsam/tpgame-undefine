@@ -94,6 +94,7 @@ object red {
 	method collidWithBlock(){
 		position = lastPosition
 	}
+	
 	method setCount(){
 		if(countSteps == 4){
 			countSteps = 1			
