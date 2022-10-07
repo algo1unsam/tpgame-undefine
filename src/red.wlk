@@ -1,5 +1,7 @@
 import wollok.game.*
 import map.*
+import sound.*
+import screen.*
 
 //Personaje Principal
 object red {
@@ -91,15 +93,32 @@ object red {
 		//image = "assets/front1.jpg"
 	}
 	//coliciona contra un bloque y vuelve a la posicion anterior 
-	method collidWithBlock(){
+	method collidWithHitbox(){
 		position = lastPosition
+	}
+	method instanceColliders(){
+		game.onCollideDo(self,{hitBox => hitBox.collidWithCharacter()})
+	}
+	method stepOnGrass(){
+		const steps = self.grassSteps() + 1
+		self.grassSteps(self.grassSteps() + 1)
+			
+		if(steps == self.randomSteps()){
+			self.grassSteps(0)
+			self.newRandom()
+			route1.stopSound()
+			game.clear()
+			battleScreen.initialSettingsGame()
+			battleScreen.addConfigurations()
+			game.start()	
+		}
+		self.grassSteps(steps)
 	}
 	method setCount(){
 		if(countSteps == 4){
 			countSteps = 1			
 		}
 	}
-	
 	method newRandom(){
 		self.randomSteps(10.randomUpTo(40).truncate(0))
 	}
