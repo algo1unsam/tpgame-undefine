@@ -87,6 +87,10 @@ object red {
 		image = "red/front" + countSteps + ".png"
 	}
 	
+	//instacio las coliciones contra los objetos del mapa
+	method instanceColliders(){
+		game.onCollideDo(self,{hitBox => hitBox.collidWithCharacter()})
+	}
 	//Rebota cuando colisiona con una subida
 	method rebound() {
 		position = position.down(1)
@@ -96,9 +100,11 @@ object red {
 	method collidWithHitbox(){
 		position = lastPosition
 	}
-	method instanceColliders(){
-		game.onCollideDo(self,{hitBox => hitBox.collidWithCharacter()})
-	}
+	/*
+	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
+	 * tener valores de 10 a 40), realiza un cambio de escena.
+	 * 
+	 */
 	method stepOnGrass(){
 		const steps = self.grassSteps() + 1
 		self.grassSteps(self.grassSteps() + 1)
