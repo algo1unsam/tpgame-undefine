@@ -70,7 +70,7 @@ class BattleMap{
 
 class HitBox{
 	var property position	// Posiciono los objetos para que colisionen
-	//var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
+	var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
 	
 	method showInBoard(){
 		game.addVisual(self)

@@ -11,5 +11,5 @@ class Pokemon {
 	method ataque4(){}
 }
 
-const pikachu = new Pokemon(image = "pokemons/pikachuBack.png")
-const charmander = new Pokemon(image = "pokemons/charmanderFrente.jpg")
+const charmander = new Pokemon(image = "pokemons/charmanderBack.jpg")
+const bulbasaur = new Pokemon(image = "pokemons/bulbasaurFront.png")
