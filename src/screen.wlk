@@ -1,4 +1,3 @@
-
 import wollok.game.*
 import sound.*
 import map.*
@@ -20,6 +19,7 @@ object characterScreen{
 	method initializateCharacter(){
 		//inicializamos visual del pj
 		game.addVisualCharacter(red)
+		red.instanceColliders() //instancaimos las coliciones contra los objetos
 		//El juego queda en espera de los movimientos configurados
 		keyboard.right().onPressDo({red.right()})
 		keyboard.left().onPressDo({red.left()})
@@ -32,12 +32,11 @@ class MapScreen inherits ConfigurationScreen{
 	method addConfigurations(nameOfMap) {	
 		game.boardGround(nameOfMap.image())
 		characterScreen.initializateCharacter() //inicializamos en personaje para que conviva con el entorno
+		
 		route1.playSound()	//Agrega la musica inicial que se reprograma apenas termina		
-		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc
+		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
 		nameOfMap.constructInvisibleNormalObjects()
 		nameOfMap.addVisualInBoard()
-		//TODO: solucionar problemas de rendimiento con intialiteColliders
-		//nameOfMap.intialiteColliders()
 	}
 }	
 

@@ -1,5 +1,7 @@
 import wollok.game.*
 import map.*
+import sound.*
+import screen.*
 
 //Personaje Principal
 object red {
@@ -85,21 +87,44 @@ object red {
 		image = "red/front" + countSteps + ".png"
 	}
 	
+	//instacio las coliciones contra los objetos del mapa
+	method instanceColliders(){
+		game.onCollideDo(self,{hitBox => hitBox.collidWithCharacter()})
+	}
 	//Rebota cuando colisiona con una subida
 	method rebound() {
 		position = position.down(1)
 		//image = "assets/front1.jpg"
 	}
 	//coliciona contra un bloque y vuelve a la posicion anterior 
-	method collidWithBlock(){
+	method collidWithHitbox(){
 		position = lastPosition
+	}
+	/*
+	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
+	 * tener valores de 10 a 40), realiza un cambio de escena.
+	 * 
+	 */
+	method stepOnGrass(){
+		const steps = self.grassSteps() + 1
+		self.grassSteps(self.grassSteps() + 1)
+			
+		if(steps == self.randomSteps()){
+			self.grassSteps(0)
+			self.newRandom()
+			route1.stopSound()
+			game.clear()
+			battleScreen.initialSettingsGame()
+			battleScreen.addConfigurations()
+			game.start()	
+		}
+		self.grassSteps(steps)
 	}
 	method setCount(){
 		if(countSteps == 4){
 			countSteps = 1			
 		}
 	}
-	
 	method newRandom(){
 		self.randomSteps(10.randomUpTo(40).truncate(0))
 	}
