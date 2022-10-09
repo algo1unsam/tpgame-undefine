@@ -45,11 +45,12 @@ class MapScreen inherits ConfigurationScreen{
 class BattleScreen inherits ConfigurationScreen{
 	method addConfigurations(){
 		game.boardGround(battle.image())
-		game.addVisualCharacterIn(charmander, game.at(13, 6))
-		game.addVisualCharacterIn(bulbasaur, game.at(39,18))
+		game.addVisualCharacterIn(charmander, game.at(10, 4))
+		game.addVisualCharacterIn(bulbasaur, game.at(37,14))
 		game.addVisualCharacterIn(sign1, game.at(35, 6))	//Nuestro cartel de vida posicion
 		game.addVisualCharacterIn(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
 		game.addVisualCharacterIn(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
+		game.addVisualCharacterIn(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 		const battleSong = game.sound("sounds/battle.mp3")
 		battleSong.shouldLoop(true)	//Suena la cancion con un loop
 		battleSong.play()
@@ -68,8 +69,9 @@ const battleScreen = new BattleScreen()
 const map1 = new InitialMap (image = "maps/map1.jpg")
 const battle = new BattleMap (image = "maps/gardenBG.png")
 //Carteles con la vida, experiencia, nivel y nombre
-const sign1 = new BattleSign(image = "maps/opponentSign.png")
-const sign2 = new BattleSign(image = "maps/opponentSign.png")
+const sign1 = new BattleSign(image = "maps/statusSign.png")
+const sign2 = new BattleSign(image = "maps/statusSign.png")
 const sign3 = new BattleSign(image = "maps/buttomSign.png")
+const sign4 = new BattleSign(image = "maps/menuSign.png")
 
 
