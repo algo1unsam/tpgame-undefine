@@ -1,4 +1,5 @@
 import pokemon.*
+import red.*
 
 object mochila{
 	const artefactos=[]
@@ -36,5 +37,10 @@ object pokeBall{
 		if (pokemon.estaDebil()){
 			pokemon.serCapturado()
 		}
+	}
+}
+object repelente{
+	method usarEnRed(){
+		red.grassSteps(-100)
 	}
 }
