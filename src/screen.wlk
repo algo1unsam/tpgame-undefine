@@ -34,7 +34,7 @@ class MapScreen inherits ConfigurationScreen{
 		characterScreen.initializateCharacter() //inicializamos en personaje para que conviva con el entorno
 		
 		route1.playSound()	//Agrega la musica inicial que se reprograma apenas termina		
-		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc
+		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
 		nameOfMap.constructInvisibleNormalObjects()
 		nameOfMap.addVisualInBoard()
 	}
