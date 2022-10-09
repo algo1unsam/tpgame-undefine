@@ -46,7 +46,7 @@ class MapScreen inherits ConfigurationScreen{
 class BattleScreen inherits ConfigurationScreen{
 	method addConfigurations(){
 		game.boardGround(battle.image())
-		game.addVisualCharacterIn(pikachu, game.at(10,10))
+		game.addVisualCharacterIn(squirtle, game.at(10,10))
 		game.addVisualCharacterIn(charmander, game.at(39,20))
 //		teamRocket.playSound()	//Agrega la musica inicial que se reprograma apenas termina
 		const battleSong = game.sound("sounds/battle.mp3")
