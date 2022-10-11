@@ -114,9 +114,9 @@ object red {
 			self.newRandom()
 			route1.stopSound()
 			game.clear()
-			battleScreen.initialSettingsGame()
+			//battleScreen.initialSettingsGame()
 			battleScreen.addConfigurations()
-			game.start()	
+			//game.start()	
 		}
 		self.grassSteps(steps)
 	}

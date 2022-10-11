@@ -3,6 +3,7 @@ import sound.*
 import map.*
 import red.*
 import pokemon.*
+import arrow.*
 
 class ConfigurationScreen {
 	
@@ -17,7 +18,7 @@ class ConfigurationScreen {
 
 //Inicializa a red con sus movimientos y colisiones
 object characterScreen{
-	method initializateCharacter(){
+	method initializeCharacter(){
 		//inicializamos visual del pj
 		game.addVisualCharacter(red)
 		red.instanceColliders() //instancaimos las coliciones contra los objetos
@@ -28,11 +29,23 @@ object characterScreen{
 		keyboard.down().onPressDo({red.down()})
 	}
 }
+
+object arrowScreen{
+	method initializeArrow(){
+
+		game.addVisualCharacter(arrow)
+		
+		keyboard.right().onPressDo({ arrow.right() })
+		keyboard.left().onPressDo({ arrow.left() })
+		keyboard.up().onPressDo({ arrow.up() })
+		keyboard.down().onPressDo({ arrow.down() })		
+	}
+}
 class MapScreen inherits ConfigurationScreen{
 	
 	method addConfigurations(nameOfMap) {	
 		game.boardGround(nameOfMap.image())
-		characterScreen.initializateCharacter() //inicializamos en personaje para que conviva con el entorno
+		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
 		
 		route1.playSound()	//Agrega la musica inicial que se reprograma apenas termina		
 		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
@@ -45,11 +58,11 @@ class MapScreen inherits ConfigurationScreen{
 
 class BattleScreen inherits ConfigurationScreen{
 	method addConfigurations(){
-		game.boardGround(battle.image())
+		game.addVisualCharacterIn(battle, game.at(0, 0))
 		game.addVisualCharacterIn(charmander, game.at(8, 8))
 		game.addVisualCharacterIn(bulbasaur, game.at(37,16))
 
-		arrow.initializeArrow()
+		arrowScreen.initializeArrow()
 
 		//Objetos sueltos (por si no usamos el fondo con todo establecido)
 		//game.addVisualCharacterIn(sign1, game.at(35, 7))	//Nuestro cartel de vida posicion
@@ -68,52 +81,14 @@ class BattleObject{
 	const property image
 }
 
-//Flechita para el menu
-object arrow{
-	const property image = "maps/arrow.png"
-	var property position = game.at(38, 6)
-	
-	method initializeArrow(){
-		game.addVisualCharacter(self)
-		
-		keyboard.right().onPressDo({ self.right() })
-		keyboard.left().onPressDo({ self.left() })
-		keyboard.up().onPressDo({ self.up() })
-		keyboard.down().onPressDo({ self.down() })		
-	}
-	
-	method right() {
-		position = position.right(2)
-		//Agregar sonido aca
-	}
-	
-	method left() {
-		position = position.left(2)
-		//Agregar sonido aca
-	}
-	
-	method up() {
-		position = position.up(2)
-		//Agregar sonido aca
-	}
-	
-	method down() {
-		position = position.down(2)
-		//Agregar sonido aca
-	}
-	
-
-}
-
-
 //----------------------------instances------------------------------//
 //Configuracion escenarios
 const initialMap = new MapScreen()
 const battleScreen = new BattleScreen()
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
-const battle = new BattleMap (image = "maps/battle2.jpg")	//background batalla
-
+//const battle = new BattleMap (image = "maps/battle2.jpg")	//background batalla
+const battle = new BattleObject(image = "maps/prueba.png")
 
 //Carteles con la vida, experiencia, nivel y nombre
 //const sign1 = new BattleObject(image = "maps/statusSign.png")
