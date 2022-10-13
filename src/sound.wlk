@@ -15,4 +15,3 @@ class SongsPokemon {
 }
 
 const route1 = new SongsPokemon(song = game.sound("sounds/route1.mp3"))
-//const teamRocket = new SongsPokemon(song = game.sound("sounds/team_rocket.mp3"))

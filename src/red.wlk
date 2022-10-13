@@ -8,7 +8,7 @@ object red {
 
 	var property position = game.at(32, 0) // Posiciono el pj en el centro
 	var property lastPosition //ultima posicion de red
-	var property image = "red/back2.jpg" // Establezco una imagen para el personaje
+	var property image = "red/back2.png" // Establezco una imagen para el personaje
 	var countSteps = 1	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)	
 	var property grassSteps = 0 //Contador para cada paso en el cesped
 	var property randomSteps = 10.randomUpTo(40).truncate(0) //Valor random del 10 al 40 para matchear con grassSteps
@@ -53,7 +53,7 @@ object red {
 
 	//Configura el movimiento hacia la derecha y la imagen 1, 2 o 3 con el contador de pasos 
 	method setRight() {
-		game.say(self, self.position().toString())
+		//game.say(self, self.position().toString())
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.right(0)
@@ -62,7 +62,7 @@ object red {
 
 	//Configura el movimiento hacia la izquierda y la imagen 1, 2 o 3 con el contador de pasos 
 	method setLeft() {
-		game.say(self, self.position().toString())
+		//game.say(self, self.position().toString())
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.left(0)
@@ -71,7 +71,7 @@ object red {
 
 	//Configura el movimiento hacia arriba y la imagen 1, 2 o 3 con el contador de pasos 
 	method setUp() {
-		game.say(self, self.position().toString())
+		//game.say(self, self.position().toString())
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.up(0)
@@ -80,7 +80,7 @@ object red {
 
 	//Configura el movimiento hacia abajo y la imagen 1, 2 o 3 con el contador de pasos 
 	method setDown() {
-		game.say(self, self.position().toString())
+		//game.say(self, self.position().toString())
 		//seteamos ultima posicion antes del movimiento
 		self.lastPosition(position)
 		position = position.down(0)
