@@ -17,6 +17,9 @@ object mochila{
 	method sacarObjetoDeMochila(objeto){
 		artefactos.remove(objeto)
 	}
+	method usarObjetoDesdeMochila(pokemon){
+		artefactos.forEach({objeto=>objeto.usarEnPokemon(pokemon)})
+	}
 	
 
 }

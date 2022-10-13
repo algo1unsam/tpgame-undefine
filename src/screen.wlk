@@ -46,14 +46,8 @@ class MapScreen inherits ConfigurationScreen{
 class BattleScreen inherits ConfigurationScreen{
 	method addConfigurations(){
 		game.boardGround(battle.image())
-<<<<<<< HEAD
-		game.addVisualCharacterIn(squirtle, game.at(10,10))
-		game.addVisualCharacterIn(charmander, game.at(39,20))
-//		teamRocket.playSound()	//Agrega la musica inicial que se reprograma apenas termina
-=======
 		game.addVisualCharacterIn(charmander, game.at(8, 8))
 		game.addVisualCharacterIn(bulbasaur, game.at(37,16))
-
 		arrow.initializeArrow()
 
 		//Objetos sueltos (por si no usamos el fondo con todo establecido)
@@ -61,7 +55,7 @@ class BattleScreen inherits ConfigurationScreen{
 		//game.addVisualCharacterIn(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
 		//game.addVisualCharacterIn(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
 		//game.addVisualCharacterIn(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
->>>>>>> master
+
 		const battleSong = game.sound("sounds/battle.mp3")
 		route1.stopSound()
 		battleSong.shouldLoop(true)	//Suena la cancion con un loop

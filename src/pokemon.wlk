@@ -71,13 +71,9 @@ class Pokemon {
  }
  
 
-<<<<<<< HEAD
 
 
 const charmander = new PokemonFuego(front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",nombre="Charmander")
 const bulbasaur= new PokemonHoja(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",nombre="Bulbasaur")
 const squirtle= new PokemonAgua(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",nombre="Squirtle")
-=======
-const charmander = new Pokemon(image = "pokemons/charmanderBack.png")
-const bulbasaur = new Pokemon(image = "pokemons/bulbasaurFront.png")
->>>>>>> master
+
