@@ -2,70 +2,64 @@ class Pokemon {
 	
 	const front
 	const back
-	var property nombre
-	var property vida = 1000
+	var property name
+	var property life = 1000
 	var property level = 0
 	
-	method cambiarNombre(nuevoNombre){
-		nombre=nuevoNombre
+	method changeName(newName){
+		name=newName
 	}
 	
-	method recibirDanio(ataque){
-		vida=(vida-ataque).max(0)
+	method takeDamage(damage){
+		life=(life-damage).max(0)
 	}
-	method curarse(cuantoSeCura){
-		vida=(vida+cuantoSeCura).min(1000)
+	method heal(healingValue){
+		life=(life+healingValue).min(1000)
 	}
-	method aumentarDeNivel(){
+	method levelUp(){
 		level+=1
 	}
-	method primeraEvolucion(){
-		return self.level()>5 and self.level()<10
-	}
-	method segundaEvolucion(){
-		return self.level()>10
-	}
-	method ataquePlacaje(){
+	method tackleAttack(){
 		return 100
 	}
-	method estaDebil(){
-		return self.vida() < 150
+	method isWeak(){
+		return self.life() < 150
 	}
-	method serCapturado(){}
+	method beCaptured(){}
 		
 }
- class PokemonFuego inherits Pokemon{
- 	method ataqueLanzallamas(){
+ class PokemonFireType inherits Pokemon{
+ 	method flamethrowerAttack(){
  		return 200+(self.level()*10)
  	}
- 	method ataqueAscuas(){
+ 	method emberAttack(){
  		return 150+(self.level()*10)
  	}
- 	method ataquePuniofuego(){
+ 	method firePunchAttack(){
  		return 100+(self.level()*10) 	
  		}
  }
- class PokemonAgua inherits Pokemon{
- 	method ataqueHidroBomba(){
+ class PokemonWaterType inherits Pokemon{
+ 	method hidroBombAttack(){
  		return 200+(self.level()*10)
  	}
- 	method ataquePistolaAgua(){
+ 	method waterGunAttack(){
  		return 150+(self.level()*10)
  	}
- 	method ataqueBurbuja(){
+ 	method burbleAttack(){
  		return 100+(self.level()*10)
  	}
  	
  }
- class PokemonHoja inherits Pokemon{
- 	method ataqueHojaAfilada(){
+ class PokemonGrassType inherits Pokemon{
+ 	method razorLeafAttack(){
  		return 200+(self.level()*10)
  	}
- 	method ataqueLatigoCepa(){
+ 	method vineWhipAttack(){
  		return 150+(self.level()*10)
  		
  	}
- 	method ataqueDrenaje(){
+ 	method sharpenAttack(){
  		return 100+(self.level()*10)
  	}
  }
@@ -73,7 +67,9 @@ class Pokemon {
 
 
 
-const charmander = new PokemonFuego(front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",nombre="Charmander")
-const bulbasaur= new PokemonHoja(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",nombre="Bulbasaur")
-const squirtle= new PokemonAgua(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",nombre="Squirtle")
-
+const charmander = new PokemonFireType(front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",name="Charmander")
+const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",name="Growlithe")
+const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur")
+const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish")
+const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle")
+const lapras= new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")

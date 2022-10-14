@@ -2,48 +2,48 @@ import pokemon.*
 import red.*
 
 object mochila{
-	const artefactos=[]
-	const capacidadMax=10
+	const artefacts=[]
+	const maxCapacity=10
 	
-	method mochilaEstaLlena(){
-		return (artefactos.size()<capacidadMax)
+	method bagIsFull(){
+		return (artefacts.size()<maxCapacity)
 	}
 	
-	method agregarObjetoAMochila(objeto){
-		if(objeto.size()<capacidadMax){
-			artefactos.add(objeto)
+	method addObjectFromTheBag(object_){
+		if(artefacts.size()<maxCapacity){
+			artefacts.add(object_)
 		}	
 	}
-	method sacarObjetoDeMochila(objeto){
-		artefactos.remove(objeto)
+	method takeObjectFromTheBag(object_){
+		artefacts.remove(object_)
 	}
-	method usarObjetoDesdeMochila(pokemon){
-		artefactos.forEach({objeto=>objeto.usarEnPokemon(pokemon)})
+	method useObjectFromTheBag(pokemon){
+		artefacts.forEach({object_=>object_.useInPokemon(pokemon)})
 	}
 	
 
 }
-object pocionCurativa{
-	var property valorCuracion=500
+object healingPotion{
+	var property healingValue=500
 	
-	method usarEnPokemon(pokemon){
-		pokemon.curarse(valorCuracion)
+	method useInPokemon(pokemon){
+		pokemon.heal(healingValue)
 	}
 } 
-object carameloRaro{
-	method usarEnPokemon(pokemon){
-		pokemon.aumentarDeNivel()
+object rareCandy{
+	method useInPokemon(pokemon){
+		pokemon.levelUp()
 	}
 }
 object pokeBall{
-	method usarEnPokemon(pokemon){
-		if (pokemon.estaDebil()){
-			pokemon.serCapturado()
+	method useInPokemon(pokemon){
+		if (pokemon.isWeak()){
+			pokemon.beCaptured()
 		}
 	}
 }
-object repelente{
-	method usarEnRed(){
+object repellent{
+	method useInRed(){
 		red.grassSteps(-100)
 	}
 }
