@@ -58,9 +58,9 @@ class MapScreen inherits ConfigurationScreen{
 
 class BattleScreen inherits ConfigurationScreen{
 	method addConfigurations(){
-		game.addVisualCharacterIn(battle, game.at(0, 0))
-		game.addVisualCharacterIn(charmander, game.at(8, 8))
-		game.addVisualCharacterIn(bulbasaur, game.at(37,16))
+		game.addVisualIn(battle, game.at(0, 0))
+		game.addVisualIn(charmander, game.at(8, 8))
+		game.addVisualIn(bulbasaur, game.at(37,16))
 
 		arrowScreen.initializeArrow()
 
