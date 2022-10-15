@@ -73,6 +73,7 @@ object instanceHitboxGrass{
 	method instance(x,y){
 		return new HitBoxGrass(position=game.at(x,y))	
 	}
+}
 object instanceHitboxHill{
 	method instance(x,y){
 		return new HitBoxHill(position=game.at(x,y))	
