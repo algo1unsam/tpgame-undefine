@@ -1,15 +1,75 @@
 class Pokemon {
 	
-	var property image // Establezco una imagen para el personaje
+	const front
+	const back
+	var property name
+	var property life = 1000
+	var property level = 0
 	
-	method ataque1(){}
+	method changeName(newName){
+		name=newName
+	}
 	
-	method ataque2(){}
-	
-	method ataque3(){}
-	
-	method ataque4(){}
+	method takeDamage(damage){
+		life=(life-damage).max(0)
+	}
+	method heal(healingValue){
+		life=(life+healingValue).min(1000)
+	}
+	method levelUp(){
+		level+=1
+	}
+	method tackleAttack(){
+		return 100
+	}
+	method isWeak(){
+		return self.life() < 150
+	}
+	method beCaptured(){}
+		
 }
+ class PokemonFireType inherits Pokemon{
+ 	method flamethrowerAttack(){
+ 		return 200+(self.level()*10)
+ 	}
+ 	method emberAttack(){
+ 		return 150+(self.level()*10)
+ 	}
+ 	method firePunchAttack(){
+ 		return 100+(self.level()*10) 	
+ 		}
+ }
+ class PokemonWaterType inherits Pokemon{
+ 	method hidroBombAttack(){
+ 		return 200+(self.level()*10)
+ 	}
+ 	method waterGunAttack(){
+ 		return 150+(self.level()*10)
+ 	}
+ 	method burbleAttack(){
+ 		return 100+(self.level()*10)
+ 	}
+ 	
+ }
+ class PokemonGrassType inherits Pokemon{
+ 	method razorLeafAttack(){
+ 		return 200+(self.level()*10)
+ 	}
+ 	method vineWhipAttack(){
+ 		return 150+(self.level()*10)
+ 		
+ 	}
+ 	method sharpenAttack(){
+ 		return 100+(self.level()*10)
+ 	}
+ }
+ 
 
-const pikachu = new Pokemon(image = "pokemons/pikachuBack.png")
-const charmander = new Pokemon(image = "pokemons/charmanderFrente.jpg")
+
+
+const charmander = new PokemonFireType(front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",name="Charmander")
+const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",name="Growlithe")
+const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur")
+const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish")
+const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle")
+const lapras= new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")

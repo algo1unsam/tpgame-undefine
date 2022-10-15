@@ -6,7 +6,8 @@ import screen.*
 //Map tiene mucha relación con screen, pueda que cualquier cambio haya que reflejarlo en screen
 
 
-//mapa inicial
+//mapa inicial 
+//TODO: hacer refactor a las funciones para no repetir tanto codigo
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
@@ -58,6 +59,10 @@ class InitialMap{
 		listOfInvisibleObjects.forEach{objects => objects.showInBoard()}
 	}
 }
+//mapa de batalla
+class BattleMap{
+	const property image
+}
 //creamos objetos que generan la instancia de los hitbox para no repetir codigo en el mapa
 object instanceHitbox{
 	method instance(x,y){
@@ -68,12 +73,12 @@ object instanceHitboxGrass{
 	method instance(x,y){
 		return new HitBoxGrass(position=game.at(x,y))	
 	}
-}
 object instanceHitboxHill{
 	method instance(x,y){
 		return new HitBoxHill(position=game.at(x,y))	
 	}
 }
+
 class HitBox{
 	var property position	// Posiciono los objetos para que colisionen
 	//var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
@@ -81,12 +86,19 @@ class HitBox{
 	method showInBoard(){
 		game.addVisual(self)
 	}
+	//TODO: ver si podemos hacer que red se enecarge de saber si esta colicionando contra este objeto (posible solucion a la falla de rendimeinto)
 	method collidWithCharacter(){
 		red.collidWithHitbox()
 	}
 }
 
 class HitBoxGrass inherits HitBox{
+	/*
+	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
+	 * tener valores de 10 a 40), realiza un cambio de escena.
+	 * 
+	 */
+	//TODO: ver si podemos hacer que red se enecarge de saber si esta colicionando contra este objeto (posible solucion a la falla de rendimeinto)
 	override method collidWithCharacter(){
 		red.stepOnGrass()
 	}

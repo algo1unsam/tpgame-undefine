@@ -8,7 +8,7 @@ object red {
 
 	var property position = game.at(32, 0) // Posiciono el pj en el centro
 	var property lastPosition //ultima posicion de red
-	var property image = "red/back2.jpg" // Establezco una imagen para el personaje
+	var property image = "red/back2.png" // Establezco una imagen para el personaje
 	var countSteps = 1	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)	
 	var property grassSteps = 0 //Contador para cada paso en el cesped
 	var property randomSteps = 10.randomUpTo(40).truncate(0) //Valor random del 10 al 40 para matchear con grassSteps
