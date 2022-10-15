@@ -20,7 +20,7 @@ class ConfigurationScreen {
 object characterScreen{
 	method initializeCharacter(){
 		//inicializamos visual del pj
-		game.addVisualCharacter(red)
+		game.addVisual(red)
 		red.instanceColliders() //instancaimos las coliciones contra los objetos
 		//El juego queda en espera de los movimientos configurados
 		keyboard.right().onPressDo({red.right()})
@@ -33,7 +33,7 @@ object characterScreen{
 object arrowScreen{
 	method initializeArrow(){
 
-		game.addVisualCharacter(arrow)
+		game.addVisual(arrow)
 		
 		keyboard.right().onPressDo({ arrow.right() })
 		keyboard.left().onPressDo({ arrow.left() })
@@ -71,11 +71,8 @@ class BattleScreen inherits ConfigurationScreen{
 		//game.addVisualCharacterIn(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
 		//game.addVisualCharacterIn(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 
-		const battleSong = game.sound("sounds/battle.mp3")
 		route1.stopSound()
-		battleSong.shouldLoop(true)	//Suena la cancion con un loop
-		battleSong.volume(0.7)
-		battleSong.play()
+		soundBattle.playSound()
 	}
 }
 

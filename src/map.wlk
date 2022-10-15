@@ -107,9 +107,10 @@ class HitBoxGrass inherits HitBox{
 }
 class HitBoxHill inherits HitBox{
 	override method collidWithCharacter(){
+		const jump = game.sound("sounds/jump.mp3")
 		red.rebound()
-		game.sound("sounds/jump.mp3").play()
-		
+		jump.volume(0.5)
+		jump.play()			
 	}
 }
 //Mapa de presentacion

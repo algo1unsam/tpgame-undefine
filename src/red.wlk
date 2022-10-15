@@ -45,7 +45,10 @@ object red {
 	//Configura los pasos con un contador de pasos para elegir entre la imagen 1, 2 o 3 
 	//Le sumo los pasos solo a setSteps para no repetir codigo
 	method setSteps() {
+		console.println(self.position().toString())
 		const step = game.sound("sounds/step" + countSteps + ".mp3")
+		//seteamos ultima posicion antes del movimiento
+		self.lastPosition(position)
 		countSteps += 1
 		step.volume(0.5)
 		step.play()
@@ -53,37 +56,25 @@ object red {
 
 	//Configura el movimiento hacia la derecha y la imagen 1, 2 o 3 con el contador de pasos 
 	method setRight() {
-		console.println(self.position().toString())
-		//seteamos ultima posicion antes del movimiento
-		self.lastPosition(position)
-		position = position.right(0)
+		position = position.right(1)
 		image = "red/right" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia la izquierda y la imagen 1, 2 o 3 con el contador de pasos 
 	method setLeft() {
-		console.println(self.position().toString())
-		//seteamos ultima posicion antes del movimiento
-		self.lastPosition(position)
-		position = position.left(0)
+		position = position.left(1)
 		image = "red/left" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia arriba y la imagen 1, 2 o 3 con el contador de pasos 
 	method setUp() {
-		console.println(self.position().toString())
-		//seteamos ultima posicion antes del movimiento
-		self.lastPosition(position)
-		position = position.up(0)
+		position = position.up(1)
 		image = "red/back" + countSteps + ".png"
 	}
 
 	//Configura el movimiento hacia abajo y la imagen 1, 2 o 3 con el contador de pasos 
 	method setDown() {
-		console.println(self.position().toString())
-		//seteamos ultima posicion antes del movimiento
-		self.lastPosition(position)
-		position = position.down(0)
+		position = position.down(1)
 		image = "red/front" + countSteps + ".png"
 	}
 	

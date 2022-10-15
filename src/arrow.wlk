@@ -5,25 +5,49 @@ object arrow{
 	const property image = "maps/arrow.png"
 	var property position = game.at(38, 6)
 	
+	//Restricciones de movimientos para la flecha del menu
+	var restrictionRight = false
+	var restrictionLeft = true
+	var restrictionUp = true
+	var restrictionDown = false
+	
 	method right() {
-		position = position.right(2)
-		//Agregar sonido aca
+		if(!restrictionRight){
+			self.soundChange()			
+			position = position.right(11)
+			restrictionRight = !restrictionRight
+			restrictionLeft = !restrictionLeft		
+		}
 	}
 	
 	method left() {
-		position = position.left(2)
-		//Agregar sonido aca
+		if(!restrictionLeft){
+			self.soundChange()			
+			position = position.left(11)
+			restrictionRight = !restrictionRight
+			restrictionLeft = !restrictionLeft		
+		}
 	}
 	
 	method up() {
-		position = position.up(2)
-		//Agregar sonido aca
+		if(!restrictionUp){
+			self.soundChange()			
+			position = position.up(4)
+			restrictionUp = !restrictionUp
+			restrictionDown = !restrictionDown	
+		}
 	}
 	
 	method down() {
-		position = position.down(2)
-		//Agregar sonido aca
+		if(!restrictionDown){
+			self.soundChange()			
+			position = position.down(4)
+			restrictionUp = !restrictionUp
+			restrictionDown = !restrictionDown	
+		}
 	}
 	
-
+	method soundChange(){
+		game.sound("sounds/changeOption.mp3").play()	
+	}
 }
