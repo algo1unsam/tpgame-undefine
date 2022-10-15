@@ -93,7 +93,7 @@ object red {
 	}
 	//Rebota cuando colisiona con una subida
 	method rebound() {
-		position = position.down(1)
+		position = position.down(2)
 		//image = "assets/front1.jpg"
 	}
 	//coliciona contra un bloque y vuelve a la posicion anterior 

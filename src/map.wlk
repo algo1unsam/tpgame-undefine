@@ -108,6 +108,8 @@ class HitBoxGrass inherits HitBox{
 class HitBoxHill inherits HitBox{
 	override method collidWithCharacter(){
 		red.rebound()
+		game.sound("sounds/jump.mp3").play()
+		
 	}
 }
 //Mapa de presentacion
