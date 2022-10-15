@@ -44,6 +44,14 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(43,50,5,3,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(40,54,21,17,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(25,54,27,23,instanceHitboxGrass)	
+		//instanciando colinas
+		self.createBloqueInvisibleObjects(4,15,7,6,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(25,55,7,6,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(45,55,11,10,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(27,55,16,15,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(12,22,16,15,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(9,24,20,19,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(4,19,24,22,instanceHitboxHill)
 	}
 	//agrega los visuales en el mapa
 	method addVisualInBoard(){
@@ -61,7 +69,11 @@ object instanceHitboxGrass{
 		return new HitBoxGrass(position=game.at(x,y))	
 	}
 }
-
+object instanceHitboxHill{
+	method instance(x,y){
+		return new HitBoxHill(position=game.at(x,y))	
+	}
+}
 class HitBox{
 	var property position	// Posiciono los objetos para que colisionen
 	//var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
@@ -79,6 +91,11 @@ class HitBoxGrass inherits HitBox{
 		red.stepOnGrass()
 	}
 
+}
+class HitBoxHill inherits HitBox{
+	override method collidWithCharacter(){
+		red.rebound()
+	}
 }
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")
