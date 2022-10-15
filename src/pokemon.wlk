@@ -5,6 +5,7 @@ class Pokemon {
 	var property name
 	var property life = 1000
 	var property level = 0
+	var property image
 	
 	method changeName(newName){
 		name=newName
@@ -64,12 +65,10 @@ class Pokemon {
  	}
  }
  
-
-
-
-const charmander = new PokemonFireType(front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",name="Charmander")
-const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",name="Growlithe")
-const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur")
-const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish")
-const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle")
-const lapras= new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")
+//LE AGREGUE IMAGE A CHARMANDAR Y BULBASAUR PARA PRUEBAS
+const charmander = new PokemonFireType(image = "pokemons/charmanderBack.png", front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",name="Charmander")
+//const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",name="Growlithe")
+const bulbasaur = new PokemonGrassType(image = "pokemons/bulbasaurFront.png", front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur")
+//const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish")
+//const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle")
+//const lapras= new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")

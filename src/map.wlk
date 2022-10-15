@@ -112,6 +112,6 @@ class HitBoxHill inherits HitBox{
 }
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")
-const battle = new InitialMap (image = "maps/gardenBG.png")
+
 
 

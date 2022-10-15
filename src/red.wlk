@@ -116,7 +116,6 @@ object red {
 			game.clear()
 			//battleScreen.initialSettingsGame()
 			battleScreen.addConfigurations()
-			//game.start()	
 		}
 		self.grassSteps(steps)
 	}
