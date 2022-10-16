@@ -1,6 +1,8 @@
 import wollok.game.*
 import pokemon.*
 import screen.*
+import red.*
+//import sound.*
 
 //Flechita para el menu
 object arrow{
@@ -75,6 +77,10 @@ object pokemon{}
 object huida{
 	method runAway(){
 		game.clear()
+//		soundBattle.stopSound()
+		initialScreen.addConfigurations(map1)
+		
+//		route1.resume()
 	}
 }
 

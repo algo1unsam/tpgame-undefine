@@ -1,5 +1,5 @@
 import wollok.game.*
-import sound.*
+//import sound.*
 import map.*
 import red.*
 import pokemon.*
@@ -45,10 +45,12 @@ object arrowScreen{
 class MapScreen inherits ConfigurationScreen{
 	
 	method addConfigurations(nameOfMap) {	
+		//const route1 = game.sound("sounds/route1.mp3")
+//		route1.shouldLoop(true)	//Suena la cancion con un loop	
+//		route1.play()	
 		game.boardGround(nameOfMap.image())
 		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
 		
-		route1.playSound()	//Agrega la musica inicial que se reprograma apenas termina		
 		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
 		nameOfMap.constructInvisibleNormalObjects()
 		nameOfMap.addVisualInBoard()
@@ -72,8 +74,11 @@ class BattleScreen inherits ConfigurationScreen{
 		//game.addVisual(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
 		//game.addVisual(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 
-		route1.stopSound()
-		soundBattle.playSound()
+//		route1.stopSound()
+//		
+//		//Si el sonido alguna vez fue inicializado que lo resuma, si no que lo inicialize
+//		(if (soundBattle.played()) soundBattle.resume() else soundBattle.playSound())
+
 	}
 }
 
@@ -83,11 +88,13 @@ class BattleObject{
 
 //----------------------------instances------------------------------//
 //Configuracion escenarios
-const initialMap = new MapScreen()
+const initialScreen = new MapScreen()
 const battleScreen = new BattleScreen()
+
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
-//const battle = new BattleMap (image = "maps/battle2.jpg")	//background batalla
+
+//Mapa batalla (no es background) es un objecto que tapa el background
 const battle = new BattleObject(image = "maps/prueba.png")
 
 //Carteles con la vida, experiencia, nivel y nombre

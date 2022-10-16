@@ -1,6 +1,6 @@
 import wollok.game.*
 import map.*
-import sound.*
+//import sound.*
 import screen.*
 
 //Personaje Principal
@@ -46,6 +46,7 @@ object red {
 	//Le sumo los pasos solo a setSteps para no repetir codigo
 	method setSteps() {
 		console.println(self.position().toString())
+
 		const step = game.sound("sounds/step" + countSteps + ".mp3")
 		countSteps += 1
 		step.volume(0.5)
@@ -90,7 +91,7 @@ object red {
 	}
 	//Rebota cuando colisiona con una subida
 	method rebound() {
-		position = position.down(2)
+		position = position.down(1)
 		//image = "assets/front1.jpg"
 	}
 	//coliciona contra un bloque y vuelve a la posicion anterior 
@@ -103,16 +104,18 @@ object red {
 	 * 
 	 */
 	method stepOnGrass(){
-		const steps = self.grassSteps() + 1
-		self.grassSteps(self.grassSteps() + 1)
-			
+		var steps = self.grassSteps() + 1
+		self.grassSteps(steps)
+		
+		console.println('grassSteps' + self.grassSteps().toString())
+		console.println('randomSteps' + self.randomSteps().toString())
+		
 		if(steps == self.randomSteps()){
-			self.grassSteps(0)
 			self.newRandom()
-			route1.stopSound()
 			game.clear()
 			//battleScreen.initialSettingsGame()
 			battleScreen.addConfigurations()
+			steps = 0
 		}
 		self.grassSteps(steps)
 	}
