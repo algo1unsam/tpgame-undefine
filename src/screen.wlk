@@ -3,7 +3,7 @@ import sound.*
 import map.*
 import red.*
 import pokemon.*
-import arrow.*
+import menu.*
 
 class ConfigurationScreen {
 	
@@ -38,7 +38,8 @@ object arrowScreen{
 		keyboard.right().onPressDo({ arrow.right() })
 		keyboard.left().onPressDo({ arrow.left() })
 		keyboard.up().onPressDo({ arrow.up() })
-		keyboard.down().onPressDo({ arrow.down() })		
+		keyboard.down().onPressDo({ arrow.down() })	
+		keyboard.enter().onPressDo({arrow.action()})	
 	}
 }
 class MapScreen inherits ConfigurationScreen{
@@ -63,13 +64,13 @@ class BattleScreen inherits ConfigurationScreen{
 		game.addVisualIn(bulbasaur, game.at(37,16))
 
 		arrowScreen.initializeArrow()
-
+		
 
 		//Objetos sueltos (por si no usamos el fondo con todo establecido)
-		//game.addVisualCharacterIn(sign1, game.at(35, 7))	//Nuestro cartel de vida posicion
-		//game.addVisualCharacterIn(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
-		//game.addVisualCharacterIn(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
-		//game.addVisualCharacterIn(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
+		//game.addVisual(sign1, game.at(35, 7))	//Nuestro cartel de vida posicion
+		//game.addVisual(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
+		//game.addVisual(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
+		//game.addVisual(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 
 		route1.stopSound()
 		soundBattle.playSound()
