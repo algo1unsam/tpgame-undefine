@@ -1,11 +1,11 @@
 import wollok.game.*
-//import sound.*
+import sound.*
 import map.*
 import red.*
 import pokemon.*
 import menu.*
 
-class ConfigurationScreen {
+class MapScreen {
 	
 	method initialSettingsGame() {
 		//Algunas configuraciones para iniciar
@@ -13,6 +13,18 @@ class ConfigurationScreen {
 		game.height(34)
 		game.width(60)
 		game.cellSize(20)
+	}
+	
+		method addConfigurations(nameOfMap) {	
+		//const route1 = game.sound("sounds/route1.mp3")
+//		route1.shouldLoop(true)	//Suena la cancion con un loop	
+//		route1.play()	
+
+		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
+		
+		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
+		nameOfMap.constructInvisibleNormalObjects()
+		nameOfMap.addVisualInBoard()
 	}
 }
 
@@ -42,24 +54,8 @@ object arrowScreen{
 		keyboard.enter().onPressDo({arrow.action()})	
 	}
 }
-class MapScreen inherits ConfigurationScreen{
-	
-	method addConfigurations(nameOfMap) {	
-		//const route1 = game.sound("sounds/route1.mp3")
-//		route1.shouldLoop(true)	//Suena la cancion con un loop	
-//		route1.play()	
-		game.boardGround(nameOfMap.image())
-		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
-		
-		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
-		nameOfMap.constructInvisibleNormalObjects()
-		nameOfMap.addVisualInBoard()
-	}
-}	
 
-
-
-class BattleScreen inherits ConfigurationScreen{
+class BattleScreen {
 	method addConfigurations(){
 		game.addVisualIn(battle, game.at(0, 0))
 		game.addVisualIn(charmander, game.at(8, 8))
@@ -74,10 +70,10 @@ class BattleScreen inherits ConfigurationScreen{
 		//game.addVisual(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
 		//game.addVisual(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 
-//		route1.stopSound()
-//		
+		route1.pauseSound()
+
 //		//Si el sonido alguna vez fue inicializado que lo resuma, si no que lo inicialize
-//		(if (soundBattle.played()) soundBattle.resume() else soundBattle.playSound())
+		(if (soundBattle.playedSound()) soundBattle.resumeSound() else soundBattle.playSound())
 
 	}
 }

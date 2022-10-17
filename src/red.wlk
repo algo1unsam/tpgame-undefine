@@ -1,6 +1,6 @@
 import wollok.game.*
 import map.*
-//import sound.*
+import sound.*
 import screen.*
 
 //Personaje Principal
@@ -104,21 +104,18 @@ object red {
 	 * 
 	 */
 	method stepOnGrass(){
-		var steps = self.grassSteps() + 1
-		self.grassSteps(steps)
+		grassSteps += 1
 		
-		console.println('grassSteps' + self.grassSteps().toString())
-		console.println('randomSteps' + self.randomSteps().toString())
+		console.println('steps' + self.grassSteps().toString())
 		
-		if(steps == self.randomSteps()){
+		if(grassSteps == self.randomSteps()){
 			self.newRandom()
 			game.clear()
-			//battleScreen.initialSettingsGame()
+			grassSteps = 0
 			battleScreen.addConfigurations()
-			steps = 0
 		}
-		self.grassSteps(steps)
 	}
+	
 	method setCount(){
 		if(countSteps == 4){
 			countSteps = 1			

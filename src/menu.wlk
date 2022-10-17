@@ -2,7 +2,7 @@ import wollok.game.*
 import pokemon.*
 import screen.*
 import red.*
-//import sound.*
+import sound.*
 
 //Flechita para el menu
 object arrow{
@@ -77,11 +77,12 @@ object pokemon{}
 object huida{
 	method runAway(){
 		game.clear()
-//		soundBattle.stopSound()
-		initialScreen.addConfigurations(map1)
-		
-//		route1.resume()
+		soundBattle.pauseSound()
+		characterScreen.initializeCharacter()
+		map1.addVisualInBoard()
+		route1.resumeSound()
 	}
 }
+//Estaria bueno mas adelante ver si podemos hacer que la musica de la batalla aranque de 0
 
 
