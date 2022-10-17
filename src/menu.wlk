@@ -1,4 +1,8 @@
 import wollok.game.*
+import pokemon.*
+import screen.*
+import red.*
+import sound.*
 
 //Flechita para el menu
 object arrow{
@@ -50,4 +54,35 @@ object arrow{
 	method soundChange(){
 		game.sound("sounds/changeOption.mp3").play()	
 	}
+	
+	method action(){
+		if(position.toString() == '38@6'){
+			console.println('LUCHA')			
+		}else if(position.toString() == '49@6'){
+			console.println('MOCHILA')
+		}else if(position.toString() == '38@2'){
+			console.println('POKEMON')
+		}else{
+			console.println('HUIDA')
+			huida.runAway()			
+		}
+	}
 }
+
+
+object lucha{}
+object mochila{}
+object pokemon{}
+
+object huida{
+	method runAway(){
+		game.clear()
+		soundBattle.pauseSound()
+		characterScreen.initializeCharacter()
+		map1.addVisualInBoard()
+		route1.resumeSound()
+	}
+}
+//Estaria bueno mas adelante ver si podemos hacer que la musica de la batalla aranque de 0
+
+

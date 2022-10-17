@@ -46,6 +46,7 @@ object red {
 	//Le sumo los pasos solo a setSteps para no repetir codigo
 	method setSteps() {
 		console.println(self.position().toString())
+
 		const step = game.sound("sounds/step" + countSteps + ".mp3")
 		countSteps += 1
 		step.volume(0.5)
@@ -79,7 +80,7 @@ object red {
 	//Configura el movimiento hacia abajo y la imagen 1, 2 o 3 con el contador de pasos 
 	method setDown() {
 		//seteamos ultima posicion antes del movimiento
-		self.lastPosition(position)
+		self.lastPosition(position)			
 		position = position.down(1)
 		image = "red/front" + countSteps + ".png"
 	}
@@ -90,7 +91,7 @@ object red {
 	}
 	//Rebota cuando colisiona con una subida
 	method rebound() {
-		position = position.down(2)
+		position = position.down(1)
 		//image = "assets/front1.jpg"
 	}
 	//coliciona contra un bloque y vuelve a la posicion anterior 
@@ -103,19 +104,18 @@ object red {
 	 * 
 	 */
 	method stepOnGrass(){
-		const steps = self.grassSteps() + 1
-		self.grassSteps(self.grassSteps() + 1)
-			
-		if(steps == self.randomSteps()){
-			self.grassSteps(0)
+		grassSteps += 1
+		
+		console.println('steps' + self.grassSteps().toString())
+		
+		if(grassSteps == self.randomSteps()){
 			self.newRandom()
-			route1.stopSound()
 			game.clear()
-			//battleScreen.initialSettingsGame()
+			grassSteps = 0
 			battleScreen.addConfigurations()
 		}
-		self.grassSteps(steps)
 	}
+	
 	method setCount(){
 		if(countSteps == 4){
 			countSteps = 1			

@@ -3,9 +3,9 @@ import sound.*
 import map.*
 import red.*
 import pokemon.*
-import arrow.*
+import menu.*
 
-class ConfigurationScreen {
+class MapScreen {
 	
 	method initialSettingsGame() {
 		//Algunas configuraciones para iniciar
@@ -13,6 +13,18 @@ class ConfigurationScreen {
 		game.height(34)
 		game.width(60)
 		game.cellSize(20)
+	}
+	
+		method addConfigurations(nameOfMap) {	
+		//const route1 = game.sound("sounds/route1.mp3")
+//		route1.shouldLoop(true)	//Suena la cancion con un loop	
+//		route1.play()	
+
+		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
+		
+		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
+		nameOfMap.constructInvisibleNormalObjects()
+		nameOfMap.addVisualInBoard()
 	}
 }
 
@@ -38,41 +50,31 @@ object arrowScreen{
 		keyboard.right().onPressDo({ arrow.right() })
 		keyboard.left().onPressDo({ arrow.left() })
 		keyboard.up().onPressDo({ arrow.up() })
-		keyboard.down().onPressDo({ arrow.down() })		
+		keyboard.down().onPressDo({ arrow.down() })	
+		keyboard.enter().onPressDo({arrow.action()})	
 	}
 }
-class MapScreen inherits ConfigurationScreen{
-	
-	method addConfigurations(nameOfMap) {	
-		game.boardGround(nameOfMap.image())
-		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
-		
-		route1.playSound()	//Agrega la musica inicial que se reprograma apenas termina		
-		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
-		nameOfMap.constructInvisibleNormalObjects()
-		nameOfMap.addVisualInBoard()
-	}
-}	
 
-
-
-class BattleScreen inherits ConfigurationScreen{
+class BattleScreen {
 	method addConfigurations(){
 		game.addVisualIn(battle, game.at(0, 0))
 		game.addVisualIn(charmander, game.at(8, 8))
 		game.addVisualIn(bulbasaur, game.at(37,16))
 
 		arrowScreen.initializeArrow()
-
+		
 
 		//Objetos sueltos (por si no usamos el fondo con todo establecido)
-		//game.addVisualCharacterIn(sign1, game.at(35, 7))	//Nuestro cartel de vida posicion
-		//game.addVisualCharacterIn(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
-		//game.addVisualCharacterIn(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
-		//game.addVisualCharacterIn(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
+		//game.addVisual(sign1, game.at(35, 7))	//Nuestro cartel de vida posicion
+		//game.addVisual(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
+		//game.addVisual(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
+		//game.addVisual(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 
-		route1.stopSound()
-		soundBattle.playSound()
+		route1.pauseSound()
+
+//		//Si el sonido alguna vez fue inicializado que lo resuma, si no que lo inicialize
+		(if (soundBattle.playedSound()) soundBattle.resumeSound() else soundBattle.playSound())
+
 	}
 }
 
@@ -82,11 +84,13 @@ class BattleObject{
 
 //----------------------------instances------------------------------//
 //Configuracion escenarios
-const initialMap = new MapScreen()
+const initialScreen = new MapScreen()
 const battleScreen = new BattleScreen()
+
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
-//const battle = new BattleMap (image = "maps/battle2.jpg")	//background batalla
+
+//Mapa batalla (no es background) es un objecto que tapa el background
 const battle = new BattleObject(image = "maps/prueba.png")
 
 //Carteles con la vida, experiencia, nivel y nombre

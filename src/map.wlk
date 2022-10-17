@@ -11,6 +11,7 @@ import screen.*
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
+	
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
 	 ej: metohd createLineOfCollidersInX(initX=1,endx=10,initY=2,endY=0)
@@ -113,8 +114,4 @@ class HitBoxHill inherits HitBox{
 		jump.play()			
 	}
 }
-//Mapa de presentacion
-const map1 = new InitialMap (image = "maps/map1.jpg")
-
-
 

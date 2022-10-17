@@ -9,10 +9,24 @@ class SongsPokemon {
 		game.schedule(100, { song.play()}) //Toca la cancion y al finalizar la reprograma en 100 ms
 	}
 	
+	method pauseSound(){
+		song.pause()
+	}
+	
+	method resumeSound(){
+		song.resume()
+	}
+	
 	method stopSound(){
 		song.stop()
+	}
+	
+	method playedSound(){
+		return song.played()
 	}
 }
 
 const route1 = new SongsPokemon(song = game.sound("sounds/route1.mp3"))
 const soundBattle = new SongsPokemon(song = game.sound("sounds/battle.mp3"))
+
+
