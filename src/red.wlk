@@ -2,6 +2,7 @@ import wollok.game.*
 import map.*
 import sound.*
 import screen.*
+import pokemon.*
 
 //Personaje Principal
 object red {
@@ -12,6 +13,7 @@ object red {
 	var countSteps = 1	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)	
 	var property grassSteps = 0 //Contador para cada paso en el cesped
 	var property randomSteps = 10.randomUpTo(40).truncate(0) //Valor random del 10 al 40 para matchear con grassSteps
+	var property myPokemons = [charmander]
 
 	/*
 	 * Para que Red se mueva con las arrows (params => 0, se mueve menos que en 1, el movimiento es mas suave)
@@ -113,6 +115,7 @@ object red {
 			game.clear()
 			grassSteps = 0
 			battleScreen.addConfigurations()
+			self.fight().pickImage()
 		}
 	}
 	
@@ -123,5 +126,9 @@ object red {
 	}
 	method newRandom(){
 		self.randomSteps(10.randomUpTo(40).truncate(0))
+	}
+	
+	method fight(){
+		return self.myPokemons().get(0)
 	}
 }

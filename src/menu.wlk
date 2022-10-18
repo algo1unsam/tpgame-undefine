@@ -69,12 +69,7 @@ object arrow{
 	}
 }
 
-
-object lucha{}
-object mochila{}
-object pokemon{}
-
-object huida{
+class Menu{
 	method runAway(){
 		game.clear()
 		soundBattle.pauseSound()
@@ -83,6 +78,10 @@ object huida{
 		route1.resumeSound()
 	}
 }
+object lucha inherits Menu{}
+object mochila inherits Menu{}
+object pokemon inherits Menu{}
+object huida inherits Menu{}
 //Estaria bueno mas adelante ver si podemos hacer que la musica de la batalla aranque de 0
 
 

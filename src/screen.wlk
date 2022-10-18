@@ -57,9 +57,10 @@ object arrowScreen{
 
 class BattleScreen {
 	method addConfigurations(){
+		const random = 0.randomUpTo(map1.mapPokemons().size()).truncate(0)
 		game.addVisualIn(battle, game.at(0, 0))
-		game.addVisualIn(charmander, game.at(8, 8))
-		game.addVisualIn(bulbasaur, game.at(37,16))
+		game.addVisualIn(red.fight(), game.at(8, 8))
+		game.addVisualIn(map1.mapPokemons().get(random), game.at(37,18))
 
 		arrowScreen.initializeArrow()
 		

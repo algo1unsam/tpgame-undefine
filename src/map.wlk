@@ -1,6 +1,7 @@
 import wollok.game.*
 import red.*
 import screen.*
+import pokemon.*
 
 
 //Map tiene mucha relación con screen, pueda que cualquier cambio haya que reflejarlo en screen
@@ -11,6 +12,7 @@ import screen.*
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
+	const property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras]
 	
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
