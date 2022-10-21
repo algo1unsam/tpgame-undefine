@@ -93,11 +93,11 @@ const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
 //Mapa batalla (no es background) es un objecto que tapa el background
 const battle = new BattleObject(image = "maps/prueba.png")
+const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
 
 //Carteles con la vida, experiencia, nivel y nombre
 //const sign1 = new BattleObject(image = "maps/statusSign.png")
 //const sign2 = new BattleObject(image = "maps/statusSign.png")
 //const sign3 = new BattleObject(image = "maps/buttomSign.png")
-//const sign4 = new BattleObject(image = "maps/menuSign.png")
 
 

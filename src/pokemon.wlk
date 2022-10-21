@@ -14,17 +14,17 @@ class Pokemon {
 	}
 	
 	method changeName(newName){
-		name=newName
+		name = newName
 	}
 	
 	method takeDamage(damage){
-		life=(life-damage).max(0)
+		life = (life - damage).max(0)
 	}
 	method heal(healingValue){
-		life=(life+healingValue).min(1000)
+		life = (life + healingValue).min(1000)
 	}
 	method levelUp(){
-		level+=1
+		level += 1
 	}
 	method tackleAttack(){
 		return 100
@@ -53,7 +53,7 @@ class Pokemon {
  	method waterGunAttack(){
  		return 150+(self.level()*10)
  	}
- 	method burbleAttack(){
+ 	method bubleAttack(){
  		return 100+(self.level()*10)
  	}
  	
@@ -78,4 +78,4 @@ const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="
 const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur")
 const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish")
 const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle")
-const lapras= new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")
+const lapras = new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")

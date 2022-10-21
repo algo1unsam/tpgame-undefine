@@ -57,14 +57,13 @@ object arrow{
 	
 	method action(){
 		if(position.toString() == '38@6'){
-			console.println('LUCHA')			
+			fight.fightMenu()		
 		}else if(position.toString() == '49@6'){
 			console.println('MOCHILA')
 		}else if(position.toString() == '38@2'){
 			console.println('POKEMON')
 		}else{
-			console.println('HUIDA')
-			huida.runAway()			
+			flight.runAway()			
 		}
 	}
 }
@@ -78,10 +77,17 @@ class Menu{
 		route1.resumeSound()
 	}
 }
-object lucha inherits Menu{}
-object mochila inherits Menu{}
+object fight inherits Menu{
+	method fightMenu(){
+		game.addVisualIn(fightFireSign, game.at(37, 0))
+		game.removeVisual(arrow)
+		game.addVisual(arrow)
+		
+	}
+}
+object backpack inherits Menu{}
 object pokemon inherits Menu{}
-object huida inherits Menu{}
-//Estaria bueno mas adelante ver si podemos hacer que la musica de la batalla aranque de 0
+object flight inherits Menu{}
+
 
 
