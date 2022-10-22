@@ -52,6 +52,7 @@ object arrowScreen{
 		keyboard.up().onPressDo({ arrow.up() })
 		keyboard.down().onPressDo({ arrow.down() })	
 		keyboard.enter().onPressDo({arrow.action()})	
+		keyboard.backspace().onPressDo({arrow.goBack()})
 	}
 }
 
