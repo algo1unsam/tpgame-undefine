@@ -66,12 +66,10 @@ object arrow{
 			block = 2
 			self.isInMenu()
 			option.itIsInside()
-			console.println('MOCHILA')
 		}else if(position.toString() == '38@2'){
 			block = 3
 			self.isInMenu()
 			option.itIsInside()			
-			console.println('POKEMON')
 		}else{
 			block = 4
 			self.isInMenu()
@@ -114,6 +112,7 @@ class Menu{
 	method back(){
 		arrow.option(null)
 	}
+	
 	method itIsInside(){}
 	method configMenu(){}
 	
@@ -155,10 +154,50 @@ object fight inherits Menu{
 		}
 	}
 }
-object backpack inherits Menu{}
-object pokemon inherits Menu{
+object backpack inherits Menu{
+	override method itIsInside(){	
+		if(game.hasVisual(menuFalso)){
+			console.println('ESTAS ADENTRO DE MOCHILA')
+		}else{
+			self.configMenu()
+		}
+	}
+	
+	override method configMenu(){
+		game.addVisualIn(menuFalso, game.at(37, 0))
+		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
+		game.removeVisual(arrow)
+		game.addVisual(arrow)
+	}
+	
 	override method back(){
-		arrow.option(null)
+		if(game.hasVisual(menuFalso)){
+			game.removeVisual(menuFalso)
+			arrow.option(null)
+		}
+	}
+}
+object pokemon inherits Menu{
+	override method itIsInside(){	
+		if(game.hasVisual(menuFalso)){
+			console.println('ESTAS ADENTRO DE POKEMON')
+		}else{
+			self.configMenu()
+		}
+	}
+	
+	override method configMenu(){
+		game.addVisualIn(menuFalso, game.at(37, 0))
+		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
+		game.removeVisual(arrow)
+		game.addVisual(arrow)
+	}
+	
+	override method back(){
+		if(game.hasVisual(menuFalso)){
+			game.removeVisual(menuFalso)
+			arrow.option(null)
+		}
 	}
 }
 

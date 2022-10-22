@@ -93,6 +93,7 @@ const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
 //Mapa batalla (no es background) es un objecto que tapa el background
 const battle = new BattleObject(image = "maps/prueba.png")
+const menuFalso = new BattleObject(image = "maps/menuFalso.png")
 const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
 const atackFire1 = new BattleObject(image = "maps/atackFire1.png")
 const atackFire2 = new BattleObject(image = "maps/atackFire2.png")
