@@ -116,19 +116,24 @@ class Menu{
 	}
 	method itIsInside(){}
 	method configMenu(){}
+	
+	method atackSign(atack){
+		game.schedule(500, { game.addVisualIn(atack, game.at(5, 1)) })
+		game.schedule(4000, { game.removeVisual(atack) })
+	}
 }
 object fight inherits Menu{
 	
 	override method itIsInside(){	
 		if(game.hasVisual(fightFireSign)){
 			if(arrow.block() == 1){
-				console.println('ATAQUE 1')
+				self.atackSign(atackFire1)
 			}else if(arrow.block() == 2){
-				console.println('ATAQUE 2')
+				self.atackSign(atackFire2)
 			}else if(arrow.block() == 3){
-				console.println('ATAQUE 3')
+				self.atackSign(atackFire3)
 			}else{
-				console.println('ATAQUE 4')
+				self.atackSign(atackFire4)
 			}
 		}else{
 			self.configMenu()
