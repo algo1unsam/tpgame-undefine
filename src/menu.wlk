@@ -9,6 +9,7 @@ object arrow{
 	const property image = "maps/arrow.png"
 	var property position = game.at(38, 6)
 	var property option = null
+	var property block = null
 	
 	//Restricciones de movimientos para la flecha del menu
 	var restrictionRight = false
@@ -58,22 +59,45 @@ object arrow{
 	
 	method action(){
 		if(position.toString() == '38@6'){
-			option = fight
-			fight.itIsInsideFight()		
+			block = 1
+			self.isInMenu()
+			option.itIsInside()
 		}else if(position.toString() == '49@6'){
-			option = backpack
+			block = 2
+			self.isInMenu()
+			option.itIsInside()
 			console.println('MOCHILA')
 		}else if(position.toString() == '38@2'){
-			option = pokemon
+			block = 3
+			self.isInMenu()
+			option.itIsInside()			
 			console.println('POKEMON')
 		}else{
-			option = flight
-			flight.runAway()			
+			block = 4
+			self.isInMenu()
+			option.itIsInside()						
+		}
+	}
+	
+	method isInMenu(){
+		if(option == null){
+			if(block == 1){
+				option = fight
+			}else if(block == 2){
+				option = backpack
+			}else if(block == 3){
+				option = pokemon
+			}else{
+				option = flight
+			}
 		}
 	}
 	
 	method goBack(){
-		option.back()
+		if(option != null){
+			option.back()
+			option = null
+		}
 	}
 }
 
@@ -84,29 +108,41 @@ class Menu{
 		characterScreen.initializeCharacter()
 		map1.addVisualInBoard()
 		route1.resumeSound()
+		arrow.option(null)
 	}
 	
-	method back(){}
-	method itIsInsideFight(){}
+	method back(){
+		arrow.option(null)
+	}
+	method itIsInside(){}
+	method configMenu(){}
 }
 object fight inherits Menu{
 	
-	override method itIsInsideFight(){
+	override method itIsInside(){	
 		if(game.hasVisual(fightFireSign)){
-			console.println('estoy atroden')
+			if(arrow.block() == 1){
+				console.println('ATAQUE 1')
+			}else if(arrow.block() == 2){
+				console.println('ATAQUE 2')
+			}else if(arrow.block() == 3){
+				console.println('ATAQUE 3')
+			}else{
+				console.println('ATAQUE 4')
+			}
 		}else{
-			self.fightMenu()
+			self.configMenu()
 		}
 	}
 	
-	method fightMenu(){
+	override method configMenu(){
 		game.addVisualIn(fightFireSign, game.at(37, 0))
 		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
 		game.removeVisual(arrow)
 		game.addVisual(arrow)
 	}
 	
-	
+	//Si tiene la imagen del menu correspondiente la remueve y vuelve al menu anterior
 	override method back(){
 		if(game.hasVisual(fightFireSign)){
 			game.removeVisual(fightFireSign)
@@ -115,12 +151,21 @@ object fight inherits Menu{
 	}
 }
 object backpack inherits Menu{}
-object pokemon inherits Menu{}
-
-object flight inherits Menu{
+object pokemon inherits Menu{
 	override method back(){
 		arrow.option(null)
 	}
+}
+
+object flight inherits Menu{	
+	override method itIsInside(){
+		self.runAway()
+	}
+	
+	override method back(){
+		arrow.option(null)
+	}
+	
 }
 
 
