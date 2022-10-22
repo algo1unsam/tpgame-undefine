@@ -33,7 +33,7 @@ object characterScreen{
 	method initializeCharacter(){
 		//inicializamos visual del pj
 		game.addVisual(red)
-		red.instanceColliders() //instancaimos las coliciones contra los objetos
+		red.instanceColliders() //instancaimos las coliciones de red contra los objetos
 		//El juego queda en espera de los movimientos configurados
 		keyboard.right().onPressDo({red.right()})
 		keyboard.left().onPressDo({red.left()})
@@ -57,10 +57,9 @@ object arrowScreen{
 
 class BattleScreen {
 	method addConfigurations(){
-		const random = 0.randomUpTo(map1.mapPokemons().size()).truncate(0)
 		game.addVisualIn(battle, game.at(0, 0))
 		game.addVisualIn(red.fight(), game.at(8, 8))
-		game.addVisualIn(map1.mapPokemons().get(random), game.at(37,18))
+		game.addVisualIn(map1.mapPokemons().anyOne(), game.at(37,18))
 
 		arrowScreen.initializeArrow()
 		
