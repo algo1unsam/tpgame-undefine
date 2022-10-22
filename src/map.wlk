@@ -12,7 +12,7 @@ import pokemon.*
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
-	const property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras]
+	const property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras,buterfree,gyarados,magmar,ponyta,psyduck,scyther]
 	
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
