@@ -75,7 +75,13 @@ class Pokemon {
 
 const charmander = new PokemonFireType(ownPokemon = true, front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",name="Charmander")
 const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",name="Growlithe")
+const magmar= new PokemonFireType(front="pokemons/magmarFront.png",back=)
+const ponyta= new PokemonFireType()
 const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur")
 const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish")
+const buterfree= new PokemonGrassType()
+const scyther= new PokemonGrassType(front="") 
 const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle")
 const lapras = new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras")
+const gyarados= new PokemonWaterType(front="")
+const psyduck= new PokemonWaterType(front="")
