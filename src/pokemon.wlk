@@ -3,8 +3,9 @@ class Pokemon {
 	const front
 	const back
 	var property name
-	var property life = 1000
-	var property level = 0
+	var property topLife = 1000
+	var property life = topLife
+	var property level = 1
 	var property image = front
 	const ownPokemon = false
 	
@@ -20,54 +21,69 @@ class Pokemon {
 	method takeDamage(damage){
 		life = (life - damage).max(0)
 	}
+	
 	method heal(healingValue){
-		life = (life + healingValue).min(1000)
+		life = (life + healingValue).min(topLife)
 	}
+	
 	method levelUp(){
 		level += 1
+		topLife *= 1.1
 	}
-	method tackleAttack(){
+	
+	//tackleAttack
+	method attack1(){
 		return 100
 	}
+	
 	method isWeak(){
 		return self.life() < 150
 	}
+	
 	method beCaptured(){}
 		
 }
  class PokemonFireType inherits Pokemon{
- 	method flamethrowerAttack(){
- 		return 200+(self.level()*10)
+ 	//flamethrowerAttack
+ 	method attack2(){
+ 		return 200 + (self.level() * 10)
  	}
- 	method emberAttack(){
- 		return 150+(self.level()*10)
+ 	//emberAttack
+ 	method attack3(){
+ 		return 150 + (self.level() * 10)
  	}
- 	method firePunchAttack(){
- 		return 100+(self.level()*10) 	
+ 	//firePunchAttack
+ 	method attack4(){
+ 		return 100 + (self.level() * 10) 	
  		}
  }
+ 
  class PokemonWaterType inherits Pokemon{
  	method hidroBombAttack(){
- 		return 200+(self.level()*10)
+ 		return 200 + (self.level() * 10)
  	}
+ 	
  	method waterGunAttack(){
- 		return 150+(self.level()*10)
+ 		return 150 + (self.level() * 10)
  	}
+ 	
  	method bubleAttack(){
- 		return 100+(self.level()*10)
+ 		return 100 + (self.level() * 10)
  	}
  	
  }
  class PokemonGrassType inherits Pokemon{
  	method razorLeafAttack(){
- 		return 200+(self.level()*10)
+ 		return 200 + (self.level() * 10)
  	}
+ 	
  	method vineWhipAttack(){
- 		return 150+(self.level()*10)
+ 		return 150 + (self.level() * 10)
  		
  	}
+ 	
  	method sharpenAttack(){
- 		return 100+(self.level()*10)
+ 		return 100 + (self.level() * 10)
  	}
  }
  

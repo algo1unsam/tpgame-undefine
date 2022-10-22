@@ -57,10 +57,13 @@ object arrowScreen{
 }
 
 class BattleScreen {
+	var property chosenPokemon = null
+	
 	method addConfigurations(){
 		game.addVisualIn(battle, game.at(0, 0))
 		game.addVisualIn(red.fight(), game.at(8, 8))
-		game.addVisualIn(map1.mapPokemons().anyOne(), game.at(37,18))
+		chosenPokemon = map1.mapPokemons().anyOne()
+		game.addVisualIn(chosenPokemon, game.at(37,18))
 
 		arrowScreen.initializeArrow()
 		
