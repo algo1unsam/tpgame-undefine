@@ -24,12 +24,13 @@ object backPack{
 	
 	method useItem(flag){
 		soundBattle.pauseSound()
-		game.sound("sounds/useItem.mp3").play()
 		battle.redWait(4000)
 		game.schedule(3000, {soundBattle.resumeSound()})
 		if(flag){
+			game.sound("sounds/useItem.mp3").play()
 			self.itemSign(signs.get(arrow.block() - 1))						
 		}else{
+			game.sound("sounds/notItem.mp3").play()
 			self.itemSign(notItem)	
 		}
 
