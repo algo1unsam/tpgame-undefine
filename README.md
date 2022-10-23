@@ -9,7 +9,7 @@
 ## Capturas
 <details>
  	<summary>Mapa</summary>
-	<img src="https://github.com//algo1unsam/tpgame-undefine/master/Imagen_pokemon1.png" />
+	<img src="https://github.com/algo1unsam/tpgame-undefine/blob/master/Imagen_pokemon1.png" />
 </details>
 
 
