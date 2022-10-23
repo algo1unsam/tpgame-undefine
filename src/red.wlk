@@ -129,6 +129,6 @@ object red {
 	}
 	
 	method fight(){
-		return self.myPokemons().get(0)
+		return self.myPokemons().anyOne()
 	}
 }

@@ -120,8 +120,12 @@ const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
 //Mapa batalla (no es background) es un objecto que tapa el background
 const battleGround = new BattleObject(image = "maps/prueba.png")
-const menuFalso = new BattleObject(image = "maps/menuFalso.png")
+const backPackSign = new BattleObject(image = "maps/backpack.png")
 const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
+const candySign = new BattleObject(image = "maps/candy.png")
+const potionSign = new BattleObject(image = "maps/potion.png")
+const appleSign = new BattleObject(image = "maps/apple.png")
+const damangeXSign = new BattleObject(image = "maps/damangeX.png")
 const crossDead = new BattleObject(image = "maps/crosss.png")//cruz cuando muere un pokemon (provizional)
 const namePokemonRed = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
