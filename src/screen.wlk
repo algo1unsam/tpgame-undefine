@@ -4,6 +4,7 @@ import map.*
 import red.*
 import pokemon.*
 import menu.*
+import fight.*
 
 class MapScreen {
 	
@@ -57,13 +58,11 @@ object arrowScreen{
 }
 
 class BattleScreen {
-	var property chosenPokemon = null
 	
 	method addConfigurations(){
-		game.addVisualIn(battle, game.at(0, 0))
-		game.addVisualIn(red.fight(), game.at(8, 8))
-		chosenPokemon = map1.mapPokemons().anyOne()
-		game.addVisualIn(chosenPokemon, game.at(37,18))
+		game.addVisualIn(battleEscene, game.at(0, 0))
+		game.addVisualIn(battle.redPokemon(), game.at(8, 8))
+		game.addVisualIn(botFighter.name(), game.at(37,18))
 
 		arrowScreen.initializeArrow()
 		
@@ -83,7 +82,7 @@ class BattleScreen {
 }
 
 class BattleObject{
-	const property image
+	var property image
 }
 
 //----------------------------instances------------------------------//
@@ -95,13 +94,10 @@ const battleScreen = new BattleScreen()
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
 //Mapa batalla (no es background) es un objecto que tapa el background
-const battle = new BattleObject(image = "maps/prueba.png")
+const battleEscene = new BattleObject(image = "maps/prueba.png")
 const menuFalso = new BattleObject(image = "maps/menuFalso.png")
 const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
-const atackFire1 = new BattleObject(image = "maps/atackFire1.png")
-const atackFire2 = new BattleObject(image = "maps/atackFire2.png")
-const atackFire3 = new BattleObject(image = "maps/atackFire3.png")
-const atackFire4 = new BattleObject(image = "maps/atackFire4.png")
+const attackPoster = new BattleObject(image = "maps/attack+tipoDePokemon+NumeroDeAtaque+.png") //la imagen va a ser cambiada dependiendo del tipo de pokemon(primera letra mayusucula) y el ataque que use
 
 //Carteles con la vida, experiencia, nivel y nombre
 //const sign1 = new BattleObject(image = "maps/statusSign.png")
