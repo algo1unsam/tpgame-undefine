@@ -98,3 +98,6 @@ const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="p
 const lapras = new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",type="Water")
 const gyarados= new PokemonWaterType(front="pokemons/gyaradosFront.png",back="pokemons/gyaradosBack.png",type="Water")
 const psyduck= new PokemonWaterType(front="pokemons/psyduckFront.png",back="pokemons/psyduckBack.png",type="Water")
+
+
+

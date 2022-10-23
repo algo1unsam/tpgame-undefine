@@ -1,5 +1,4 @@
 import pokemon.*
-import element.*
 
 describe "Test de Pokemon"{
 	
