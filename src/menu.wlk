@@ -3,6 +3,7 @@ import pokemon.*
 import screen.*
 import red.*
 import sound.*
+import fight.*
 
 //Flechita para el menu
 object arrow{
@@ -115,23 +116,7 @@ class Menu{
 	
 	method itIsInside(){}
 	method configMenu(){}
-	
-	method atackSign(atack){
-		if(!game.hasVisual(atack)){
-			game.schedule(500, { game.addVisualIn(atack, game.at(5, 1)) })
-			game.schedule(4000, { game.removeVisual(atack) })			
-		}
-	}
-	
-	method twinkle(pokemon, x, y){
-		game.schedule(100, { game.removeVisual(pokemon) })
-		game.schedule(150, { game.addVisualIn(pokemon, game.at(x,y)) })
-		game.schedule(200, { game.removeVisual(pokemon) })
-		game.schedule(250, { game.addVisualIn(pokemon, game.at(x,y)) })
-		game.schedule(300, { game.removeVisual(pokemon) })
-		game.schedule(350, { game.addVisualIn(pokemon, game.at(x,y)) })
-	}
-	
+		
 	method returnArrow(){
 		arrow.restrictionRight(false)
 		arrow.restrictionLeft(true)
@@ -145,38 +130,7 @@ object fight inherits Menu{
 	
 	override method itIsInside(){	
 		if(game.hasVisual(fightFireSign)){
-				const opponent = battleScreen.chosenPokemon() //Pokemon rival por ej bulbasaur
-				const me = red.fight()//Charmander			
-
-			if(arrow.block() == 1){//Si es bloque 1 HACER 1 FUNCION
-				self.atackSign(atackFire1)//Cartel de ataque
-				self.twinkle(opponent, 37, 18)//Titila el oponente cuando le doy 1 golpe
-				self.back()//Se retira el cartel de ataque
-				opponent.takeDamage(me.attack1())//El oponente recibe daño
-				console.println(opponent.life())
-				me.takeDamage(opponent.attack1())
-				game.schedule(4000, { self.twinkle(me, 8, 8) })//Titila nuestro pokemon
-				game.schedule(4000, {self.atackSign(atackFire2)})//Cartel de ataque			
-				console.println(me.life())
-			}else if(arrow.block() == 2){
-				self.atackSign(atackFire2)
-				self.twinkle(opponent, 37, 18)
-				self.back()
-				opponent.takeDamage(me.attack2())
-				console.println(opponent.life())
-			}else if(arrow.block() == 3){
-				self.atackSign(atackFire3)
-				self.twinkle(opponent, 37, 18)
-				self.back()	
-				opponent.takeDamage(me.attack3())
-				console.println(opponent.life())								
-			}else{
-				self.atackSign(atackFire4)
-				self.twinkle(opponent, 37, 18)
-				self.back()		
-				opponent.takeDamage(me.attack4())
-				console.println(opponent.life())					
-			}
+			battle.attackScene(arrow.block()) //llamamos a la escena de batalla donde va a ocurrir los eventos que generen los primeros ataques
 		}else{
 			self.configMenu()
 		}
