@@ -23,7 +23,6 @@ class Pokemon {
 	}
 	method levelUp(){
 		level += 1
-		topLife *= 1.1
 	}	
 	//tackleAttack
 	method attack1(){

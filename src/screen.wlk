@@ -71,6 +71,7 @@ class BattleScreen {
 		fighterRed.initialiteSigns()
 		//instanciamos nombres, niveles y vida
 		self.instanceImages()
+		game.addVisualIn(prueba,game.at(18, 10))
 		//agrego los nombres de los pokemons a el board
 		game.addVisualIn(namePokemonRed,game.at(8, 15)) //TODO: ubicar bien
 		game.addVisualIn(nameSavagePokemon,game.at(37,14)) //TODO: ubicar bien
@@ -128,7 +129,7 @@ const namePokemonRed = new BattleObject(image = "maps/nombres/+pokemon.nombre().
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
 const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
-
+const prueba = new BattleObject(image = "maps/life1.png")
 //TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(nombreTipo)(n° ataque).png
 //TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(N° de nivel).png
 //TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(Nombre del pokemon igual que los instanciados).pmg

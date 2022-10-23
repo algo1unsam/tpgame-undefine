@@ -12,22 +12,24 @@
  	//IMPORTANTE: lista de ataque una vez inicializada quedan como valores constantes si el pokemon sube de nivel en batalla hay que volver a inicializar la lista
  	var property attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
  	const signs = [] //listade carteles de ataques
+	const lifeImage = []
 	const property position
-
-	//iniscializa la lista de carteles 	
- 	method initialiteSigns(){
- 		(4.times{i => self.addSing(i)})
+	const pathSing = "maps/attack"+name.type()
+	const pathLife = "life/"
+	
+	//iniscializa la lista de battleObjects de imagenes con numeros identificatorios,
+	//pasando como parametro la cantidad de instancias, la ruta incial de imagen y el nombre de la lista
+ 	method initialiteBattleObjects(iterations,path,nameList){
+ 		(iterations.times{i => self.addBattleObjectList(i,path,nameList)})
  	}
- 	//instancia el cartel
- 	method instanceSign(i){
- 		//la ruta esta conformada por el tipo de pokemon (con la primera letra en mayuscula) y el numero de ataque
- 		//ej : "maps/attackFire1.png"
- 		const pathSign = "maps/attack"+name.type()+i.toString()+".png" 
- 		return new BattleObject(image = pathSign)
+ 	//instancia el battleObject con la imagen 
+ 	method instanceBattleObjectWhitPath(i,path){
+ 		const completePath = path+i.toString()+".png" 
+ 		return new BattleObject(image = completePath)
  	} 
  	//agrega la instancia del cartel a la lista de carteles
- 	method addSing(i){
- 		signs.add(self.instanceSign(i))
+ 	method addBattleObjectList(i,path,nameList){
+ 		nameList.add(self.instanceBattleObjectWhitPath(i,path))
  	}
  	
  	//funcion que muestra el cartel	
