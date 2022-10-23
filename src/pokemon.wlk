@@ -26,7 +26,6 @@ class Pokemon {
 	method heal(healingValue){
 		life = (life + healingValue).min(topLife)
 	}
-	
 	method levelUp(){
 		level += 1
 		topLife *= 1.1
@@ -35,7 +34,9 @@ class Pokemon {
 	method attack1(){
 		return 100
 	}
-	
+	method isDead(){
+		return self.life() == 0
+	}
 	method isWeak(){
 		return self.life() < 150
 	}

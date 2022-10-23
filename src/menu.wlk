@@ -103,7 +103,14 @@ object arrow{
 			option = null
 		}
 	}
-}
+	//toma como parametros valores booleanos para colocar las restricciones y la posicion donde va a colocarrse el arrow
+	method relesRestriction(rR,rL,rU,rD,pos){
+		self.position(pos)
+		self.restrictionRight(rR)
+		self.restrictionLeft(rL)
+		self.restrictionUp(rU)
+		self.restrictionDown(rD)
+	}
 	//TODO: fijares si se puede validar de esta forma sin imprimir ningun mensaje en pantalla
 	//validations
 //	method generalLocketActivated(){
@@ -111,6 +118,8 @@ object arrow{
 //		 	throw new DomainException()
 //		}
 //	}
+}
+
 
 
 class Menu{
@@ -131,12 +140,10 @@ class Menu{
 	method configMenu(){}
 		
 	method returnArrow(){
-		arrow.restrictionRight(false)
-		arrow.restrictionLeft(true)
-		arrow.restrictionUp(true)
-		arrow.restrictionDown(false)
+		arrow.relesRestriction(false, true, true, false, game.at(38, 6))
+		arrow.position(game.at(38, 6))
 		game.removeVisual(arrow)
-		game.addVisualIn(arrow, game.at(38, 6))
+		game.addVisual(arrow)
 	}
 }
 object fight inherits Menu{
@@ -223,8 +230,7 @@ object flight inherits Menu{
 	
 }
 
-//TODO:RETURNARROW PARA QUE VUELVA LA FLECHA Y SE PUEDA MOVER CON LAS PRIMERAS RESTRICCIONES
-//TODO: AL ESPERAR EL ATAQUE RIVAL NO PODER MOVER NADA
+
 //TODO: COLLIDER ENTRADA Y SALIDA Y COLINITAS Q FALTAN
 //TODO: MOCHILA Y POKEMONS
 //TODO: TERMINAR EL JUEGO
