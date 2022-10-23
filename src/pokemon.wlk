@@ -1,4 +1,3 @@
-import screen.*
 class Pokemon {
 	
 	const front

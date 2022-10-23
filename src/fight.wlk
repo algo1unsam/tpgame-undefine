@@ -5,6 +5,8 @@
  import map.*
  import wollok.game.*
  
+ 
+ //clase pelador contiene el nombre del pokemon salvaje que pela y una lista de ataques y de carteles 
  class Fighter{
  	var property name //inicializamos oponente aleatorio o pokemon de red
  	const attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
@@ -24,6 +26,7 @@
  		signs.add(self.instanceSign(i))
  	
  	}
+ 	
  	//funcion que muestra el cartel	
 	method atackSign(atack){
 		if(!game.hasVisual(atack)){
@@ -41,6 +44,7 @@
  }
  
  class FighterRed inherits Fighter{
+ 	
  	//realiza el ataque segun la opcion elegida la cual esta dada por el arrow.bloq le quitamos 1 ya que block va del 1 al 4
  	method attackFromOption(option){
  		
@@ -58,14 +62,24 @@
 		game.schedule(250, { game.removeVisual(pokemon) })
 		game.schedule(300, { game.addVisualIn(pokemon, game.at(x,y)) })
 	}
-
+	//metodo para que red espere su turno
+	method redWait(){
+		const waitTime = 8500
+		
+		arrow.superRestriction(true)
+		game.removeVisual(arrow)
+		arrow.position(game.at(38, 6)) 
+		game.schedule(waitTime, {arrow.superRestriction(false)})
+		game.schedule(waitTime, {game.addVisual(arrow)})
+	}
 	
 	method attackScene(optionRed){
 		botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
+		self.redWait()
 		self.twinkle(botFighter.name(), 37, 18)//Titila el oponente cuando le doy 1 golpe
-		fight.back()//Se retira el cartel de ataque
+		fight.back()//vuelve al menu de seleccion de modo
 		fighterRed.name().takeDamage(botFighter.randomAttack())
-		game.schedule(4000, { self.twinkle(fighterRed.name(), 8, 8) })//Titila nuestro pokemon
+		game.schedule(4000, { self.twinkle(fighterRed.name(), 8, 8) })//Titila nuestro pokemon luego de 4 segundos ya que 
 	}
  }
  const botFighter = new Fighter(name = map1.mapPokemons().anyOne())

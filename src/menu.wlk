@@ -5,6 +5,8 @@ import red.*
 import sound.*
 import fight.*
 
+class UserException inherits Exception { }
+
 //Flechita para el menu
 object arrow{
 	const property image = "maps/arrow.png"
@@ -13,13 +15,14 @@ object arrow{
 	var property block = null
 	
 	//Restricciones de movimientos para la flecha del menu
+	var property superRestriction = false //restriccion maxima bloquea toda las funciones de la flecha-
 	var property restrictionRight = false
 	var property restrictionLeft = true
 	var property restrictionUp = true
 	var property restrictionDown = false
 	
 	method right() {
-		if(!restrictionRight){
+		if(!restrictionRight and !superRestriction){
 			self.soundChange()			
 			position = position.right(11)
 			restrictionRight = !restrictionRight
@@ -28,7 +31,7 @@ object arrow{
 	}
 	
 	method left() {
-		if(!restrictionLeft){
+		if(!restrictionLeft and !superRestriction){
 			self.soundChange()			
 			position = position.left(11)
 			restrictionRight = !restrictionRight
@@ -37,7 +40,7 @@ object arrow{
 	}
 	
 	method up() {
-		if(!restrictionUp){
+		if(!restrictionUp and !superRestriction){
 			self.soundChange()			
 			position = position.up(4)
 			restrictionUp = !restrictionUp
@@ -46,7 +49,7 @@ object arrow{
 	}
 	
 	method down() {
-		if(!restrictionDown){
+		if(!restrictionDown and !superRestriction){
 			self.soundChange()			
 			position = position.down(4)
 			restrictionUp = !restrictionUp
@@ -59,23 +62,25 @@ object arrow{
 	}
 	
 	method action(){
-		if(position.toString() == '38@6'){
-			block = 1
-			self.isInMenu()
-			option.itIsInside()
-		}else if(position.toString() == '49@6'){
-			block = 2
-			self.isInMenu()
-			option.itIsInside()
-		}else if(position.toString() == '38@2'){
-			block = 3
-			self.isInMenu()
-			option.itIsInside()			
-		}else{
-			block = 4
-			self.isInMenu()
-			option.itIsInside()						
-		}
+		if (!superRestriction){
+			if(position.toString() == '38@6'){
+				block = 1
+				self.isInMenu()
+				option.itIsInside()
+			}else if(position.toString() == '49@6'){
+				block = 2
+				self.isInMenu()
+				option.itIsInside()
+			}else if(position.toString() == '38@2'){
+				block = 3
+				self.isInMenu()
+				option.itIsInside()			
+			}else{
+				block = 4
+				self.isInMenu()
+				option.itIsInside()						
+			}
+		}	
 	}
 	
 	method isInMenu(){
@@ -99,6 +104,14 @@ object arrow{
 		}
 	}
 }
+	//TODO: fijares si se puede validar de esta forma sin imprimir ningun mensaje en pantalla
+	//validations
+//	method generalLocketActivated(){
+//		if (superRestriction){
+//		 	throw new DomainException()
+//		}
+//	}
+
 
 class Menu{
 	method runAway(){
