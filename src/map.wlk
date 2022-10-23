@@ -3,17 +3,11 @@ import red.*
 import screen.*
 import pokemon.*
 
-
-//Map tiene mucha relación con screen, pueda que cualquier cambio haya que reflejarlo en screen
-
-
 //mapa inicial 
-//TODO: hacer refactor a las funciones para no repetir tanto codigo
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
-	const property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras,buterfree,gyarados,magmar,ponyta,psyduck,scyther]
-	
+	const property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck,scyther]
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
 	 ej: metohd createLineOfCollidersInX(initX=1,endx=10,initY=2,endY=0)
@@ -97,13 +91,7 @@ class HitBox{
 }
 
 class HitBoxGrass inherits HitBox{
-	/*
-	 * Suma 1 paso (en el pasto a red) cuando matchea con la variable randomSteps (variable random que puede
-	 * tener valores de 10 a 40), realiza un cambio de escena.
-	 * 
-	 */
-	//TODO: ver si podemos hacer que red se enecarge de saber si esta colicionando contra este objeto (posible solucion a la falla de rendimeinto)
-	override method collidWithCharacter(){
+override method collidWithCharacter(){
 		red.stepOnGrass()
 	}
 
