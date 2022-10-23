@@ -2,7 +2,6 @@ class Pokemon {
 	
 	const front
 	const back
-	var property name
 	var property topLife = 1000
 	var property life = topLife
 	var property level = 1
@@ -13,10 +12,6 @@ class Pokemon {
 	//Si es nuestro pokemon, se va a ver de espaldas y si es oponente de frente
 	method pickImage(){
 		if(ownPokemon) image = back else image = front
-	}
-	
-	method changeName(newName){
-		name = newName
 	}
 	
 	method takeDamage(damage){
@@ -92,15 +87,15 @@ class Pokemon {
  
 
 
-const charmander = new PokemonFireType(ownPokemon = true, front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",name="Charmander",type="Fire")
-const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",name="Growlithe",type="Fire")
-const magmar= new PokemonFireType(front="pokemons/magmarFront.png",back="pokemons/magmarBack.png",name="Magmar",type="Fire")
-const ponyta= new PokemonFireType(front="pokemons/ponytaFront.png",back="pokemons/ponytaBack.png",name="Ponyta",type="Fire")
-const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",name="Bulbasaur",type="Grass")
-const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",name="Oddish",type="Grass")
-const butterfree= new PokemonGrassType(front="pokemons/butterfreeFront.png",back="pokemons/butterfreeBack.png",name="Buterfree",type="Grass")
-const scyther= new PokemonGrassType(front="pokemons/Scytherfront.png",back="pokemons/Scytherback.png",name="Scyther",type="Grass") 
-const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",name="Squirtle",type="Water")
-const lapras = new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",name="Lapras",type="Water")
-const gyarados= new PokemonWaterType(front="pokemons/gyaradosFront.png",back="pokemons/gyaradosBack.png",name="Gyarados",type="Water")
-const psyduck= new PokemonWaterType(front="pokemons/psyduckFront.png",back="pokemons/psyduckBack.png",name="Psyduck",type="Water")
+const charmander = new PokemonFireType(ownPokemon = true, front = "pokemons/charmanderFront.png",back="pokemons/charmanderBack.png",type="Fire")
+const growlithe = new PokemonFireType(front="pokemons/growlitheFront.png",back="pokemons/growlitheBack.png",type="Fire")
+const magmar= new PokemonFireType(front="pokemons/magmarFront.png",back="pokemons/magmarBack.png",type="Fire")
+const ponyta= new PokemonFireType(front="pokemons/ponytaFront.png",back="pokemons/ponytaBack.png",type="Fire")
+const bulbasaur = new PokemonGrassType(front ="pokemons/bulbasaurFront.png",back="pokemons/bulbasaurBack.png",type="Grass")
+const oddish = new PokemonGrassType(front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",type="Grass")
+const butterfree= new PokemonGrassType(front="pokemons/butterfreeFront.png",back="pokemons/butterfreeBack.png",type="Grass")
+const scyther= new PokemonGrassType(front="pokemons/Scytherfront.png",back="pokemons/Scytherback.png",type="Grass") 
+const squirtle = new PokemonWaterType(front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",type="Water")
+const lapras = new PokemonWaterType(front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",type="Water")
+const gyarados= new PokemonWaterType(front="pokemons/gyaradosFront.png",back="pokemons/gyaradosBack.png",type="Water")
+const psyduck= new PokemonWaterType(front="pokemons/psyduckFront.png",back="pokemons/psyduckBack.png",type="Water")
