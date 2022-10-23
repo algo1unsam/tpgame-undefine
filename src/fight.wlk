@@ -9,7 +9,8 @@
  //clase pelador contiene el nombre del pokemon salvaje que pela y una lista de ataques y de carteles 
  class Fighter{
  	var property name //inicializamos oponente aleatorio o pokemon de red
- 	const attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
+ 	//IMPORTANTE: lista de ataque una vez inicializada quedan como valores constantes si el pokemon sube de nivel en batalla hay que volver a inicializar la lista
+ 	var attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
  	const signs = [] //listade carteles de ataques
 	const property position
 
@@ -54,6 +55,7 @@ class FighterBot inherits Fighter{
  		super()
  		map1.mapPokemons().remove(name)	
  	}
+ 	
  }
  
  class FighterRed inherits Fighter{
@@ -63,6 +65,18 @@ class FighterBot inherits Fighter{
  		self.atackSign(signs.get(option-1)) //imprime el cartel del ataque a ejecutar
  		return attacks.get(option-1)
  	}
+ 	//la variable de ataques necestia ser refrezcada cuando el nivel sube ya que si no no se efectua el cambio
+ 	method refreshAttacks(){
+		attacks.clear()
+		attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()]
+ 	}
+ 	//metodo para refrezcar el nivel si en batalla le dan al pokemon un caramelo raro de la mochi
+	method refreshLV(){
+		self.refreshAttacks()
+		game.removeVisual(lvPokemonRed)
+		lvPokemonRed.image("maps/lv/"+self.name().level().toString()+".png")
+		game.addVisualIn(lvPokemonRed,game.at(20,20))//TODO:agregar ubicacion real
+	}
  }
  
  object battle{
@@ -80,6 +94,7 @@ class FighterBot inherits Fighter{
 			fighter.figtherDead()
 		}
 	}
+
 	//metodo para que red espere su turno
 	method redWait(waitTime){
 		arrow.superRestriction(true) //blqueamos el uso de la flecha
@@ -100,6 +115,7 @@ class FighterBot inherits Fighter{
 		fighterRed.name().takeDamage(botFighter.randomAttack())
 		game.schedule(4000, {self.pokemonDead(fighterRed)})
 		game.schedule(4000, { self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
+		
 	}
  }
  const botFighter = new FighterBot(name = map1.mapPokemons().anyOne(),position = game.at(37,18))
