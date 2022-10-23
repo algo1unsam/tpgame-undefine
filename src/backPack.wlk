@@ -26,7 +26,7 @@ object backPack{
 		self.itemSign(signs.get(arrow.block() - 1))
 		console.println('vida propia ' + red.fight().life())
 		console.println('level ' + red.fight().level())
-		console.println('vida rival ' + botFighter.name().name().life())
+		console.println('vida rival ' + botFighter.name().life())
 	}
 	
 	method itemSign(item){
@@ -66,6 +66,6 @@ object apple inherits Item{
 object damangeX inherits Item{
 	//Le resta 150 al oponente
 	override method useInPokemon(pokemon){
-		botFighter.name().name().takeDamage(150)
+		botFighter.name().takeDamage(150)
 	}
 }
