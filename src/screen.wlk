@@ -58,6 +58,8 @@ object arrowScreen{
 }
 
 class BattleScreen {
+	const property lvlPathRed = "maps/lv/"+fighterRed.name().level().toString()+".png"
+	const property lvlPathBot = "maps/lv/"+fighterRed.name().level().toString()+".png"
 	
 	method addConfigurations(){
 		game.addVisualIn(battleGround, game.at(0, 0))
@@ -66,9 +68,19 @@ class BattleScreen {
 		//instanciamos los carteles para cada pokemon
 		botFighter.initialiteSigns()
 		fighterRed.initialiteSigns()
+		//instanciamos nombres, niveles y vida
+		self.instanceImages()
+		//agrego los nombres de los pokemons a el board
+		game.addVisualIn(namePokemonRed,game.at(8, 15)) //TODO: ubicar bien
+		game.addVisualIn(nameSavagePokemon,game.at(37,14)) //TODO: ubicar bien
+		 //agrego los lvs al board
+		game.addVisualIn(lvPokemonRed,game.at(13, 15)) //TODO: ubicar bien
+		game.addVisualIn(lvSavagePokemon,game.at(40,14)) //TODO: ubicar bien
+		//agrego pokemons al board
 		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))
-
+		
+		
 		arrowScreen.initializeArrow()
 		
 
@@ -83,6 +95,14 @@ class BattleScreen {
 //		//Si el sonido alguna vez fue inicializado que lo resuma, si no que lo inicialize
 		(if (soundBattle.playedSound()) soundBattle.resumeSound() else soundBattle.playSound())
 
+	}
+	method instanceImages(){
+		//inicializo los nombres de los pokemons
+		namePokemonRed.image("maps/nombre"+fighterRed.name().toString()+".png")
+		nameSavagePokemon.image("maps/nombre"+botFighter.name().toString()+".png")
+		//inicializo el lvl de los pokemon
+		lvPokemonRed.image(lvlPathRed)
+		lvSavagePokemon.image(lvlPathBot)
 	}
 }
 
@@ -102,11 +122,13 @@ const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 const battleGround = new BattleObject(image = "maps/prueba.png")
 const menuFalso = new BattleObject(image = "maps/menuFalso.png")
 const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
-const crossDead = new BattleObject(image = "maps/crosss.png")
+const crossDead = new BattleObject(image = "maps/crosss.png")//cruz cuando muere un pokemon (provizional)
+const namePokemonRed = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
+const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
+const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
+const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 
-//Carteles con la vida, experiencia, nivel y nombre
-//const sign1 = new BattleObject(image = "maps/statusSign.png")
-//const sign2 = new BattleObject(image = "maps/statusSign.png")
-//const sign3 = new BattleObject(image = "maps/buttomSign.png")
-
+//TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(lo demas se agrega de forma automatica)  	
+//TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(lo demas automatico)
+//TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(lo demas automatico)
 
