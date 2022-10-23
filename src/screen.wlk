@@ -65,6 +65,7 @@ class BattleScreen {
 		game.addVisualIn(battleGround, game.at(0, 0))
 		//damos el nombre del pokemon contra el que vaa luchar red
 		botFighter.name(map1.mapPokemons().anyOne()) //lo re instanciamos para que cuando termine una batalla o se huya de la actual aprezca un pokemon nuevo		
+		botFighter.randomLevel(6)
 		//instanciamos los carteles para cada pokemon
 		botFighter.initialiteSigns()
 		fighterRed.initialiteSigns()
@@ -128,7 +129,7 @@ const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre
 const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 
-//TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(lo demas se agrega de forma automatica)  	
-//TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(lo demas automatico)
-//TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(lo demas automatico)
+//TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(nombreTipo)(n° ataque).png
+//TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(N° de nivel).png
+//TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(Nombre del pokemon igual que los instanciados).pmg
 

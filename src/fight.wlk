@@ -10,7 +10,7 @@
  class Fighter{
  	var property name //inicializamos oponente aleatorio o pokemon de red
  	//IMPORTANTE: lista de ataque una vez inicializada quedan como valores constantes si el pokemon sube de nivel en batalla hay que volver a inicializar la lista
- 	var attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
+ 	var property attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
  	const signs = [] //listade carteles de ataques
 	const property position
 
@@ -51,6 +51,11 @@ class FighterBot inherits Fighter{
  		game.schedule(4000, {self.atackSign(signs.get(random))})//Cartel de ataque 		
  		return attacks.get(random) //ejecuta el ataque
  	}
+ 	//asigna un nivel random al pokemon salvaje desde 0 hasta lvlMax
+ 	method randomLevel(lvlMax){
+ 		const random = 0.randomUpTo(lvlMax).truncate(0)
+ 		name.level(random)
+ 	}
 	override method figtherDead(){
  		super()
  		map1.mapPokemons().remove(name)	
@@ -67,8 +72,9 @@ class FighterBot inherits Fighter{
  	}
  	//la variable de ataques necestia ser refrezcada cuando el nivel sube ya que si no no se efectua el cambio
  	method refreshAttacks(){
+ 		//const namePokemon = [name,name,name,name] quizas necesite algo por el estilo y realizar un map que devuelva los valores deataque actualizados con el lvl
 		attacks.clear()
-		attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()]
+		attacks.addAll([name.attack1(),name.attack2(),name.attack3(),name.attack4()])
  	}
  	//metodo para refrezcar el nivel si en batalla le dan al pokemon un caramelo raro de la mochi
 	method refreshLV(){
