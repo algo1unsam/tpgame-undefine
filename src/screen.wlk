@@ -60,8 +60,13 @@ object arrowScreen{
 class BattleScreen {
 	
 	method addConfigurations(){
-		game.addVisualIn(battleEscene, game.at(0, 0))
-		game.addVisualIn(battle.redPokemon(), game.at(8, 8))
+		game.addVisualIn(battleGround, game.at(0, 0))
+		//damos el nombre del pokemon contra el que vaa luchar red
+		botFighter.name(map1.mapPokemons().anyOne()) //lo re instanciamos para que cuando termine una batalla o se huya de la actual aprezca un pokemon nuevo		
+		//instanciamos los carteles para cada pokemon
+		botFighter.initialiteSigns()
+		fighterRed.initialiteSigns()
+		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))
 
 		arrowScreen.initializeArrow()
@@ -94,7 +99,7 @@ const battleScreen = new BattleScreen()
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
 //Mapa batalla (no es background) es un objecto que tapa el background
-const battleEscene = new BattleObject(image = "maps/prueba.png")
+const battleGround = new BattleObject(image = "maps/prueba.png")
 const menuFalso = new BattleObject(image = "maps/menuFalso.png")
 const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
 const attackPoster = new BattleObject(image = "maps/attack+tipoDePokemon+NumeroDeAtaque+.png") //la imagen va a ser cambiada dependiendo del tipo de pokemon(primera letra mayusucula) y el ataque que use
