@@ -4,6 +4,7 @@ import screen.*
 import red.*
 import sound.*
 import fight.*
+import backPack.*
 
 class UserException inherits Exception { }
 
@@ -168,36 +169,35 @@ object fight inherits Menu{
 		if(game.hasVisual(fightFireSign)){
 			game.removeVisual(fightFireSign)
 			arrow.option(null)
-			//self.returnArrow() //ESTE ES EL QUE HACE VOLVER LA FLECHA
 		}
 	}
 }
 object backpack inherits Menu{
 	override method itIsInside(){	
-		if(game.hasVisual(menuFalso)){
-			console.println('ESTAS ADENTRO DE MOCHILA')
+		if(game.hasVisual(backPackSign)){
+			backPack.actionBackPack(arrow.block())
 		}else{
 			self.configMenu()
 		}
 	}
 	
 	override method configMenu(){
-		game.addVisualIn(menuFalso, game.at(37, 0))
+		game.addVisualIn(backPackSign, game.at(37, 0))
 		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
 		game.removeVisual(arrow)
 		game.addVisual(arrow)
 	}
 	
 	override method back(){
-		if(game.hasVisual(menuFalso)){
-			game.removeVisual(menuFalso)
+		if(game.hasVisual(backPackSign)){
+			game.removeVisual(backPackSign)
 			arrow.option(null)
 		}
 	}
 }
 object pokemon inherits Menu{
 	override method itIsInside(){	
-		if(game.hasVisual(menuFalso)){
+		if(game.hasVisual(backPackSign)){
 			console.println('ESTAS ADENTRO DE POKEMON')
 		}else{
 			self.configMenu()
@@ -205,15 +205,15 @@ object pokemon inherits Menu{
 	}
 	
 	override method configMenu(){
-		game.addVisualIn(menuFalso, game.at(37, 0))
+		game.addVisualIn(backPackSign, game.at(37, 0))
 		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
 		game.removeVisual(arrow)
 		game.addVisual(arrow)
 	}
 	
 	override method back(){
-		if(game.hasVisual(menuFalso)){
-			game.removeVisual(menuFalso)
+		if(game.hasVisual(backPackSign)){
+			game.removeVisual(backPackSign)
 			arrow.option(null)
 		}
 	}
