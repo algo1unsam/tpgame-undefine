@@ -2,7 +2,7 @@ class Pokemon {
 	
 	const front
 	const back
-	var property topLife = 1000
+	var property topLife = 100
 	var property life = topLife
 	var property level = 1
 	var property image = front
@@ -26,61 +26,55 @@ class Pokemon {
 	}	
 	//tackleAttack
 	method attack1(){
-		return 100
+		return 20
 	}
 	method isDead(){
 		return self.life() == 0
-	}
-	method isWeak(){
-		return self.life() < 150
-	}
-	
-	method beCaptured(){}
-		
+	}		
 }
  class PokemonFireType inherits Pokemon{
  	//flamethrowerAttack
  	method attack2(){
- 		return 200 + (self.level() * 10)
+ 		return 8.randomUpTo(14).truncate(0) + self.level() * 2
  	}
  	//emberAttack
  	method attack3(){
- 		return 150 + (self.level() * 10)
+ 		return 3.randomUpTo(24).truncate(0) + self.level() * 2
  	}
  	//firePunchAttack
  	method attack4(){
- 		return 100 + (self.level() * 10) 	
+ 		return 12 + self.level() * 2 	
  	}
  }
  
  class PokemonWaterType inherits Pokemon{
  	//hidroBombAttack
  	method attack2(){
- 		return 200 + (self.level() * 10)
+ 		return 20
  	}
  	//waterGunAttack
  	method attack3(){
- 		return 150 + (self.level() * 10)
+ 		 return 20.randomUpTo(24).truncate(0) + self.level() * 2
  	}
  	//bubleAttack
  	method attack4(){
- 		return 100 + (self.level() * 10)
+ 		return 1.randomUpTo(50).truncate(0)
  	}
  	
  }
  class PokemonGrassType inherits Pokemon{
  	//razorLeafAttack
  	method attack2(){
- 		return 200 + (self.level() * 10)
+ 		return 3 + (self.level() * 2)
  	}
  	//vineWhipAttack
  	method attack3(){
- 		return 150 + (self.level() * 10)
+ 		return 3.randomUpTo(10).truncate(0) + self.level() * 2
  		
  	}
  	//sharpenAttack
  	method attack4(){
- 		return 100 + (self.level() * 10)
+ 		return 0.randomUpTo(20).truncate(0)
  	}
  }
  
