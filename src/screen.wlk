@@ -66,6 +66,8 @@ object arrowScreen{
 class BattleScreen {
 	const property lvlPathRed = "maps/lv/"+fighterRed.name().level().toString()+".png"
 	const property lvlPathBot = "maps/lv/"+fighterRed.name().level().toString()+".png"
+	const property posLifeBot=game.at(6, 26)
+	const property posLifeRed=game.at(36, 13)
 	
 	method addConfigurations(){
 		game.addVisualIn(battleGround, game.at(0, 0))
@@ -83,8 +85,8 @@ class BattleScreen {
 		//agrego los carteles de vida inciales de los pokemons
 		//obtengo el indice correspondiente del cartel d ela vida
 		fighterRed.getBettwenNumers()
-		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),game.at(36, 13))
-		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),game.at(6, 26))
+		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),posLifeRed)
+		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),posLifeBot)
 		//agrego pokemons al board
 		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))

@@ -15,8 +15,6 @@
 	const property lifeImage = []
 	//devuelve el indice donde se encuentra la imagen de la vida 
 	var property indexImageLife = null
-	//flag para saber si encontro o no el indice (INTENTAR REFACTORIZAR PORQ UE ES ME SALIO MUY MALAPRACITICOSO)
-	var indexFind = false
 	const property position
 	//rutas incialez de los paths
 	const property pathSing = "maps/attack"+name.type()
@@ -51,7 +49,7 @@
  	//retorna una lista de 0 hasta la vida del pokemon con un salteado dado por la sigiente formula
  	//vida/cantidadImagenesDeVida
  	method listRangeLife(){
- 		const step = (self.name().topLife()/lifeImage.size()).roundUp()
+ 		const step = self.name().topLife()/lifeImage.size()
  		const start = 0
  		const end = self.name().topLife()
  		
@@ -60,31 +58,22 @@
  	//devuelve los numeros los cuales se vana  cmoparar con la vida del pokemon
  	method getBettwenNumers(){
  		const listRange = self.listRangeLife()
- 		const iterates = lifeImage.size()-1
+ 		const iterates = lifeImage.size()
  		
- 			console.println(self.name().life())//DEBUG
- 			console.println(listRange)//DEBUG
  		iterates.times{i => self.isBetween(listRange.get(i-1),listRange.get(i),i-1)}
  	}
  	//verifica si la vida del pokemon esta entre los valores dados
  	method isBetween(start,end,index){
- 		if (self.name().life().between(start,end)){
- 			indexFind= true
+ 		//le sumo 2 a end por el margen de error que genera la creacion de la llista con rango
+ 		if (self.name().life().between(start,end+2)){
  			indexImageLife = index
- 		}
- 		//me aseguro de que si no machea con niguno es por que el numero era impar y hubo un margen de error que no permitio match
- 		if (lifeImage.size()-1 == index+1 and !indexFind){
- 			indexImageLife = index+1
  		}
  	}
  	//actauliza el cartel de la vida en la posicion correspondiente
  	method refreshLifeSign(pos){
  		self.getBettwenNumers()
- 		console.println(indexImageLife)//DEBUG
- 		//eliminio el que ya se encuentra en el board
  		game.removeVisual(lifeImage.find{battleObject => game.hasVisual(battleObject)})
  		game.addVisualIn(lifeImage.get(indexImageLife),pos)
- 		indexFind = false
  	}
 }
 //luhcador robot tiene los metodos para generar pelea 
@@ -159,14 +148,14 @@ class FighterBot inherits Fighter{
 		const waitTimeTurn = 8000 //tiempo de espera para el turno
 		
 		botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
-		botFighter.refreshLifeSign(game.at(10, 24))
+		botFighter.refreshLifeSign(battleScreen.posLifeBot())
 		game.sound("sounds/hit.mp3").play()
 		self.pokemonDead(botFighter)
 		self.redWait(waitTimeTurn)
 		self.twinkle(botFighter.name(), botFighter.position())//Titila el oponente cuando le doy 1 golpe
 		fight.back()//vuelve al menu de seleccion de modo
 		fighterRed.name().takeDamage(botFighter.randomAttack())
-		game.schedule(4000, {fighterRed.refreshLifeSign(game.at(35, 7))})
+		game.schedule(4000, {fighterRed.refreshLifeSign(battleScreen.posLifeRed())})
 		game.schedule(4000, {game.sound("sounds/hit.mp3").play()})
 		game.schedule(4000, {self.pokemonDead(fighterRed)})
 		game.schedule(4000, {self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
