@@ -7,7 +7,7 @@ import pokemon.*
 //Personaje Principal
 object red {
 
-	var property position = game.at(32, 0) // Posiciono el pj en el centro
+	var property position = game.at(32, 1) // Posiciono el pj en el centro
 	var property lastPosition //ultima posicion de red
 	var property image = "red/back2.png" // Establezco una imagen para el personaje
 	var countSteps = 1	// Contadores para cada movimiento (derecha, izquierda, arriba y abajo)	

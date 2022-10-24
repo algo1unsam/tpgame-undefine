@@ -10,4 +10,4 @@ program main {
 	initialScreen.addConfigurations(map1)
 	route1.playSound()
 	game.start()
-} 
+}

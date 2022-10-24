@@ -11,14 +11,12 @@
  	var property name //inicializamos oponente aleatorio o pokemon de red
  	//IMPORTANTE: lista de ataque una vez inicializada quedan como valores constantes si el pokemon sube de nivel en batalla hay que volver a inicializar la lista
  	var property attacks = [name.attack1(),name.attack2(),name.attack3(),name.attack4()] //lista de ataques del pokemon
- 	const property signs = [] //listade carteles de ataques
+ 	var property signs = [] //listade carteles de ataques
 	const property lifeImage = []
 	//devuelve el indice donde se encuentra la imagen de la vida 
 	var property indexImageLife = null
 	const property position
 	//rutas incialez de los paths
-	const property pathSing = "maps/attack"+name.type()
-	const property pathLife = "healthbars/healthbar"
 	
 	//iniscializa la lista de battleObjects de imagenes con numeros identificatorios,
 	//pasando como parametro la cantidad de instancias, la ruta incial de imagen y el nombre de la lista
@@ -36,10 +34,10 @@
  	}
  	
  	//funcion que muestra el cartel	
-	method atackSign(atack){
-		if(!game.hasVisual(atack)){
-			game.addVisualIn(atack, game.at(5, 1))
-			game.schedule(3000, { game.removeVisual(atack) })			
+	method sign(sign){
+		if(!game.hasVisual(sign)){
+			game.addVisualIn(sign, game.at(5, 1))
+			game.schedule(3000, { game.removeVisual(sign) })			
 		}
 	}
 	method figtherDead(){
@@ -82,7 +80,7 @@ class FighterBot inherits Fighter{
  	method randomAttack(){
  		const random = 0.randomUpTo(3).truncate(0) //random del 0 al 3
  		
- 		game.schedule(4000, {self.atackSign(signs.get(random))})//Cartel de ataque 		
+ 		game.schedule(4000, {self.sign(signs.get(random))})//Cartel de ataque 		
  		return attacks.get(random) //ejecuta el ataque
  	}
  	//asigna un nivel random al pokemon salvaje realizando una dif contra el lvl de pokemon de red
@@ -102,7 +100,9 @@ class FighterBot inherits Fighter{
  	
  	//realiza el ataque segun la opcion elegida la cual esta dada por el arrow.bloq le quitamos 1 ya que block va del 1 al 4
  	method attackFromOption(option){	
- 		self.atackSign(signs.get(option-1)) //imprime el cartel del ataque a ejecutar
+ 		console.println(self.signs().map{i => i.image()})
+ 		console.println(option-1)
+ 		self.sign(signs.get(option-1)) //imprime el cartel del ataque a ejecutar
  		return attacks.get(option-1)
  	}
  	//la variable de ataques necestia ser refrezcada cuando el nivel sube ya que si no no se efectua el cambio
@@ -117,6 +117,13 @@ class FighterBot inherits Fighter{
 		game.removeVisual(lvPokemonRed)
 		lvPokemonRed.image("maps/lv/"+self.name().level().toString()+".png")
 		game.addVisualIn(lvPokemonRed,battleScreen.redPos().get(2))//TODO:agregar ubicacion real
+	}
+	//validaciones
+	method pokemonNeedLife(){
+		if (self.name().isDead()){
+			game.sound("sounds/notItem.mp3").play()
+			self.error("el pokemon necesita vida")
+		}
 	}
  }
  
@@ -148,6 +155,7 @@ class FighterBot inherits Fighter{
 	method attackScene(optionRed){
 		const waitTimeTurn = 8000 //tiempo de espera para el turno
 		
+		fighterRed.pokemonNeedLife()
 		botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
 		botFighter.refreshLifeSign(battleScreen.botPos().get(0))
 		game.sound("sounds/hit.mp3").play()

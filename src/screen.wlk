@@ -66,11 +66,15 @@ object arrowScreen{
 class BattleScreen {
 	const property lvlPathRed = "maps/lv/"+fighterRed.name().level().toString()+".png"
 	const property lvlPathBot = "maps/lv/"+fighterRed.name().level().toString()+".png"
+	const property pathSing = "maps/attack"
+	const property pathLife = "healthbars/healthbar"
+	
 	//..................... 0 == cartelvida; 1 == nombre;   2 == nivel
 	const property botPos = [game.at(8, 26),game.at(8, 15),game.at(13, 15)]
 	const property redPos = [game.at(39, 13),game.at(37,14),game.at(40,14)]
 	
 	method addConfigurations(){
+		console.println("entro cada vez que se pelea")
 		game.addVisualIn(battleGround, game.at(0, 0))
 		//damos el nombre del pokemon contra el que vaa luchar red
 		botFighter.name(map1.mapPokemons().anyOne()) //lo re instanciamos para que cuando termine una batalla o se huya de la actual aprezca un pokemon nuevo		
@@ -102,6 +106,9 @@ class BattleScreen {
 
 	}
 	method instanceImages(){
+		const botP = pathSing+botFighter.name().type()
+		const redP = pathSing+fighterRed.name().type()
+		
 		//inicializo los nombres de los pokemons
 		namePokemonRed.image("maps/nombre"+fighterRed.name().toString()+".png")
 		nameSavagePokemon.image("maps/nombre"+botFighter.name().toString()+".png")
@@ -109,11 +116,15 @@ class BattleScreen {
 		lvPokemonRed.image(lvlPathRed)
 		lvSavagePokemon.image(lvlPathBot)
 		//instanciamos los carteles para cada luchador
-		botFighter.initialiteBattleObjects(4, botFighter.pathSing(),botFighter.signs())
-		botFighter.initialiteBattleObjects(4, fighterRed.pathSing(),fighterRed.signs())
+		botFighter.signs().clear()
+		fighterRed.signs().clear()
+		botFighter.initialiteBattleObjects(4, botP,botFighter.signs())
+		fighterRed.initialiteBattleObjects(4,redP ,fighterRed.signs())
+		
+		console.println(fighterRed.name().type())
 		//instanciamos los carteles de vida para cada luchador
-		botFighter.initialiteBattleObjects(9, botFighter.pathLife(),botFighter.lifeImage())
-		botFighter.initialiteBattleObjects(9, fighterRed.pathLife(),fighterRed.lifeImage())
+		botFighter.initialiteBattleObjects(9, pathLife,botFighter.lifeImage())
+		fighterRed.initialiteBattleObjects(9, pathLife,fighterRed.lifeImage())
 	}
 }
 
@@ -144,7 +155,7 @@ const namePokemonRed = new BattleObject(image = "maps/nombres/+pokemon.nombre().
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
 const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
-//TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(nombreTipo)(n° ataque).png
+//TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/(nombreTipo)(n° ataque).png
 //TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(N° de nivel).png
 //TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(Nombre del pokemon igual que los instanciados).pmg
 //TODO: Cuando haces 1 batalla a la vuelta no anda la flecha
