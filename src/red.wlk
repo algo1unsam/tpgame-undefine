@@ -91,6 +91,7 @@ object red {
 	method instanceColliders(){
 		game.onCollideDo(self,{hitBox => hitBox.collidWithCharacter()})
 	}
+	
 	//Rebota cuando colisiona con una subida
 	method rebound() {
 		position = position.down(1)
@@ -117,6 +118,15 @@ object red {
 			battleScreen.addConfigurations()
 			self.fight().pickImage()
 		}
+	}
+	method collidWithHitBoxLeader(){
+		const alert = game.sound("sounds/alert.mp3")
+		alert.volume(0.5)
+		alert.play()
+		game.say(self, '!')
+		game.clear() //TODO:game.schedule(800, {game.clear()})
+		game.schedule(2000, {battleScreen.addConfigurations()})
+		game.schedule(2000, {self.fight().pickImage()})
 	}
 	
 	method setCount(){

@@ -93,13 +93,6 @@ class BattleScreen {
 		
 		
 		arrowScreen.initializeArrow()
-		
-
-		//Objetos sueltos (por si no usamos el fondo con todo establecido)
-		//game.addVisual(sign1, game.at(35, 7))	//Nuestro cartel de vida posicion
-		//game.addVisual(sign2, game.at(10, 24))	//Cartel oponente de vida posicion
-		//game.addVisual(sign3, game.at(0, 0))		//Cuadro de dialogos posicion
-		//game.addVisual(sign4, game.at(39, 0))	//Cartel con los menus (lucha, correr, etc)
 
 		route1.pauseSound()
 

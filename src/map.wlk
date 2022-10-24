@@ -36,7 +36,7 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(20, 24, 29, 23,instanceHitbox)
 		self.createBloqueInvisibleObjects(4, 24, 32,31,instanceHitbox)
 		self.createBloqueInvisibleObjects(35, 56, 32, 31,instanceHitbox)
-		//instanicaindo GrassObjects
+		//instanciando GrassObjects
 		self.createBloqueInvisibleObjects(30,44,12,8,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(10,22,5,3,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(43,50,5,3,instanceHitboxGrass)
@@ -50,6 +50,11 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(12,22,16,15,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(9,24,20,19,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(4,19,24,22,instanceHitboxHill)
+		//instanciando hitbox lideres
+		self.createBloqueInvisibleObjects(33,34,31,28,instanceHitBoxLeader)		
+		self.createBloqueInvisibleObjects(40,41,19,16,instanceHitBoxLeader)		
+		self.createBloqueInvisibleObjects(26,27,16,12,instanceHitBoxLeader)		
+		//TODO: Faltan algunos mas, la onda es que si o si tenga q pasar por ahi y no se puedan esquivar 
 	}
 	//agrega los visuales en el mapa
 	method addVisualInBoard(){
@@ -77,6 +82,14 @@ object instanceHitboxHill{
 	}
 }
 
+//El hitboxLeader es para que te vea y te juegue una batalla (no para no traspasarlo)
+//TODO: Hacer el collider HitBox para los leaderes (cosa que no se puedan traspasar)
+object instanceHitBoxLeader{
+	method instance(x,y){
+		return new HitBoxLeader(position=game.at(x,y))
+	}
+}
+
 class HitBox{
 	var property position	// Posiciono los objetos para que colisionen
 	//var property image = "red/ash3.jpg" // Establezco una imagen para saber donde esta el objeto noramal que sera invisibile
@@ -91,7 +104,7 @@ class HitBox{
 }
 
 class HitBoxGrass inherits HitBox{
-override method collidWithCharacter(){
+	override method collidWithCharacter(){
 		red.stepOnGrass()
 	}
 
@@ -102,6 +115,13 @@ class HitBoxHill inherits HitBox{
 		red.rebound()
 		jump.volume(0.5)
 		jump.play()			
+		
+	}
+}
+
+class HitBoxLeader inherits HitBox{
+	override  method collidWithCharacter(){
+		red.collidWithHitBoxLeader()
 	}
 }
 
