@@ -65,19 +65,20 @@ class BattleScreen {
 		game.addVisualIn(battleGround, game.at(0, 0))
 		//damos el nombre del pokemon contra el que vaa luchar red
 		botFighter.name(map1.mapPokemons().anyOne()) //lo re instanciamos para que cuando termine una batalla o se huya de la actual aprezca un pokemon nuevo		
-		botFighter.randomLevel(6)
-		//instanciamos los carteles para cada pokemon
-		botFighter.initialiteSigns()
-		fighterRed.initialiteSigns()
-		//instanciamos nombres, niveles y vida
+		botFighter.randomLevel(6)//damos level random entre 0 y 6 al bot
+		//instanciamos nombres, niveles, carteles y vida
 		self.instanceImages()
-		game.addVisualIn(prueba,game.at(18, 10))
 		//agrego los nombres de los pokemons a el board
 		game.addVisualIn(namePokemonRed,game.at(8, 15)) //TODO: ubicar bien
 		game.addVisualIn(nameSavagePokemon,game.at(37,14)) //TODO: ubicar bien
 		 //agrego los lvs al board
 		game.addVisualIn(lvPokemonRed,game.at(13, 15)) //TODO: ubicar bien
 		game.addVisualIn(lvSavagePokemon,game.at(40,14)) //TODO: ubicar bien
+		//agrego los carteles de vida inciales de los pokemons
+		//obtengo el indice correspondiente del cartel d ela vida
+		fighterRed.getBettwenNumers()
+		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),game.at(35, 7))
+		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),game.at(10, 24))
 		//agrego pokemons al board
 		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))
@@ -105,6 +106,12 @@ class BattleScreen {
 		//inicializo el lvl de los pokemon
 		lvPokemonRed.image(lvlPathRed)
 		lvSavagePokemon.image(lvlPathBot)
+		//instanciamos los carteles para cada luchador
+		botFighter.initialiteBattleObjects(4, botFighter.pathSing(),botFighter.signs())
+		botFighter.initialiteBattleObjects(4, fighterRed.pathSing(),fighterRed.signs())
+		//instanciamos los carteles de vida para cada luchador
+		botFighter.initialiteBattleObjects(9, botFighter.pathLife(),botFighter.lifeImage())
+		botFighter.initialiteBattleObjects(9, fighterRed.pathLife(),fighterRed.lifeImage())
 	}
 }
 
@@ -133,7 +140,6 @@ const namePokemonRed = new BattleObject(image = "maps/nombres/+pokemon.nombre().
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
 const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
-const prueba = new BattleObject(image = "maps/life1.png")
 //TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(nombreTipo)(n° ataque).png
 //TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(N° de nivel).png
 //TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(Nombre del pokemon igual que los instanciados).pmg
