@@ -49,7 +49,7 @@ object backPack{
 }
 
 class Item{
-	var property units = 1
+	var property units = 3
 	method useInPokemon(pokemon){
 		units -= 1
 	}
