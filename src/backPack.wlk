@@ -90,3 +90,5 @@ object damangeX inherits Item{
 		botFighter.name().takeDamage(150)
 	}
 }
+
+//TODO:cuando te curas tiene que refrescar la barra al igual que cuando atacas 

@@ -83,8 +83,8 @@ class BattleScreen {
 		//agrego los carteles de vida inciales de los pokemons
 		//obtengo el indice correspondiente del cartel d ela vida
 		fighterRed.getBettwenNumers()
-		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),game.at(35, 7))
-		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),game.at(10, 24))
+		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),game.at(36, 13))
+		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),game.at(6, 26))
 		//agrego pokemons al board
 		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))
@@ -151,4 +151,4 @@ const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toStr
 //TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/attack(nombreTipo)(n° ataque).png
 //TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(N° de nivel).png
 //TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(Nombre del pokemon igual que los instanciados).pmg
-
+//TODO: Cuando haces 1 batalla a la vuelta no anda la flecha
