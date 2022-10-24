@@ -91,7 +91,7 @@ object arrow{
 			}else if(block == 2){
 				option = backpack
 			}else if(block == 3){
-				option = pokemon
+				option = statusPokemon
 			}else{
 				option = flight
 			}
@@ -183,6 +183,7 @@ object backpack inherits Menu{
 	
 	override method configMenu(){
 		game.addVisualIn(backPackSign, game.at(37, 0))
+		arrow.relesRestriction(false, true, true, false, game.at(38, 6))//volvemos a colocar las restricciones iniciales
 		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
 		game.removeVisual(arrow)
 		game.addVisual(arrow)
@@ -195,26 +196,27 @@ object backpack inherits Menu{
 		}
 	}
 }
-object pokemon inherits Menu{
+object statusPokemon inherits Menu{
 	override method itIsInside(){	
-		if(game.hasVisual(backPackSign)){
-			console.println('ESTAS ADENTRO DE POKEMON')
-		}else{
+		if(!game.hasVisual(statusPokemonSign)){
 			self.configMenu()
-		}
+		}	
 	}
 	
-	override method configMenu(){
-		game.addVisualIn(backPackSign, game.at(37, 0))
+		override method configMenu(){
+		arrow.superRestriction(true) //blqueamos el uso de la flecha
+		game.addVisualIn(statusPokemonSign, game.at(0,0))
 		//Para que la flecha se posicione arriba de la nueva imagen (si no queda abajo), pensar otra mejor forma
 		game.removeVisual(arrow)
-		game.addVisual(arrow)
 	}
 	
 	override method back(){
-		if(game.hasVisual(backPackSign)){
-			game.removeVisual(backPackSign)
+		//Comparo si tiene solo 1 ya que se agregar y remueven juntas
+		if(game.hasVisual(statusPokemonSign)){
+			arrow.superRestriction(false) //Se le devuelve el movimiento a las flechas
+			game.removeVisual(statusPokemonSign)
 			arrow.option(null)
+			game.addVisual(arrow)
 		}
 	}
 }
@@ -232,6 +234,5 @@ object flight inherits Menu{
 
 
 //TODO: COLLIDER ENTRADA Y SALIDA Y COLINITAS Q FALTAN
-//TODO: MOCHILA Y POKEMONS
 //TODO: TERMINAR EL JUEGO
 

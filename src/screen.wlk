@@ -5,6 +5,7 @@ import red.*
 import pokemon.*
 import menu.*
 import fight.*
+import leaders.*
 
 class MapScreen {
 	
@@ -34,6 +35,11 @@ object characterScreen{
 	method initializeCharacter(){
 		//inicializamos visual del pj
 		game.addVisual(red)
+		//Inicializamos por otro lado los malvados lideres pokemones
+		game.addVisual(leon)
+		game.addVisual(alete)
+		game.addVisual(lucas)
+		
 		red.instanceColliders() //instancaimos las coliciones de red contra los objetos
 		//El juego queda en espera de los movimientos configurados
 		keyboard.right().onPressDo({red.right()})
@@ -121,8 +127,9 @@ const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
 //Mapa batalla (no es background) es un objecto que tapa el background
 const battleGround = new BattleObject(image = "maps/prueba.png")
-const backPackSign = new BattleObject(image = "maps/backpack.png")
 const fightFireSign = new BattleObject(image = "maps/fightFireSign.png")
+const backPackSign = new BattleObject(image = "maps/backpack.png")
+const statusPokemonSign = new BattleObject(image = "maps/charmanderStatus.png")
 const candySign = new BattleObject(image = "maps/candy.png")
 const potionSign = new BattleObject(image = "maps/potion.png")
 const appleSign = new BattleObject(image = "maps/apple.png")
