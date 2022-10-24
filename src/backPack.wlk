@@ -11,19 +11,29 @@ object backPack{
 	const signs = [candySign, potionSign, appleSign, damangeXSign]
 	
 	method actionBackPack(option){
+		var flag = false
 		//Le asigno a la var item el elemento que eligio en el menu
 		const item = myBackPack.get(option - 1)
+		if(item.areThereUnits()){
+			item.useInPokemon(red.fight())
+			flag = true
+		}
 		
-		item.useInPokemon(red.fight())
-		self.useItem()
+		self.useItem(flag)
 	}
 	
-	method useItem(){
+	method useItem(flag){
 		soundBattle.pauseSound()
-		game.sound("sounds/useItem.mp3").play()
 		battle.redWait(4000)
 		game.schedule(3000, {soundBattle.resumeSound()})
-		self.itemSign(signs.get(arrow.block() - 1))
+		if(flag){
+			game.sound("sounds/useItem.mp3").play()
+			self.itemSign(signs.get(arrow.block() - 1))						
+		}else{
+			game.sound("sounds/notItem.mp3").play()
+			self.itemSign(notItem)	
+		}
+
 		console.println('vida propia ' + red.fight().life())
 		console.println('level ' + red.fight().level())
 		console.println('vida rival ' + botFighter.name().life())
@@ -39,18 +49,27 @@ object backPack{
 }
 
 class Item{
-		method useInPokemon(pokemon){}
+	var property units = 3	
+	method useInPokemon(pokemon){
+		units -= 1
+	}
+	
+	method areThereUnits(){
+		return units > 0
+	}
 }
 
 object healingPotion inherits Item{
 	var property healingValue = 500
 
 	override method useInPokemon(pokemon){
-		pokemon.heal(healingValue)
+		super(pokemon)
+		pokemon.heal(healingValue)		
 	}
 } 
 object rareCandy inherits Item{
 	override method useInPokemon(pokemon){
+		super(pokemon)
 		pokemon.levelUp()
 	}
 }
@@ -59,6 +78,7 @@ object apple inherits Item{
 	var property healingValue = 150
 	
 	override method useInPokemon(pokemon){
+		super(pokemon)		
 		pokemon.heal(healingValue)
 	}
 }
@@ -66,6 +86,7 @@ object apple inherits Item{
 object damangeX inherits Item{
 	//Le resta 150 al oponente
 	override method useInPokemon(pokemon){
+		super(pokemon)		
 		botFighter.name().takeDamage(150)
 	}
 }

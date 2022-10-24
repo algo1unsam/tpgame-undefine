@@ -160,14 +160,16 @@ class FighterBot inherits Fighter{
 		
 		botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
 		botFighter.refreshLifeSign(game.at(10, 24))
+		game.sound("sounds/hit.mp3").play()
 		self.pokemonDead(botFighter)
 		self.redWait(waitTimeTurn)
 		self.twinkle(botFighter.name(), botFighter.position())//Titila el oponente cuando le doy 1 golpe
 		fight.back()//vuelve al menu de seleccion de modo
 		fighterRed.name().takeDamage(botFighter.randomAttack())
 		game.schedule(4000, {fighterRed.refreshLifeSign(game.at(35, 7))})
+		game.schedule(4000, {game.sound("sounds/hit.mp3").play()})
 		game.schedule(4000, {self.pokemonDead(fighterRed)})
-		game.schedule(4000, { self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
+		game.schedule(4000, {self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
 		
 	}
  }
