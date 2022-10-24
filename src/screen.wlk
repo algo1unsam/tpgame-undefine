@@ -66,27 +66,28 @@ object arrowScreen{
 class BattleScreen {
 	const property lvlPathRed = "maps/lv/"+fighterRed.name().level().toString()+".png"
 	const property lvlPathBot = "maps/lv/"+fighterRed.name().level().toString()+".png"
-	const property posLifeBot=game.at(6, 26)
-	const property posLifeRed=game.at(36, 13)
+	//..................... 0 == cartelvida; 1 == nombre;   2 == nivel
+	const property botPos = [game.at(8, 26),game.at(8, 15),game.at(13, 15)]
+	const property redPos = [game.at(39, 13),game.at(37,14),game.at(40,14)]
 	
 	method addConfigurations(){
 		game.addVisualIn(battleGround, game.at(0, 0))
 		//damos el nombre del pokemon contra el que vaa luchar red
 		botFighter.name(map1.mapPokemons().anyOne()) //lo re instanciamos para que cuando termine una batalla o se huya de la actual aprezca un pokemon nuevo		
-		botFighter.randomLevel(6)//damos level random entre 0 y 6 al bot
+		botFighter.randomLevel(3)//damos level random no mas de 3 niveles mas que el pokemon de red y no menos que 3
 		//instanciamos nombres, niveles, carteles y vida
 		self.instanceImages()
 		//agrego los nombres de los pokemons a el board
-		game.addVisualIn(namePokemonRed,game.at(8, 15)) //TODO: ubicar bien
-		game.addVisualIn(nameSavagePokemon,game.at(37,14)) //TODO: ubicar bien
+		game.addVisualIn(namePokemonRed,redPos.get(1)) //TODO: ubicar bien
+		game.addVisualIn(nameSavagePokemon,botPos.get(1)) //TODO: ubicar bien
 		 //agrego los lvs al board
-		game.addVisualIn(lvPokemonRed,game.at(13, 15)) //TODO: ubicar bien
-		game.addVisualIn(lvSavagePokemon,game.at(40,14)) //TODO: ubicar bien
+		game.addVisualIn(lvPokemonRed,redPos.get(2)) //TODO: ubicar bien
+		game.addVisualIn(lvSavagePokemon,botPos.get(2)) //TODO: ubicar bien
 		//agrego los carteles de vida inciales de los pokemons
 		//obtengo el indice correspondiente del cartel d ela vida
 		fighterRed.getBettwenNumers()
-		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),posLifeRed)
-		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),posLifeBot)
+		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),redPos.get(0))
+		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),botPos.get(0))
 		//agrego pokemons al board
 		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))

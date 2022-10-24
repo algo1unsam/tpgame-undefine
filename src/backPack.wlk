@@ -65,12 +65,14 @@ object healingPotion inherits Item{
 	override method useInPokemon(pokemon){
 		super(pokemon)
 		pokemon.heal(healingValue)		
+		fighterRed.refreshLifeSign(battleScreen.redPos().get(0))
 	}
 } 
 object rareCandy inherits Item{
 	override method useInPokemon(pokemon){
 		super(pokemon)
 		pokemon.levelUp()
+		fighterRed.refreshLV()//refrezcamos el nivel mostrandolo en pantalla y aumentando el damage
 	}
 }
 
@@ -80,6 +82,7 @@ object apple inherits Item{
 	override method useInPokemon(pokemon){
 		super(pokemon)		
 		pokemon.heal(healingValue)
+		fighterRed.refreshLifeSign(battleScreen.redPos().get(0))
 	}
 }
 	
@@ -88,6 +91,7 @@ object damangeX inherits Item{
 	override method useInPokemon(pokemon){
 		super(pokemon)		
 		botFighter.name().takeDamage(150)
+		botFighter.refreshLifeSign(battleScreen.botPos().get(0))//actaulizamos cartel de vida del bot
 	}
 }
 

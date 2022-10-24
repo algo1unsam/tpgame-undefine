@@ -44,7 +44,7 @@
 	}
 	method figtherDead(){
  		game.addVisualIn(crossDead,position)
- 		game.schedule(6000, {flight.itIsInside()}) //saca del juegp
+ 		game.schedule(3999, {flight.itIsInside()}) //saca del juegp
  	}
  	//retorna una lista de 0 hasta la vida del pokemon con un salteado dado por la sigiente formula
  	//vida/cantidadImagenesDeVida
@@ -85,9 +85,10 @@ class FighterBot inherits Fighter{
  		game.schedule(4000, {self.atackSign(signs.get(random))})//Cartel de ataque 		
  		return attacks.get(random) //ejecuta el ataque
  	}
- 	//asigna un nivel random al pokemon salvaje desde 0 hasta lvlMax
- 	method randomLevel(lvlMax){
- 		const random = 0.randomUpTo(lvlMax).truncate(0)
+ 	//asigna un nivel random al pokemon salvaje realizando una dif contra el lvl de pokemon de red
+ 	method randomLevel(difMax){
+ 		const lvlPokRed = fighterRed.name().level()
+ 		const random = (lvlPokRed-difMax).max(0).randomUpTo(lvlPokRed+difMax)
  		name.level(random)
  	}
 	override method figtherDead(){
@@ -106,16 +107,16 @@ class FighterBot inherits Fighter{
  	}
  	//la variable de ataques necestia ser refrezcada cuando el nivel sube ya que si no no se efectua el cambio
  	method refreshAttacks(){
- 		//const namePokemon = [name,name,name,name] quizas necesite algo por el estilo y realizar un map que devuelva los valores deataque actualizados con el lvl
-		attacks.clear()
-		attacks.addAll([name.attack1(),name.attack2(),name.attack3(),name.attack4()])
- 	}
+ 		const list = [name.attack1(),name.attack2(),name.attack3(),name.attack4()]
+ 		attacks.clear()
+		attacks.addAll(list)
+	}
  	//metodo para refrezcar el nivel si en batalla le dan al pokemon un caramelo raro de la mochi
 	method refreshLV(){
 		self.refreshAttacks()
 		game.removeVisual(lvPokemonRed)
 		lvPokemonRed.image("maps/lv/"+self.name().level().toString()+".png")
-		game.addVisualIn(lvPokemonRed,game.at(20,20))//TODO:agregar ubicacion real
+		game.addVisualIn(lvPokemonRed,battleScreen.redPos().get(2))//TODO:agregar ubicacion real
 	}
  }
  
@@ -124,9 +125,9 @@ class FighterBot inherits Fighter{
 		game.removeVisual(pokemon)
 		game.schedule(50, { game.addVisualIn(pokemon, pos) })
 		game.schedule(100, { game.removeVisual(pokemon) })
-		game.schedule(200, { game.addVisualIn(pokemon, pos) })
-		game.schedule(250, { game.removeVisual(pokemon) })
-		game.schedule(300, { game.addVisualIn(pokemon, pos) })
+		game.schedule(150, { game.addVisualIn(pokemon, pos) })
+		game.schedule(200, { game.removeVisual(pokemon) })
+		game.schedule(250, { game.addVisualIn(pokemon, pos) })
 	}
 	//cuando muere un pokemon
 	method pokemonDead(fighter){
@@ -148,14 +149,14 @@ class FighterBot inherits Fighter{
 		const waitTimeTurn = 8000 //tiempo de espera para el turno
 		
 		botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
-		botFighter.refreshLifeSign(battleScreen.posLifeBot())
+		botFighter.refreshLifeSign(battleScreen.botPos().get(0))
 		game.sound("sounds/hit.mp3").play()
 		self.pokemonDead(botFighter)
 		self.redWait(waitTimeTurn)
 		self.twinkle(botFighter.name(), botFighter.position())//Titila el oponente cuando le doy 1 golpe
 		fight.back()//vuelve al menu de seleccion de modo
 		fighterRed.name().takeDamage(botFighter.randomAttack())
-		game.schedule(4000, {fighterRed.refreshLifeSign(battleScreen.posLifeRed())})
+		game.schedule(4000, {fighterRed.refreshLifeSign(battleScreen.redPos().get(0))})
 		game.schedule(4000, {game.sound("sounds/hit.mp3").play()})
 		game.schedule(4000, {self.pokemonDead(fighterRed)})
 		game.schedule(4000, {self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
