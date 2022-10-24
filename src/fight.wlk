@@ -100,8 +100,7 @@ class FighterBot inherits Fighter{
  	
  	//realiza el ataque segun la opcion elegida la cual esta dada por el arrow.bloq le quitamos 1 ya que block va del 1 al 4
  	method attackFromOption(option){	
- 		console.println(self.signs().map{i => i.image()})
- 		console.println(option-1)
+ 		
  		self.sign(signs.get(option-1)) //imprime el cartel del ataque a ejecutar
  		return attacks.get(option-1)
  	}

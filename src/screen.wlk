@@ -92,6 +92,7 @@ class BattleScreen {
 		fighterRed.getBettwenNumers()
 		game.addVisualIn(fighterRed.lifeImage().get(fighterRed.indexImageLife()),redPos.get(0))
 		game.addVisualIn(botFighter.lifeImage().get(botFighter.lifeImage().size()-1),botPos.get(0))
+		console.println(fighterRed.lifeImage().size())
 		//agrego pokemons al board
 		game.addVisualIn(fighterRed.name(), game.at(8, 8))
 		game.addVisualIn(botFighter.name(), game.at(37,18))
@@ -121,8 +122,9 @@ class BattleScreen {
 		botFighter.initialiteBattleObjects(4, botP,botFighter.signs())
 		fighterRed.initialiteBattleObjects(4,redP ,fighterRed.signs())
 		
-		console.println(fighterRed.name().type())
 		//instanciamos los carteles de vida para cada luchador
+		botFighter.lifeImage().clear()
+		fighterRed.lifeImage().clear()
 		botFighter.initialiteBattleObjects(9, pathLife,botFighter.lifeImage())
 		fighterRed.initialiteBattleObjects(9, pathLife,fighterRed.lifeImage())
 	}
