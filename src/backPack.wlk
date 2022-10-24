@@ -34,9 +34,9 @@ object backPack{
 			self.itemSign(notItem)	
 		}
 
-		console.println('vida propia ' + red.fight().life())
-		console.println('level ' + red.fight().level())
-		console.println('vida rival ' + botFighter.name().life())
+//		console.println('vida propia ' + red.fight().life())
+//		console.println('level ' + red.fight().level())
+//		console.println('vida rival ' + botFighter.name().life())
 	}
 	
 	method itemSign(item){

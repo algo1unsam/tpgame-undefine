@@ -33,15 +33,20 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(35, 36, 2, -1,instanceHitbox)
 		self.createBloqueInvisibleObjects(55, 56, 34, 2,instanceHitbox)
 		self.createBloqueInvisibleObjects(4, 30, 12, 10,instanceHitbox)
-		self.createBloqueInvisibleObjects(20, 24, 29, 23,instanceHitbox)
+		self.createBloqueInvisibleObjects(20, 24, 30, 23,instanceHitbox)
 		self.createBloqueInvisibleObjects(4, 24, 32,31,instanceHitbox)
 		self.createBloqueInvisibleObjects(35, 56, 32, 31,instanceHitbox)
+		self.createBloqueInvisibleObjects(24, 36, 33, 32,instanceHitbox)
+		self.createBloqueInvisibleObjects(30, 35, 0, -1,instanceHitbox)
 		//instanciando GrassObjects
 		self.createBloqueInvisibleObjects(30,44,12,8,instanceHitboxGrass)
-		self.createBloqueInvisibleObjects(10,22,5,3,instanceHitboxGrass)
-		self.createBloqueInvisibleObjects(43,50,5,3,instanceHitboxGrass)
+		self.createBloqueInvisibleObjects(10,22,6,2,instanceHitboxGrass)
+		self.createBloqueInvisibleObjects(43,50,6,2,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(40,54,21,17,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(25,54,27,23,instanceHitboxGrass)	
+		self.createBloqueInvisibleObjects(22,27,6,4,instanceHitboxGrass)
+		self.createBloqueInvisibleObjects(30,35,3,0,instanceHitboxGrass)
+		self.createBloqueInvisibleObjects(37,43,4,2,instanceHitboxGrass)			
 		//instanciando colinas
 		self.createBloqueInvisibleObjects(4,15,7,6,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(25,55,7,6,instanceHitboxHill)
@@ -50,6 +55,8 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(12,22,16,15,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(9,24,20,19,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(4,19,24,22,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(24,40,29,28,instanceHitboxHill)
+		self.createBloqueInvisibleObjects(3,20,29,28,instanceHitboxHill)
 		//instanciando hitbox lideres
 		self.createBloqueInvisibleObjects(33,34,31,28,instanceHitBoxLeader)		
 		self.createBloqueInvisibleObjects(40,41,19,16,instanceHitBoxLeader)		
@@ -97,7 +104,7 @@ class HitBox{
 	method showInBoard(){
 		game.addVisual(self)
 	}
-	//TODO: ver si podemos hacer que red se enecarge de saber si esta colicionando contra este objeto (posible solucion a la falla de rendimeinto)
+	
 	method collidWithCharacter(){
 		red.collidWithHitbox()
 	}
