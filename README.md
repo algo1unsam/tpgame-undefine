@@ -1,5 +1,5 @@
 # POKEMON RED 
-
+Desafiate jugando con tu pokemon Charmander,combatiendo contra cual pokemon se aparezcan en tu camino y asi poder llegar a ser el mejor entrenador pokemon de toda la region
 ## Equipo de desarrollo
 
 - Barneche Facundo
@@ -11,6 +11,11 @@
  	<summary>Mapa</summary>
 	<img src="https://github.com/algo1unsam/tpgame-undefine/blob/master/Imagen_pokemon1.png" />
 </details>
+<details>
+ 	<summary>Menu</summary>
+	<img src="https://github.com/algo1unsam/tpgame-undefine/blob/master/imagen_menu.png" />
+</details>
+
 
 
 ## Reglas de Juego / Instrucciones
