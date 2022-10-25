@@ -1,5 +1,5 @@
 # POKEMON RED 
-
+Desafiate jugando con tu pokemon Charmander,combatiendo contra cual pokemon se aparezcan en tu camino y asi poder llegar a ser el mejor entrenador pokemon de toda la region
 ## Equipo de desarrollo
 
 - Barneche Facundo
