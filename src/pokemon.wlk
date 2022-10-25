@@ -67,12 +67,12 @@ class Pokemon {
  	}
  	//vineWhipAttack
  	method attack3(){
- 		return 12.randomUpTo(10).truncate(0) + self.level() * 2
+ 		return 12.randomUpTo(14).truncate(0) + self.level() * 2
  		
  	}
  	//sharpenAttack
  	method attack4(){
- 		return 12.randomUpTo(20).truncate(0)
+ 		return 12.randomUpTo(16).truncate(0)
  	}
  }
  
