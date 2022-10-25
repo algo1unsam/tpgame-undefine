@@ -1,5 +1,6 @@
 import pokemon.*
 import backPack.*
+import red.*
 
 describe "Test de Pokemon"{
 	
@@ -49,6 +50,19 @@ describe "Test de Pokemon"{
 	test "Cualquier otro pokemon no es el inicial"{
 		assert.notThat(squirtle.ownPokemon())
 	}
-	
+	test "El pokemon de Red es Charmander"{
+		assert.equals(charmander, red.myPokemons().get(0))
+	}
+	test "Si ejecuto el randomSteps de Red, no será nunca menor a 10"{
+		assert.that(red.randomSteps() >= 10)
+		assert.that(red.randomSteps() >= 10)
+		assert.that(red.randomSteps() >= 10)
+	}
+	test "La mochila tiene 4 items"{
+		assert.equals(4, backPack.myBackPack().size())
+	}
+	test "Hay 3 unidades de caramelos"{
+		assert.equals(1, rareCandy.units())
+	}	
 }
 

@@ -8,7 +8,7 @@ import leaders.*
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
-	var property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck,scyther]
+	var property mapPokemons = [scyther]//growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck,
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
 	 ej: metohd createLineOfCollidersInX(initX=1,endx=10,initY=2,endY=0)
