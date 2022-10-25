@@ -58,6 +58,8 @@
  		const listRange = self.listRangeLife()
  		const iterates = lifeImage.size()
  		
+ 		console.println(listRange)
+ 		console.println(name.life())
  		iterates.times{i => self.isBetween(listRange.get(i-1),listRange.get(i),i-1)}
  	}
  	//verifica si la vida del pokemon esta entre los valores dados
@@ -86,7 +88,7 @@ class FighterBot inherits Fighter{
  	//asigna un nivel random al pokemon salvaje realizando una dif contra el lvl de pokemon de red
  	method randomLevel(difMax){
  		const lvlPokRed = fighterRed.name().level()
- 		const random = (lvlPokRed-difMax).max(0).randomUpTo(lvlPokRed+difMax)
+ 		const random = ((lvlPokRed-difMax).max(0).randomUpTo(lvlPokRed+difMax)).truncate(0)
  		name.level(random)
  	}
 	override method figtherDead(){
@@ -119,12 +121,9 @@ class FighterBot inherits Fighter{
 		lvPokemonRed.image(lvlPathRed)
 		game.addVisualIn(lvPokemonRed,battleScreen.redPos().get(2))//TODO:agregar ubicacion real
 	}
-	//validaciones
-	method pokemonNeedLife(){
-		if (self.name().isDead()){
-			game.sound("sounds/notItem.mp3").play()
-			self.error("el pokemon necesita vida")
-		}
+	override method figtherDead(){
+		super()
+		botFighter.name().heal(botFighter.name().topLife())
 	}
  }
  
@@ -139,7 +138,7 @@ class FighterBot inherits Fighter{
 	}
 	//cuando muere un pokemon
 	method pokemonDead(fighter){
-		if (fighter.name().isDead()){
+		if (fighter.name().life().between(0,11)){
 			fighter.figtherDead()
 		}
 	}
@@ -156,20 +155,23 @@ class FighterBot inherits Fighter{
 	method attackScene(optionRed){
 		const waitTimeTurn = 8000 //tiempo de espera para el turno
 		
-		fighterRed.pokemonNeedLife()
-		botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
-		botFighter.refreshLifeSign(battleScreen.botPos().get(0))
-		game.sound("sounds/hit.mp3").play()
-		self.pokemonDead(botFighter)
-		self.redWait(waitTimeTurn)
-		self.twinkle(botFighter.name(), botFighter.position())//Titila el oponente cuando le doy 1 golpe
-		fight.back()//vuelve al menu de seleccion de modo
-		fighterRed.name().takeDamage(botFighter.randomAttack())
-		game.schedule(4000, {fighterRed.refreshLifeSign(battleScreen.redPos().get(0))})
-		game.schedule(4000, {game.sound("sounds/hit.mp3").play()})
-		game.schedule(4000, {self.pokemonDead(fighterRed)})
-		game.schedule(4000, {self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
-		
+		if (!fighterRed.name().life().between(0,11)){
+			botFighter.name().takeDamage(fighterRed.attackFromOption(optionRed))//El oponente recibe daño
+			botFighter.refreshLifeSign(battleScreen.botPos().get(0))
+			game.sound("sounds/hit.mp3").play()
+			self.pokemonDead(botFighter)
+			self.redWait(waitTimeTurn)
+			self.twinkle(botFighter.name(), botFighter.position())//Titila el oponente cuando le doy 1 golpe
+			fight.back()//vuelve al menu de seleccion de modo
+			fighterRed.name().takeDamage(botFighter.randomAttack())
+			game.schedule(4000, {fighterRed.refreshLifeSign(battleScreen.redPos().get(0))})
+			game.schedule(4000, {game.sound("sounds/hit.mp3").play()})
+			game.schedule(4000, {self.pokemonDead(fighterRed)})
+			game.schedule(4000, {self.twinkle(fighterRed.name(),fighterRed.position()) })//Titila nuestro pokemon luego de 4 segundos ya que 
+		}else{
+			game.sound("sounds/notItem.mp3").play()
+			fighterRed.sign(haveLife)
+		}
 	}
  }
  const botFighter = new FighterBot(name = map1.mapPokemons().anyOne(),position = game.at(37,18))

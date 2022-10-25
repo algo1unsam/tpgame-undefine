@@ -61,9 +61,7 @@ object arrowScreen{
 }
 
 class BattleScreen {
-	const property lvlPathRed = "levels/"+fighterRed.name().level().toString()+".png"
-	const property lvlPathBot = "levels/"+botFighter.name().level().toString()+".png"
-	const property pathSing = "maps/attack"
+	const property pathSing = "maps/attacks/"
 	const property pathLife = "healthbars/healthbar"
 	
 	//..................... 0 == cartelvida; 1 == nombre;   2 == nivel
@@ -71,8 +69,8 @@ class BattleScreen {
 	const property redPos = [game.at(39, 13),game.at(37,15),game.at(51,16)]
 	
 	method addConfigurations(){
-		console.println("entro cada vez que se pelea")
 		game.addVisualIn(battleGround, game.at(0, 0))
+		arrowScreen.initializeArrow()
 		//damos el nombre del pokemon contra el que vaa luchar red
 		botFighter.name(map1.mapPokemons().anyOne()) //lo re instanciamos para que cuando termine una batalla o se huya de la actual aprezca un pokemon nuevo		
 		botFighter.randomLevel(3)//damos level random no mas de 3 niveles mas que el pokemon de red y no menos que 3
@@ -95,7 +93,6 @@ class BattleScreen {
 		game.addVisualIn(botFighter.name(), game.at(37,18))
 		
 		
-		arrowScreen.initializeArrow()
 
 		route1.pauseSound()
 
@@ -104,6 +101,8 @@ class BattleScreen {
 
 	}
 	method instanceImages(){
+		const lvlPathRed = "levels/"+fighterRed.name().level().toString()+".png"
+		const lvlPathBot = "levels/"+botFighter.name().level().toString()+".png"
 		const botP = pathSing+botFighter.name().type()
 		const redP = pathSing+fighterRed.name().type()
 		const namPathRed = "Names/"+fighterRed.name().name()+".png"
@@ -184,6 +183,7 @@ const potionSign = new BattleObject(image = "maps/potion.png")
 const appleSign = new BattleObject(image = "maps/apple.png")
 const damangeXSign = new BattleObject(image = "maps/damangeX.png")
 const notItem = new BattleObject(image = "maps/notItem.png")
+const haveLife = new BattleObject(image = "maps/withoutLife.png")
 const crossDead = new BattleObject(image = "maps/crosss.png")//cruz cuando muere un pokemon (provizional)
 const namePokemonRed = new BattleObject(image = "names/+pokemon.nombre().toString()+.png")
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")

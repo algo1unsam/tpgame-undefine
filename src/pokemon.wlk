@@ -28,10 +28,7 @@ class Pokemon {
 	//tackleAttack
 	method attack1(){
 		return 20
-	}
-	method isDead(){
-		return self.life() == 0
-	}		
+	}	
 }
  class PokemonFireType inherits Pokemon{
  	//flamethrowerAttack
