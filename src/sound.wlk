@@ -29,5 +29,6 @@ class SongsPokemon {
 const opening = new SongsPokemon(song = game.sound("sounds/opening.mp3"))
 const route1 = new SongsPokemon(song = game.sound("sounds/route1.mp3"))
 const soundBattle = new SongsPokemon(song = game.sound("sounds/battle.mp3"))
+const ending = new SongsPokemon(song = game.sound("sounds/battle.mp3"))
 
 
