@@ -7,7 +7,7 @@ class Pokemon {
 	var property life = topLife
 	var property level = 1
 	var property image = front
-	const ownPokemon = false
+	const property ownPokemon = false
 	var property type //string tipo de pokemon para elegir el cartel del ataque del pokemon
 
 	//Si es nuestro pokemon, se va a ver de espaldas y si es oponente de frente
@@ -43,6 +43,7 @@ class Pokemon {
  	method attack4(){
  		return 12 + self.level() * 2 	
  	}
+ 	method esDeClaseFuego()= return true
  }
  
  class PokemonWaterType inherits Pokemon{
@@ -58,6 +59,7 @@ class Pokemon {
  	method attack4(){
  		return 12.randomUpTo(50).truncate(0)
  	}
+ 	method esDeClaseAgua()=return true
  	
  }
  class PokemonGrassType inherits Pokemon{
@@ -74,6 +76,7 @@ class Pokemon {
  	method attack4(){
  		return 12.randomUpTo(16).truncate(0)
  	}
+ 	method esDeClasePlanta()=return true
  }
  
 
