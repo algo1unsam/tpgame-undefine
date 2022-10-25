@@ -18,10 +18,6 @@ class MapScreen {
 	}
 	
 		method addConfigurations(nameOfMap) {	
-		//const route1 = game.sound("sounds/route1.mp3")
-//		route1.shouldLoop(true)	//Suena la cancion con un loop	
-//		route1.play()	
-
 		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
 		
 		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
@@ -139,6 +135,38 @@ const battleScreen = new BattleScreen()
 
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
+
+//Imagen inicial
+object mainScreen{
+	const property image = "maps/initialScreen.png"
+}
+
+object enter{
+	const property image = "maps/enter.png"
+	
+	method waitFor(){
+		if(game.hasVisual(self)){
+			game.removeVisual(self)
+		}else{
+			game.addVisualIn(self, game.at(24,26))
+		}
+		keyboard.enter().onPressDo({self.exit()})
+	}
+	
+	method twinkle(){
+		game.onTick(900, "twinkle", {self.waitFor()})
+	}
+	
+	method exit(){
+		initialScreen.addConfigurations(map1)
+		game.removeVisual(mainScreen)
+		game.removeTickEvent("twinkle")
+		if(game.hasVisual(self)){
+			game.removeVisual(self)
+		}
+		
+	}
+}
 
 //Mapa batalla (no es background) es un objecto que tapa el background
 const battleGround = new BattleObject(image = "maps/prueba.png")
