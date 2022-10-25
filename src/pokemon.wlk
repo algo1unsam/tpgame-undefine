@@ -89,7 +89,7 @@ const bulbasaur = new PokemonGrassType(name="bulbasaur",front ="pokemons/bulbasa
 const oddish = new PokemonGrassType(name="oddish",front="pokemons/oddishFront.png",back="pokemons/oddishBack.png",type="Grass")
 const butterfree= new PokemonGrassType(name="butterfree",front="pokemons/butterfreeFront.png",back="pokemons/butterfreeBack.png",type="Grass")
 const scyther= new PokemonGrassType(name="scyther",front="pokemons/Scytherfront.png",back="pokemons/Scytherback.png",type="Grass") 
-const squirtle = new PokemonWaterType(name="squirtel",front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",type="Water")
+const squirtle = new PokemonWaterType(name="squirtle",front="pokemons/squirtleFront.png",back="pokemons/squirtleBack.png",type="Water")
 const lapras = new PokemonWaterType(name="lapras",front="pokemons/laprasFront.png",back="pokemons/laprasBack.png",type="Water")
 const gyarados= new PokemonWaterType(name="gyarados",front="pokemons/gyaradosFront.png",back="pokemons/gyaradosBack.png",type="Water")
 const psyduck= new PokemonWaterType(name="psyduck",front="pokemons/psyduckFront.png",back="pokemons/psyduckBack.png",type="Water")

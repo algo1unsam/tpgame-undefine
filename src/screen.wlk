@@ -67,8 +67,8 @@ class BattleScreen {
 	const property pathLife = "healthbars/healthbar"
 	
 	//..................... 0 == cartelvida; 1 == nombre;   2 == nivel
-	const property botPos = [game.at(8, 26),game.at(6, 28),game.at(23,28)]
-	const property redPos = [game.at(39, 13),game.at(37,15),game.at(54,15)]
+	const property botPos = [game.at(8, 26),game.at(6, 28),game.at(20,29)]
+	const property redPos = [game.at(39, 13),game.at(37,15),game.at(51,16)]
 	
 	method addConfigurations(){
 		console.println("entro cada vez que se pelea")

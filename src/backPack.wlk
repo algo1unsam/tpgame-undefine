@@ -60,7 +60,7 @@ class Item{
 }
 
 object healingPotion inherits Item{
-	var property healingValue = 500
+	var property healingValue = 50
 
 	override method useInPokemon(pokemon){
 		super(pokemon)
@@ -77,7 +77,7 @@ object rareCandy inherits Item{
 }
 
 object apple inherits Item{
-	var property healingValue = 150
+	var property healingValue = 15
 	
 	override method useInPokemon(pokemon){
 		super(pokemon)		
@@ -87,11 +87,10 @@ object apple inherits Item{
 }
 	
 object damangeX inherits Item{
-	//Le resta 150 al oponente
+	//Le resta 10 al oponente
 	override method useInPokemon(pokemon){
 		super(pokemon)		
-		botFighter.name().takeDamage(150)
-		botFighter.refreshLifeSign(battleScreen.botPos().get(0))//actaulizamos cartel de vida del bot
+		botFighter.name().takeDamage(10)
 	}
 }
 
