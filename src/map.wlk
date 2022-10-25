@@ -8,7 +8,7 @@ import leaders.*
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
-	var property mapPokemons = [scyther]//growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck,
+	var property mapPokemons = [scyther,growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck]
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
 	 ej: metohd createLineOfCollidersInX(initX=1,endx=10,initY=2,endY=0)
@@ -37,8 +37,10 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(20, 24, 30, 23,instanceHitbox)
 		self.createBloqueInvisibleObjects(4, 24, 32,31,instanceHitbox)
 		self.createBloqueInvisibleObjects(35, 56, 32, 31,instanceHitbox)
-		self.createBloqueInvisibleObjects(24, 36, 33, 32,instanceHitbox)
+		self.createBloqueInvisibleObjects(24, 36, 34, 33,instanceHitbox)
 		self.createBloqueInvisibleObjects(30, 35, 0, -1,instanceHitbox)
+		self.createBloqueInvisibleObjects(24, 25, 33, 32,instanceHitbox)
+		self.createBloqueInvisibleObjects(35, 36, 33, 32,instanceHitbox)
 		//instanciando GrassObjects
 		self.createBloqueInvisibleObjects(30,44,12,8,instanceHitboxGrass)
 		self.createBloqueInvisibleObjects(10,22,6,2,instanceHitboxGrass)
@@ -58,7 +60,8 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(4,19,24,22,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(24,40,29,28,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(3,20,29,28,instanceHitboxHill)
-	
+		//instancair hitbox del final
+		self.createBloqueInvisibleObjects(24, 36, 33, 32,instanceHitboxFinsh)
 	}
 	//agrega los visuales en el mapa
 	method addVisualInBoard(){
@@ -83,6 +86,11 @@ object instanceHitboxGrass{
 object instanceHitboxHill{
 	method instance(x,y){
 		return new HitBoxHill(position=game.at(x,y))	
+	}
+}
+object instanceHitboxFinsh{
+	method instance(x,y){
+		return new HitBoxFinish(position=game.at(x,y))	
 	}
 }
 
@@ -111,7 +119,14 @@ class HitBoxHill inherits HitBox{
 		red.rebound()
 		jump.volume(0.5)
 		jump.play()			
-		
 	}
 }
+class HitBoxFinish inherits HitBox{
+	override method collidWithCharacter(){
+		if (map1.mapPokemons().isEmpty()){		
+			battleScreen.toWin()
+		}
+	}	
+}	
+
 

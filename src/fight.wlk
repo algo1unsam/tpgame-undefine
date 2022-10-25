@@ -62,7 +62,7 @@
  	method getBettwenNumers(){
  		const listRange = self.listRangeLife()
  		const iterates = lifeImage.size()
- 		
+ 			
  		console.println(listRange)
  		console.println(name.name()+": "+name.life().toString())
  		iterates.times{i => self.isBetween(listRange.get(i-1),listRange.get(i),i-1)}
