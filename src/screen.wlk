@@ -64,14 +64,16 @@ object arrowScreen{
 }
 
 class BattleScreen {
-	const property lvlPathRed = "maps/lv/"+fighterRed.name().level().toString()+".png"
-	const property lvlPathBot = "maps/lv/"+fighterRed.name().level().toString()+".png"
+	const property lvlPathRed = "levels/"+fighterRed.name().level().toString()+".png"
+	const property lvlPathBot = "levels/"+botFighter.name().level().toString()+".png"
+	const property namPathRed = "Names/"+fighterRed.name().name()+".png"
+	const property namPathBot = "Names/"+botFighter.name().name()+".png"
 	const property pathSing = "maps/attack"
 	const property pathLife = "healthbars/healthbar"
 	
 	//..................... 0 == cartelvida; 1 == nombre;   2 == nivel
-	const property botPos = [game.at(8, 26),game.at(8, 15),game.at(13, 15)]
-	const property redPos = [game.at(39, 13),game.at(37,14),game.at(40,14)]
+	const property botPos = [game.at(8, 26),game.at(6, 28),game.at(23,28)]
+	const property redPos = [game.at(39, 13),game.at(37,15),game.at(54,15)]
 	
 	method addConfigurations(){
 		console.println("entro cada vez que se pelea")
@@ -111,8 +113,8 @@ class BattleScreen {
 		const redP = pathSing+fighterRed.name().type()
 		
 		//inicializo los nombres de los pokemons
-		namePokemonRed.image("maps/nombre"+fighterRed.name().toString()+".png")
-		nameSavagePokemon.image("maps/nombre"+botFighter.name().toString()+".png")
+		namePokemonRed.image(namPathRed)
+		nameSavagePokemon.image(namPathBot)
 		//inicializo el lvl de los pokemon
 		lvPokemonRed.image(lvlPathRed)
 		lvSavagePokemon.image(lvlPathBot)
@@ -153,11 +155,8 @@ const appleSign = new BattleObject(image = "maps/apple.png")
 const damangeXSign = new BattleObject(image = "maps/damangeX.png")
 const notItem = new BattleObject(image = "maps/notItem.png")
 const crossDead = new BattleObject(image = "maps/crosss.png")//cruz cuando muere un pokemon (provizional)
-const namePokemonRed = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
+const namePokemonRed = new BattleObject(image = "names/+pokemon.nombre().toString()+.png")
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
 const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
-//TODO: agregar fotos de los carteles de ataque para todas las clases, RUTA Y NOMBRE: maps/(nombreTipo)(n° ataque).png
-//TODO: agregar fotos de numeros del 0 al 10 minimo para los , RUTA Y NOMBRE: "maps/lv/(N° de nivel).png
-//TODO: agregar foto de los nombres de los pokemons, RUTA Y NOMBRE: maps/nombres/(Nombre del pokemon igual que los instanciados).pmg
-//TODO: Cuando haces 1 batalla a la vuelta no anda la flecha
+
