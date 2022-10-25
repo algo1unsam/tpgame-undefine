@@ -130,6 +130,7 @@ class Menu{
 		characterScreen.initializeCharacter()
 		map1.addVisualInBoard()
 		route1.resumeSound()
+		arrow.superRestriction(false)
 		arrow.option(null)
 	}
 	

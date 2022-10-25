@@ -41,7 +41,7 @@
 		}
 	}
 	method figtherDead(){
- 		game.addVisualIn(crossDead,position)
+ 		game.schedule(251,{game.addVisualIn(crossDead,position)})
  		game.schedule(3999, {flight.itIsInside()}) //saca del juegp
  	}
  	//retorna una lista de 0 hasta la vida del pokemon con un salteado dado por la sigiente formula
@@ -59,7 +59,7 @@
  		const iterates = lifeImage.size()
  		
  		console.println(listRange)
- 		console.println(name.life())
+ 		console.println(name.name()+": "+name.life().toString())
  		iterates.times{i => self.isBetween(listRange.get(i-1),listRange.get(i),i-1)}
  	}
  	//verifica si la vida del pokemon esta entre los valores dados
@@ -82,7 +82,7 @@ class FighterBot inherits Fighter{
  	method randomAttack(){
  		const random = 0.randomUpTo(3).truncate(0) //random del 0 al 3
  		
- 		game.schedule(4000, {self.sign(signs.get(random))})//Cartel de ataque 		
+ 		self.sign(signs.get(random))//Cartel de ataque 		
  		return attacks.get(random) //ejecuta el ataque
  	}
  	//asigna un nivel random al pokemon salvaje realizando una dif contra el lvl de pokemon de red
@@ -92,8 +92,9 @@ class FighterBot inherits Fighter{
  		name.level(random)
  	}
 	override method figtherDead(){
+ 		fighterRed.upLvlIf()
+ 		map1.mapPokemons().remove(name)
  		super()
- 		map1.mapPokemons().remove(name)	
  	}
  	
  }
@@ -124,6 +125,14 @@ class FighterBot inherits Fighter{
 	override method figtherDead(){
 		super()
 		botFighter.name().heal(botFighter.name().topLife())
+	}
+	//subdede nivel si el pokemon contra el que se realizo la batalla tenia mas nivel
+	method upLvlIf(){
+		if (botFighter.name().level()>name.level()){
+			self.sign(candySign)
+			name.levelUp()
+			self.refreshLV()
+		}
 	}
  }
  
@@ -163,7 +172,7 @@ class FighterBot inherits Fighter{
 			self.redWait(waitTimeTurn)
 			self.twinkle(botFighter.name(), botFighter.position())//Titila el oponente cuando le doy 1 golpe
 			fight.back()//vuelve al menu de seleccion de modo
-			fighterRed.name().takeDamage(botFighter.randomAttack())
+			game.schedule(4000, {fighterRed.name().takeDamage(botFighter.randomAttack())})
 			game.schedule(4000, {fighterRed.refreshLifeSign(battleScreen.redPos().get(0))})
 			game.schedule(4000, {game.sound("sounds/hit.mp3").play()})
 			game.schedule(4000, {self.pokemonDead(fighterRed)})

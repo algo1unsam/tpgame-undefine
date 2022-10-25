@@ -61,7 +61,7 @@ object arrowScreen{
 }
 
 class BattleScreen {
-	const property pathSing = "maps/attacks/"
+	const property pathSing = "attacks/attack"
 	const property pathLife = "healthbars/healthbar"
 	
 	//..................... 0 == cartelvida; 1 == nombre;   2 == nivel

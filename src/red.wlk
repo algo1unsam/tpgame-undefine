@@ -115,8 +115,8 @@ object red {
 			self.newRandom()
 			game.clear()
 			grassSteps = 0
-			battleScreen.addConfigurations()
 			self.fight().pickImage()
+			battleScreen.addConfigurations()
 		}
 	}
 	method collidWithHitBoxLeader(){
