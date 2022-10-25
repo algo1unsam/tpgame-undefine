@@ -26,7 +26,7 @@ Desafiate jugando con tu pokemon Charmander,combatiendo contra cual pokemon salv
 
 ## Objetivo del juego e historia
 En un mundo en el cual los pokemones salvajes no son lo que parecen y han destruido y desvastado civilizaciones enteras.
-Red(nuestro personaje principal),trabaja para el gobierno y se le otorgo la importante mision de eliminar a todo aquel pokemon salvaje que intente poner en peligro a los habitantes de su propio pueblo. El gobierno le ha dado la informacion especifica de que en su region se encuentra 11 pokemones de tipo fuego, agua y planta. Adicionalmente Red posee un contador de cuantos pokemones le falta(el jugador podra acceder al el con la tecla "c"). Red, por otro lado con la ayuda de charmander un pokemon "adiestrado" deberan derrotarlos a todos. 
+Red(nuestro personaje principal),trabaja para el gobierno y se le otorgo la importante mision de eliminar a todo aquel pokemon salvaje que intente poner en peligro a los habitantes de su propio pueblo. El gobierno le ha dado la informacion especifica de que en su region se encuentra 11 pokemones de tipo fuego, agua y planta. Adicionalmente Red posee un contador de cuantos pokemones le faltan para poder completar su mision(el jugador podra acceder al el con la tecla "c"). Red, por otro lado, cuenta con la ayuda de charmander un pokemon "adiestrado" y poco comun, ya que es un pokemon bueno y obediente, deberan derrotarlos a todos. 
 
 ## Reglas de Juego / Instrucciones
 
