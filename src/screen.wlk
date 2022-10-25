@@ -146,6 +146,10 @@ object mainScreen{
 	const property image = "maps/initialScreen.png"
 }
 
+object finalScreen{
+	const property image = "maps/ending.png"
+}
+
 object enter{
 	const property image = "maps/enter.png"
 	
