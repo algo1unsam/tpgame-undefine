@@ -98,8 +98,8 @@ class BattleScreen {
 
 //		//Si el sonido alguna vez fue inicializado que lo resuma, si no que lo inicialize
 		(if (soundBattle.playedSound()) soundBattle.resumeSound() else soundBattle.playSound())
-
 	}
+	
 	method instanceImages(){
 		const lvlPathRed = "levels/"+fighterRed.name().level().toString()+".png"
 		const lvlPathBot = "levels/"+botFighter.name().level().toString()+".png"
@@ -126,6 +126,29 @@ class BattleScreen {
 		botFighter.initialiteBattleObjects(9, pathLife,botFighter.lifeImage())
 		fighterRed.initialiteBattleObjects(9, pathLife,fighterRed.lifeImage())
 	}
+
+	method toWin(){
+		game.clear()
+		//Saco los recursos de las canciones y las paro (la que este andando)
+		route1.stopSound()
+		soundBattle.stopSound()
+		ending.playSound()
+		game.addVisualIn(finalScreen, game.origin())
+	}
+	
+	method fightWithLeader(){
+		game.addVisual(red)
+		game.addVisual(lucas)
+		game.addVisual(alete)
+		game.addVisual(leon)
+		game.say(red, '!')
+		game.schedule(2000, {battleScreen.addConfigurations()})
+		red.fight().pickImage()
+//		game.schedule(2000, {game.removeVisual(red)})
+//		game.schedule(2000, {game.removeVisual(lucas)})
+//		game.schedule(2000, {game.removeVisual(alete)})
+//		game.schedule(2000, {game.removeVisual(leon)})
+	}
 }
 
 class BattleObject{
@@ -140,15 +163,7 @@ const battleScreen = new BattleScreen()
 //Mapa de presentacion
 const map1 = new InitialMap (image = "maps/map1.jpg")		//Background mapa inicial
 
-//Imagen inicial
-object mainScreen{
-	const property image = "maps/initialScreen.png"
-}
-
-object finalScreen{
-	const property image = "maps/ending.png"
-}
-
+//Cartel de enter en el menu de inicio, se mantiene titilando a la espera de 1 enter para empezar el juego
 object enter{
 	const property image = "maps/enter.png"
 	
@@ -161,15 +176,16 @@ object enter{
 		keyboard.enter().onPressDo({self.exit()})
 	}
 	
+	//Cada poco menos de 1 segundo si "presione enter" esta la borra y si no la agrega
 	method twinkle(){
 		game.onTick(900, "twinkle", {self.waitFor()})
 	}
 	
+	//Limpia todo el menu de inicio y abre la configuracion del mapa principal
 	method exit(){
 		game.clear()
 		opening.stopSound()
-		initialScreen.addConfigurations(map1)
-		
+		initialScreen.addConfigurations(map1)		
 	}
 }
 
@@ -185,8 +201,12 @@ const damangeXSign = new BattleObject(image = "maps/damangeX.png")
 const notItem = new BattleObject(image = "maps/notItem.png")
 const haveLife = new BattleObject(image = "maps/withoutLife.png")
 const crossDead = new BattleObject(image = "maps/crosss.png")//cruz cuando muere un pokemon (provizional)
+//TODO: ojo nombre.()
 const namePokemonRed = new BattleObject(image = "names/+pokemon.nombre().toString()+.png")
 const nameSavagePokemon = new BattleObject(image = "maps/nombres/+pokemon.nombre().toString()+.png")
 const lvPokemonRed = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
 const lvSavagePokemon = new BattleObject(image = "maps/lv/+pokemon.level().toString()+.png")
+//Imagen inicial
+const mainScreen = new BattleObject(image = "maps/initialScreen.png")
+const finalScreen = new BattleObject(image = "maps/ending.png")
 

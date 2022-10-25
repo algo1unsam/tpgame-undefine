@@ -123,11 +123,11 @@ object red {
 		const alert = game.sound("sounds/alert.mp3")
 		alert.volume(0.5)
 		alert.play()
-		game.say(self, '!')
-		game.clear() //TODO:game.schedule(800, {game.clear()})
-		game.schedule(2000, {battleScreen.addConfigurations()})
-		game.schedule(2000, {self.fight().pickImage()})
+		game.clear()
+		battleScreen.fightWithLeader()
 	}
+	
+
 	
 	method setCount(){
 		if(countSteps == 4){
