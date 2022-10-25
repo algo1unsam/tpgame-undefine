@@ -47,7 +47,6 @@ object red {
 	//Configura los pasos con un contador de pasos para elegir entre la imagen 1, 2 o 3 
 	//Le sumo los pasos solo a setSteps para no repetir codigo
 	method setSteps() {
-		console.println(self.position().toString())
 
 		const step = game.sound("sounds/step" + countSteps + ".mp3")
 		countSteps += 1
@@ -108,8 +107,6 @@ object red {
 	 */
 	method stepOnGrass(){
 		grassSteps += 1
-		
-		console.println('steps' + self.grassSteps().toString())
 		
 		if(grassSteps == self.randomSteps()){
 			self.newRandom()

@@ -137,7 +137,7 @@ class FighterBot inherits Fighter{
 	//subdede nivel si el pokemon contra el que se realizo la batalla tenia mas nivel
 	method upLvlIf(){
 		if (botFighter.name().level()>name.level()){
-			self.sign(candySign)
+			self.sign(levelUp)
 			name.levelUp()
 			self.refreshLV()
 		}

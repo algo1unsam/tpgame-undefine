@@ -33,10 +33,6 @@ object backPack{
 			game.sound("sounds/notItem.mp3").play()
 			self.itemSign(notItem)	
 		}
-
-//		console.println('vida propia ' + red.fight().life())
-//		console.println('level ' + red.fight().level())
-//		console.println('vida rival ' + botFighter.name().life())
 	}
 	
 	method itemSign(item){
@@ -58,7 +54,7 @@ class Item{
 		return units > 0
 	}
 	method addUnits(cant){
-		units += (units+cant).min(5)
+		units = (units+cant).min(5)
 	}
 }
 
