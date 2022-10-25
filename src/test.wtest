@@ -62,7 +62,7 @@ describe "Test de Pokemon"{
 		assert.equals(4, backPack.myBackPack().size())
 	}
 	test "Hay 3 unidades de caramelos"{
-		assert.equals(3, rareCandy.units())
+		assert.equals(1, rareCandy.units())
 	}	
 }
 

@@ -49,7 +49,14 @@ object characterScreen{
 	method sayHistory(){
 		game.say(red,"este es el maldito lugar...")
 		game.say(red,"tengo que eliminarlos a todos")
-		game.say(red,"debo ayudar al pueblo¡¡")
+		game.say(red,"debo ayudar al pueblo!!")
+	}
+	
+	method sayFinalHistory(){
+		game.say(red,"Lo he logrado!!..")
+		game.say(red,"he vencido a todos los pokemons")
+		game.say(red,"debo ir hacia la salida")
+		game.say(red,"protegida por el profe")		
 	}
 }
 
@@ -84,11 +91,11 @@ class BattleScreen {
 		//instanciamos nombres, niveles, carteles y vida
 		self.instanceImages()
 		//agrego los nombres de los pokemons a el board
-		game.addVisualIn(namePokemonRed,redPos.get(1)) //TODO: ubicar bien
-		game.addVisualIn(nameSavagePokemon,botPos.get(1)) //TODO: ubicar bien
+		game.addVisualIn(namePokemonRed,redPos.get(1))
+		game.addVisualIn(nameSavagePokemon,botPos.get(1))
 		 //agrego los lvs al board
-		game.addVisualIn(lvPokemonRed,redPos.get(2)) //TODO: ubicar bien
-		game.addVisualIn(lvSavagePokemon,botPos.get(2)) //TODO: ubicar bien
+		game.addVisualIn(lvPokemonRed,redPos.get(2))
+		game.addVisualIn(lvSavagePokemon,botPos.get(2))
 		//agrego los carteles de vida inciales de los pokemons
 		//obtengo el indice correspondiente del cartel d ela vida
 		fighterRed.getBettwenNumers()

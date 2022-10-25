@@ -48,6 +48,7 @@
  		game.schedule(750,{game.addVisualIn(crossDead,position)})
  		game.schedule(3999, {flight.itIsInside()}) //saca del juego
  	}
+ 	
  	//retorna una lista de 0 hasta la vida del pokemon con un salteado dado por la sigiente formula
  	//vida/cantidadImagenesDeVida
  	method listRangeLife(){
@@ -153,6 +154,7 @@ class FighterBot inherits Fighter{
 		game.schedule(200, { game.removeVisual(pokemon) })
 		game.schedule(250, { game.addVisualIn(pokemon, pos) })
 	}
+	
 	//cuando muere un pokemon
 	method pokemonDead(fighter){
 		if (fighter.name().life().between(0,11)){

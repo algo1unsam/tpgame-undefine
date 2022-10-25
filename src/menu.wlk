@@ -225,6 +225,10 @@ object statusPokemon inherits Menu{
 object flight inherits Menu{	
 	override method itIsInside(){
 		self.runAway()
+		if(map1.mapPokemons().size() == 0){
+ 		 	characterScreen.sayFinalHistory()
+ 		 	red.randomSteps(-1)
+ 		}
 	}
 	
 	override method back(){
