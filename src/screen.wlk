@@ -18,6 +18,7 @@ class MapScreen {
 	}
 	
 		method addConfigurations(nameOfMap) {	
+		route1.playSound()
 		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
 		
 		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
@@ -160,12 +161,9 @@ object enter{
 	}
 	
 	method exit(){
+		game.clear()
+		opening.stopSound()
 		initialScreen.addConfigurations(map1)
-		game.removeVisual(mainScreen)
-		game.removeTickEvent("twinkle")
-		if(game.hasVisual(self)){
-			game.removeVisual(self)
-		}
 		
 	}
 }

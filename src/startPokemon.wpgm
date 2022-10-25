@@ -9,6 +9,6 @@ program main {
 	initialScreen.initialSettingsGame()
 	game.addVisualIn(mainScreen, game.origin())
 	enter.twinkle()
-	route1.playSound()
+	opening.playSound()
 	game.start()
 }
