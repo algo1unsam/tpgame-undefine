@@ -119,15 +119,19 @@ object red {
 			battleScreen.addConfigurations()
 		}
 	}
-	method collidWithHitBoxLeader(){
-		const alert = game.sound("sounds/alert.mp3")
-		alert.volume(0.5)
-		alert.play()
-		game.clear()
-		battleScreen.fightWithLeader()
+	method sayPokemonOrPokemons(cantPokemons){
+		if (cantPokemons == 1){
+			return "pokemon"
+		}else{
+			return "pokemons"
+		}
 	}
-	
-
+	method saySizePokemons(){
+		const cantPokemons = map1.mapPokemons().size()
+		
+		game.say(self,"segun mis calculos...")
+		game.say(self,"quedan "+cantPokemons.toString()+" "+self.sayPokemonOrPokemons(cantPokemons))
+	}	
 	
 	method setCount(){
 		if(countSteps == 4){

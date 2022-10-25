@@ -2,12 +2,13 @@ import wollok.game.*
 import red.*
 import screen.*
 import pokemon.*
+import leaders.*
 
 //mapa inicial 
 class InitialMap{	
 	const property image  //imagen del mapa
 	const listOfInvisibleObjects = []
-	const property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck,scyther]
+	var property mapPokemons = [growlithe, bulbasaur, oddish, squirtle, lapras,butterfree,gyarados,magmar,ponyta,psyduck,scyther]
 	/*crea una bloque o linea de objetos invisibles con posiciones desde [initX,endX)(desde izqquierda a derecha eje x)
 	  y [initY,endY) (desde arriba hacia abajo ejeY)
 	 ej: metohd createLineOfCollidersInX(initX=1,endx=10,initY=2,endY=0)
@@ -57,11 +58,7 @@ class InitialMap{
 		self.createBloqueInvisibleObjects(4,19,24,22,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(24,40,29,28,instanceHitboxHill)
 		self.createBloqueInvisibleObjects(3,20,29,28,instanceHitboxHill)
-		//instanciando hitbox lideres
-		self.createBloqueInvisibleObjects(33,34,31,28,instanceHitBoxLeader)		
-		self.createBloqueInvisibleObjects(40,41,19,16,instanceHitBoxLeader)		
-		self.createBloqueInvisibleObjects(26,27,16,12,instanceHitBoxLeader)		
-		//TODO: Faltan algunos mas, la onda es que si o si tenga q pasar por ahi y no se puedan esquivar 
+	
 	}
 	//agrega los visuales en el mapa
 	method addVisualInBoard(){
@@ -86,14 +83,6 @@ object instanceHitboxGrass{
 object instanceHitboxHill{
 	method instance(x,y){
 		return new HitBoxHill(position=game.at(x,y))	
-	}
-}
-
-//El hitboxLeader es para que te vea y te juegue una batalla (no para no traspasarlo)
-//TODO: Hacer el collider HitBox para los leaderes (cosa que no se puedan traspasar)
-object instanceHitBoxLeader{
-	method instance(x,y){
-		return new HitBoxLeader(position=game.at(x,y))
 	}
 }
 
@@ -123,12 +112,6 @@ class HitBoxHill inherits HitBox{
 		jump.volume(0.5)
 		jump.play()			
 		
-	}
-}
-
-class HitBoxLeader inherits HitBox{
-	override  method collidWithCharacter(){
-		red.collidWithHitBoxLeader()
 	}
 }
 

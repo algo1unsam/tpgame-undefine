@@ -49,13 +49,16 @@ object backPack{
 }
 
 class Item{
-	var property units = 3
+	var property units = 1
 	method useInPokemon(pokemon){
 		units -= 1
 	}
 	
 	method areThereUnits(){
 		return units > 0
+	}
+	method addUnits(cant){
+		units += (units+cant).min(5)
 	}
 }
 
@@ -69,6 +72,7 @@ object healingPotion inherits Item{
 	}
 } 
 object rareCandy inherits Item{
+	const property name = "(caramelo)"
 	override method useInPokemon(pokemon){
 		super(pokemon)
 		pokemon.levelUp()
@@ -87,6 +91,7 @@ object apple inherits Item{
 }
 	
 object damangeX inherits Item{
+	const property name = "(posion de daño)"
 	//Le resta 10 al oponente
 	override method useInPokemon(pokemon){
 		super(pokemon)		

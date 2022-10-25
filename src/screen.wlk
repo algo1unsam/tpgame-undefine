@@ -17,9 +17,10 @@ class MapScreen {
 		game.cellSize(20)
 	}
 	
-		method addConfigurations(nameOfMap) {	
+	method addConfigurations(nameOfMap) {	
 		route1.playSound()
 		characterScreen.initializeCharacter() //inicializamos en personaje para que conviva con el entorno
+		characterScreen.sayHistory()
 		
 		//Agrego los objetos invisibles para los colisione los arboles, rejas, etc.
 		nameOfMap.constructInvisibleNormalObjects()
@@ -32,7 +33,7 @@ object characterScreen{
 	method initializeCharacter(){
 		//inicializamos visual del pj
 		game.addVisual(red)
-		//Inicializamos por otro lado los malvados lideres pokemones
+		//incializamos lideres
 		game.addVisual(leon)
 		game.addVisual(alete)
 		game.addVisual(lucas)
@@ -43,6 +44,12 @@ object characterScreen{
 		keyboard.left().onPressDo({red.left()})
 		keyboard.up().onPressDo({red.up()})
 		keyboard.down().onPressDo({red.down()})
+		keyboard.c().onPressDo({red.saySizePokemons()})
+	}
+	method sayHistory(){
+		game.say(red,"este es el maldito lugar...")
+		game.say(red,"tengo que eliminarlos a todos")
+		game.say(red,"debo ayudar al pueblo¡¡")
 	}
 }
 
@@ -136,19 +143,6 @@ class BattleScreen {
 		game.addVisualIn(finalScreen, game.origin())
 	}
 	
-	method fightWithLeader(){
-		game.addVisual(red)
-		game.addVisual(lucas)
-		game.addVisual(alete)
-		game.addVisual(leon)
-		game.say(red, '!')
-		game.schedule(2000, {battleScreen.addConfigurations()})
-		red.fight().pickImage()
-//		game.schedule(2000, {game.removeVisual(red)})
-//		game.schedule(2000, {game.removeVisual(lucas)})
-//		game.schedule(2000, {game.removeVisual(alete)})
-//		game.schedule(2000, {game.removeVisual(leon)})
-	}
 }
 
 class BattleObject{

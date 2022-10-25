@@ -4,6 +4,7 @@
  import red.*
  import map.*
  import wollok.game.*
+ import leaders.*
  
  
  //clase pelador contiene el nombre del pokemon salvaje que pela y una lista de ataques y de carteles 
@@ -41,8 +42,11 @@
 		}
 	}
 	method figtherDead(){
- 		game.schedule(251,{game.addVisualIn(crossDead,position)})
- 		game.schedule(3999, {flight.itIsInside()}) //saca del juegp
+		leon.giftItem(false)
+		alete.giftItem(false)
+		lucas.giftItem(false)
+ 		game.schedule(750,{game.addVisualIn(crossDead,position)})
+ 		game.schedule(3999, {flight.itIsInside()}) //saca del juego
  	}
  	//retorna una lista de 0 hasta la vida del pokemon con un salteado dado por la sigiente formula
  	//vida/cantidadImagenesDeVida
@@ -64,8 +68,12 @@
  	}
  	//verifica si la vida del pokemon esta entre los valores dados
  	method isBetween(start,end,index){
- 		//le sumo 2 a end por el margen de error que genera la creacion de la llista con rango
- 		if (self.name().life().between(start,end+2)){
+ 		var solventError = end 
+ 		//solucionamos error de redonde de la generacion de la lista con los rangos de vida
+		if (index == lifeImage.size()-1){
+			solventError += 1
+		}	
+ 		if (self.name().life().between(start,solventError)){
  			indexImageLife = index
  		}
  	}
