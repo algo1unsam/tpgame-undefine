@@ -112,9 +112,11 @@ class FighterBot inherits Fighter{
 	}
  	//metodo para refrezcar el nivel si en batalla le dan al pokemon un caramelo raro de la mochi
 	method refreshLV(){
+		const lvlPathRed = "levels/"+fighterRed.name().level().toString()+".png"
+		
 		self.refreshAttacks()
 		game.removeVisual(lvPokemonRed)
-		lvPokemonRed.image("maps/lv/"+self.name().level().toString()+".png")
+		lvPokemonRed.image(lvlPathRed)
 		game.addVisualIn(lvPokemonRed,battleScreen.redPos().get(2))//TODO:agregar ubicacion real
 	}
 	//validaciones

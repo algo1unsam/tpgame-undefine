@@ -63,8 +63,6 @@ object arrowScreen{
 class BattleScreen {
 	const property lvlPathRed = "levels/"+fighterRed.name().level().toString()+".png"
 	const property lvlPathBot = "levels/"+botFighter.name().level().toString()+".png"
-	const property namPathRed = "Names/"+fighterRed.name().name()+".png"
-	const property namPathBot = "Names/"+botFighter.name().name()+".png"
 	const property pathSing = "maps/attack"
 	const property pathLife = "healthbars/healthbar"
 	
@@ -108,6 +106,8 @@ class BattleScreen {
 	method instanceImages(){
 		const botP = pathSing+botFighter.name().type()
 		const redP = pathSing+fighterRed.name().type()
+		const namPathRed = "Names/"+fighterRed.name().name()+".png"
+		const namPathBot = "Names/"+botFighter.name().name()+".png"
 		
 		//inicializo los nombres de los pokemons
 		namePokemonRed.image(namPathRed)

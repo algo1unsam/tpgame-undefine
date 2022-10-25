@@ -15,7 +15,7 @@ object backPack{
 		//Le asigno a la var item el elemento que eligio en el menu
 		const item = myBackPack.get(option - 1)
 		if(item.areThereUnits()){
-			item.useInPokemon(red.fight())
+			item.useInPokemon(fighterRed.name())
 			flag = true
 		}
 		
