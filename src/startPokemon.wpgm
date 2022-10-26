@@ -1,0 +1,14 @@
+import screen.*
+import wollok.game.*
+import map.*
+import sound.*
+
+//Programa, establece las configuraciones iniciales del juego y arranca el motor grafico
+program main {
+	game.boardGround(map1.image())
+	initialScreen.initialSettingsGame()
+	game.addVisualIn(mainScreen, game.origin())
+	enter.twinkle()
+	opening.playSound()
+	game.start()
+}

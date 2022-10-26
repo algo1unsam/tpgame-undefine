@@ -1,0 +1,68 @@
+import pokemon.*
+import backPack.*
+import red.*
+
+describe "Test de Pokemon"{
+	
+	test "Pokemon vida inicializa en 100 " {
+		assert.equals(100,charmander.life())
+}
+	test "Pokemon level inicializa en 1"{
+		assert.equals(1,charmander.level())
+	}
+	test"Pokemon level aumenta en 1 cuando sube de nivel"{
+		charmander.levelUp()
+		assert.equals(2,charmander.level())
+	}
+	test "Pokemon recibe daño y disminuye su vida"{
+		charmander.takeDamage(20)
+		assert.equals(80,charmander.life())
+	}
+	test "Pokemon recibe daño pero no disminuye menos de 0"{
+		const _life=0
+		charmander.life(_life)
+		charmander.takeDamage(20)
+		assert.equals(0,charmander.life())	
+	}
+	test "Pokemon se cura y aumenta su vida"{
+		charmander.life(80)
+		charmander.heal(20)
+		assert.equals(100,charmander.life())
+	}
+	test "Pokemon se cura y no aumenta su vida porque esta al max"{
+		const topLife=100
+		charmander.life(topLife)
+		charmander.heal(50)
+		assert.equals(100,charmander.life())
+	}
+	test "Pokemon pertenece a la clase fuego"{
+		assert.that(growlithe.esDeClaseFuego())
+	}
+	test "Pokemon pertenece a la clase agua"{
+		assert.that(psyduck.esDeClaseAgua())
+	}
+	test "Pokemon pertenes a la clase planta"{
+		assert.that(scyther.esDeClasePlanta())
+	}
+	test "Charmander es el pokemon inicial"{
+		assert.that(charmander.ownPokemon())
+	}
+	test "Cualquier otro pokemon no es el inicial"{
+		assert.notThat(squirtle.ownPokemon())
+	}
+	test "El pokemon de Red es Charmander"{
+		assert.equals(charmander, red.myPokemons().get(0))
+	}
+	test "Si ejecuto el randomSteps de Red, no será nunca menor a 10"{
+		assert.that(red.randomSteps() >= 10)
+		assert.that(red.randomSteps() >= 10)
+		assert.that(red.randomSteps() >= 10)
+	}
+	test "La mochila tiene 4 items"{
+		assert.equals(4, backPack.myBackPack().size())
+	}
+	test "Hay 3 unidades de caramelos"{
+		assert.equals(1, rareCandy.units())
+	}	
+}
+
