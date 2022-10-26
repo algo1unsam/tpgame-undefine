@@ -27,7 +27,7 @@ class Pokemon {
 	}	
 	//tackleAttack
 	method attack1(){
-		return 20
+		return 12
 	}	
 }
  class PokemonFireType inherits Pokemon{
@@ -41,7 +41,7 @@ class Pokemon {
  	}
  	//firePunchAttack
  	method attack4(){
- 		return 12 + self.level() * 2 	
+ 		return 12 + self.level() * 3 	
  	}
  	method esDeClaseFuego()= return true
  }
